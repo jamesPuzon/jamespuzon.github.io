@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>James Puzon - Home</title>
+    <title id="page-title">James Puzon - Home</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>James Puzon</h1>
+        <h1 id="header-name">James Puzon</h1>
     </header>
 
     <nav>
@@ -22,8 +22,8 @@
 
     <div class="container">
         <section class="profile">
-            <img src="profile.jpg" alt="James Puzon" class="profile-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%232c3e50%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23fff%22%3EJames Puzon%3C/text%3E%3C/svg%3E'">
-            <p>
+            <img id="profile-img" src="profile.jpg" alt="James Puzon" class="profile-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22%3E%3Crect width=%22200%22 height=%22200%22 fill=%22%232c3e50%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2220%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23fff%22%3EJames Puzon%3C/text%3E%3C/svg%3E'">
+            <p id="welcome-text">
                 Welcome to my personal website! I'm James Puzon, and I'm passionate about creating innovative solutions
                 and making a positive impact in my community. This site showcases my journey, skills, and experiences
                 across education, professional work, and community engagement.
@@ -31,8 +31,8 @@
         </section>
 
         <section class="site-structure">
-            <h2>Explore My Website</h2>
-            <p>Navigate through the different sections to learn more about my background, work, and how to get in touch:</p>
+            <h2 id="explore-title">Explore My Website</h2>
+            <p id="explore-description">Navigate through the different sections to learn more about my background, work, and how to get in touch:</p>
             <ul class="site-links">
                 <li><a href="about.html">About James</a></li>
                 <li><a href="portfolio.html">Portfolio</a></li>
@@ -44,5 +44,39 @@
     <footer>
         <p>&copy; 2024 James Puzon. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Load content from JSON file
+        fetch('content.json')
+            .then(response => response.json())
+            .then(data => {
+                // Update page title
+                document.getElementById('page-title').textContent = data.header.title;
+                
+                // Update header
+                document.getElementById('header-name').textContent = data.header.name;
+                
+                // Update home page content
+                const home = data.home;
+                
+                // Update profile image
+                const profileImg = document.getElementById('profile-img');
+                if (home.profileImage) {
+                    profileImg.src = home.profileImage;
+                    profileImg.alt = data.header.name;
+                }
+                
+                // Update welcome text
+                document.getElementById('welcome-text').textContent = home.welcomeText;
+                
+                // Update explore section
+                document.getElementById('explore-title').textContent = home.exploreTitle;
+                document.getElementById('explore-description').textContent = home.exploreDescription;
+            })
+            .catch(error => {
+                console.error('Error loading content:', error);
+                // Fallback to default content (already in HTML)
+            });
+    </script>
 </body>
 </html>

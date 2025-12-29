@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - James Puzon</title>
+    <title id="page-title">Contact - James Puzon</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Contact</h1>
+        <h1 id="header-name">Contact</h1>
     </header>
 
     <nav>
@@ -22,21 +22,22 @@
 
     <div class="container">
         <section class="content-section">
-            <h2>Get in Touch</h2>
-            <p>
+            <h2 id="contact-title">Get in Touch</h2>
+            <p id="contact-description">
                 I'd love to hear from you! Whether you have a question, want to collaborate on a project, 
                 or just want to say hello, feel free to reach out.
             </p>
 
             <h3>Contact Information</h3>
-            <ul>
+            <ul id="contact-info">
+                <!-- Contact information will be dynamically loaded from content.json -->
                 <li><strong>Email:</strong> <a href="mailto:james@example.com">james@example.com</a></li>
                 <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/jamespuzon" target="_blank">linkedin.com/in/jamespuzon</a></li>
                 <li><strong>GitHub:</strong> <a href="https://github.com/jamesPuzon" target="_blank">github.com/jamesPuzon</a></li>
             </ul>
 
             <h3>Send a Message</h3>
-            <p>
+            <p id="additional-info">
                 Feel free to connect with me through any of the platforms above. I typically respond within 24-48 hours.
             </p>
         </section>
@@ -45,5 +46,76 @@
     <footer>
         <p>&copy; 2024 James Puzon. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Load content from JSON file
+        fetch('content.json')
+            .then(response => response.json())
+            .then(data => {
+                // Update page title
+                document.getElementById('page-title').textContent = `${data.contact.title} - ${data.header.name}`;
+                
+                // Update header
+                document.getElementById('header-name').textContent = data.contact.title;
+                
+                // Update contact content
+                document.getElementById('contact-title').textContent = data.contact.title;
+                document.getElementById('contact-description').textContent = data.contact.description;
+                
+                // Update contact information
+                const contactInfo = document.getElementById('contact-info');
+                contactInfo.innerHTML = '';
+                
+                // Add email if provided
+                if (data.contact.email) {
+                    const emailLi = document.createElement('li');
+                    emailLi.innerHTML = `<strong>Email:</strong> <a href="mailto:${data.contact.email}">${data.contact.email}</a>`;
+                    contactInfo.appendChild(emailLi);
+                }
+                
+                // Add phone if provided
+                if (data.contact.phone) {
+                    const phoneLi = document.createElement('li');
+                    phoneLi.innerHTML = `<strong>Phone:</strong> <a href="tel:${data.contact.phone}">${data.contact.phone}</a>`;
+                    contactInfo.appendChild(phoneLi);
+                }
+                
+                // Add social links
+                const social = data.contact.social;
+                
+                if (social.linkedin && typeof social.linkedin === 'string') {
+                    const linkedinLi = document.createElement('li');
+                    const linkedinUrl = social.linkedin.startsWith('http') ? social.linkedin : `https://linkedin.com/in/${social.linkedin}`;
+                    const linkedinDisplay = social.linkedin.replace(/^https?:\/\/(www\.)?/, '');
+                    linkedinLi.innerHTML = `<strong>LinkedIn:</strong> <a href="${linkedinUrl}" target="_blank">${linkedinDisplay}</a>`;
+                    contactInfo.appendChild(linkedinLi);
+                }
+                
+                if (social.github && typeof social.github === 'string') {
+                    const githubLi = document.createElement('li');
+                    const githubUrl = social.github.startsWith('http') ? social.github : `https://github.com/${social.github}`;
+                    const githubDisplay = social.github.replace(/^https?:\/\/(www\.)?/, '');
+                    githubLi.innerHTML = `<strong>GitHub:</strong> <a href="${githubUrl}" target="_blank">${githubDisplay}</a>`;
+                    contactInfo.appendChild(githubLi);
+                }
+                
+                if (social.twitter && typeof social.twitter === 'string') {
+                    const twitterLi = document.createElement('li');
+                    const twitterUrl = social.twitter.startsWith('http') ? social.twitter : `https://twitter.com/${social.twitter}`;
+                    const twitterDisplay = social.twitter.replace(/^https?:\/\/(www\.)?/, '');
+                    twitterLi.innerHTML = `<strong>Twitter:</strong> <a href="${twitterUrl}" target="_blank">${twitterDisplay}</a>`;
+                    contactInfo.appendChild(twitterLi);
+                }
+                
+                // Update additional info
+                if (data.contact.additionalInfo) {
+                    document.getElementById('additional-info').textContent = data.contact.additionalInfo;
+                }
+            })
+            .catch(error => {
+                console.error('Error loading content:', error);
+                // Fallback to default content (already in HTML)
+            });
+    </script>
 </body>
 </html>
