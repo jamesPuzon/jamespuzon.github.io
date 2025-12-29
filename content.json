@@ -5,7 +5,7 @@
   },
   "home": {
     "profileImage": "images/profile.jpg",
-    "welcomeText": "Welcome to my personal website! I'm James Puzon, and I'm passionate about creating innovative solutions and making a positive impact in my community. This site showcases my journey, skills, and experiences across education, professional work, and community engagement.",
+    "welcomeText": "I'm James Puzon, an undergraduate mechanical engineering student at the University of Pittsburgh. This site showcases my journey, skills, and experiences across education, professional work, and community engagement.",
     "exploreTitle": "Explore My Website",
     "exploreDescription": "Navigate through the different sections to learn more about my background, work, and how to get in touch:"
   },
@@ -20,23 +20,66 @@
         "title": "Education",
         "content": "This section highlights my educational background and academic achievements. My educational journey has provided me with a strong foundation in my field and equipped me with the knowledge and skills necessary to excel in my career.",
         "details": [
-          "Details about university or college attended",
-          "Degree(s) earned and major(s)",
-          "Relevant coursework and academic projects",
-          "Academic honors and achievements"
+          "University of Pittsburgh, Swanson School of Engineering",
+          "B. S. Mechanical Engineering, Minors in Computer Science and Hispanic Language and Culture",
+          "Relevant coursework: Robotics, Mechatronics, Mechanical Design",
+          "Honors: Cathedral Presige Scholarship (full tuition), Frank V. Naugle Engineering Scholarship, Dean's List"
         ],
-        "image": ""
+        "image": "",
+        "subsections": [
+          {
+            "title": "Study Abroad",
+            "content": "In Spain, James took classes to complete his Hispanic Languages and Culture Minor",
+            "details": [
+              "Universidad de Alcalá, Alcalá de Henares, Spain",
+              "2 months",
+              "In Spain, James took classes to complete his Hispanic Languages and Culture Minor"
+            ],
+            "image": "images/study-abroad.jpg"
+          }
+        ]
       },
       {
         "title": "Experience",
         "content": "Throughout my professional career, I have gained valuable experience working on diverse projects and collaborating with talented teams. This section showcases my work history and the skills I've developed along the way.",
-        "details": [
-          "Current and previous positions held",
-          "Key responsibilities and achievements",
-          "Technical skills and competencies",
-          "Notable projects and contributions"
-        ],
         "image": ""
+        "subsections": [
+          {
+            "title": "Prosthetic Innovations",
+            "content": "Experience Description",
+            "details": [
+              "Prosthetic Innovations, Philadelphia, PA, June 2025",
+              "Role: Engineering Shadow",
+              "Observed the design and fitting process of advanced prosthetic devices",
+              "Gained exposure to the application of microcontrollers to control movement at joints",
+              "Learned about interdisciplinary collaboration between engineers and healthcare professionals"
+            ],
+            "image": ""
+          },
+          {
+            "title": "Volume Crew",
+            "content": "Experience Description",
+            "details": [
+              "Peak Experiences, Richmond, VA, May 2023 & 2024",
+              "Role: Volume Construction Crew",
+              "Collaborated with a construction team to install and secure volumes on metal cages for a national climbing competition",
+              "Set boulder problems for Olympic-level athletes with world-class climbing setters",
+            ],
+            "image": ""
+          },
+          {
+            "title": "Site Director",
+            "content": "Experience Description",
+            "details": [
+              "Passages Adventure Camp, Richmond, VA, Summer 2019-2024",
+              "Role: Site Director",
+              "Entrusted with the safety of campers participating in kayaking and rock climbing",
+              "Instructed campers on essential skills to achieve success in progressive skill levels",
+              "Supervised counselors in training, junior counselors, and full counselors to facilitate collaboration"
+            ],
+            "image": ""
+          }
+        ]
       },
       {
         "title": "Leadership/Community Engagement",
@@ -48,6 +91,32 @@
           "Organizations and causes supported"
         ],
         "image": ""
+        "subsections": [
+          {
+            "title": "President, Ping Pong Club at Pitt",
+            "content": "James started playing ping pong competively as a freshman at Pitt when the joined the club’s competitive team. He was elected as President of the club as a Junior, and his duties include organizing four weekly meetings and managing the competitive team. As a part of the competitive team, James has competed in several NCTTA (National Collegiate Table Tennis Association) tournamnents",
+            "image": "images/pingpong.jpg"
+          },
+          {
+            "title": "Vice President, Outdoors Club at Pitt, Whitewater Section",
+            "content": "James organizes kayaking and rafting trips for the Outdoors Club at Pitt. He manages safety and logistics to ensure that trips run smoothly.",
+            "image": "images/kayaking.jpg"
+          }
+          {
+            "title": "Intramurals",
+            "details": [
+              "Captain, IM Soccer",
+              "IM Volleyball"
+            ]
+          },
+          {
+            "title": "Other Clubs",
+            "details": [
+              "MMA Club",
+              "Ski and Snowboard Club"
+            ]
+          }
+        ]
       }
     ]
   },
@@ -78,13 +147,13 @@
   "contact": {
     "title": "Get In Touch",
     "description": "I'd love to hear from you! Whether you have a question, want to collaborate on a project, or just want to say hello, feel free to reach out.",
-    "email": "james@example.com",
-    "phone": "",
+    "email": "jamespuzon04@gmail.com",
+    "phone": "(804) 475-5800",
     "social": {
-      "linkedin": "https://linkedin.com/in/jamespuzon",
+      "linkedin": "https://linkedin.com/in/james-puzon",
       "github": "https://github.com/jamesPuzon",
       "twitter": ""
     },
-    "additionalInfo": "Feel free to connect with me through any of the platforms above. I typically respond within 24-48 hours."
+    "additionalInfo": "Feel free to send me an email or a text. I typically respond within 24-48 hours."
   }
 }
