@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - James Puzon</title>
+    <title id="page-title">Portfolio - James Puzon</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>Portfolio</h1>
+        <h1 id="header-name">Portfolio</h1>
     </header>
 
     <nav>
@@ -22,35 +22,108 @@
 
     <div class="container">
         <section class="content-section">
-            <h2>My Work</h2>
-            <p>
+            <h2 id="portfolio-title">My Work</h2>
+            <p id="portfolio-description">
                 Welcome to my portfolio! Here you'll find a collection of my projects, accomplishments, and creative work. 
                 Each project represents a unique challenge and learning experience that has contributed to my professional growth.
             </p>
 
-            <h3>Project 1</h3>
-            <p>
-                Description of a notable project, including the technologies used, challenges faced, and outcomes achieved.
-            </p>
+            <div id="projects-container">
+                <!-- Projects will be dynamically loaded from content.json -->
+                <h3>Project 1</h3>
+                <p>
+                    Description of a notable project, including the technologies used, challenges faced, and outcomes achieved.
+                </p>
 
-            <h3>Project 2</h3>
-            <p>
-                Description of another significant project, highlighting key features and your role in its development.
-            </p>
+                <h3>Project 2</h3>
+                <p>
+                    Description of another significant project, highlighting key features and your role in its development.
+                </p>
 
-            <h3>Project 3</h3>
-            <p>
-                Description of an additional project that showcases your skills and expertise.
-            </p>
+                <h3>Project 3</h3>
+                <p>
+                    Description of an additional project that showcases your skills and expertise.
+                </p>
 
-            <p>
-                <em>More projects and detailed case studies coming soon!</em>
-            </p>
+                <p>
+                    <em>More projects and detailed case studies coming soon!</em>
+                </p>
+            </div>
         </section>
     </div>
 
     <footer>
         <p>&copy; 2024 James Puzon. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Load content from JSON file
+        fetch('content.json')
+            .then(response => response.json())
+            .then(data => {
+                // Update page title
+                document.getElementById('page-title').textContent = `${data.portfolio.title} - ${data.header.name}`;
+                
+                // Update header
+                document.getElementById('header-name').textContent = data.portfolio.title;
+                
+                // Update portfolio description
+                document.getElementById('portfolio-title').textContent = data.portfolio.title;
+                document.getElementById('portfolio-description').textContent = data.portfolio.description;
+                
+                // Load projects
+                const projectsContainer = document.getElementById('projects-container');
+                projectsContainer.innerHTML = '';
+                
+                if (data.portfolio.projects && data.portfolio.projects.length > 0) {
+                    data.portfolio.projects.forEach(project => {
+                        const projectDiv = document.createElement('div');
+                        projectDiv.className = 'project-item';
+                        
+                        // Add project image if provided
+                        if (project.image) {
+                            const img = document.createElement('img');
+                            img.src = project.image;
+                            img.alt = project.title;
+                            img.className = 'project-image';
+                            img.onerror = function() {
+                                this.style.display = 'none';
+                            };
+                            projectDiv.appendChild(img);
+                        }
+                        
+                        // Add project title
+                        const title = document.createElement('h3');
+                        title.textContent = project.title;
+                        projectDiv.appendChild(title);
+                        
+                        // Add project description
+                        const description = document.createElement('p');
+                        description.textContent = project.description;
+                        projectDiv.appendChild(description);
+                        
+                        // Add project link if provided
+                        if (project.link) {
+                            const link = document.createElement('a');
+                            link.href = project.link;
+                            link.textContent = 'View Project';
+                            link.className = 'project-link';
+                            link.target = '_blank';
+                            projectDiv.appendChild(link);
+                        }
+                        
+                        projectsContainer.appendChild(projectDiv);
+                    });
+                } else {
+                    const emptyMessage = document.createElement('p');
+                    emptyMessage.innerHTML = '<em>More projects and detailed case studies coming soon!</em>';
+                    projectsContainer.appendChild(emptyMessage);
+                }
+            })
+            .catch(error => {
+                console.error('Error loading content:', error);
+                // Fallback to default content (already in HTML)
+            });
+    </script>
 </body>
 </html>

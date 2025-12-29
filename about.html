@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About James - James Puzon</title>
+    <title id="page-title">About James - James Puzon</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
-        <h1>About James</h1>
+        <h1 id="header-name">About James</h1>
     </header>
 
     <nav>
@@ -20,7 +20,8 @@
         </ul>
     </nav>
 
-    <div class="container">
+    <div class="container" id="about-container">
+        <!-- Content will be dynamically loaded from content.json -->
         <section class="content-section">
             <h2>Education</h2>
             <p>
@@ -70,5 +71,67 @@
     <footer>
         <p>&copy; 2024 James Puzon. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Load content from JSON file
+        fetch('content.json')
+            .then(response => response.json())
+            .then(data => {
+                // Update page title
+                document.getElementById('page-title').textContent = `About ${data.header.name.split(' ')[0]} - ${data.header.name}`;
+                
+                // Update header
+                document.getElementById('header-name').textContent = `About ${data.header.name.split(' ')[0]}`;
+                
+                // Clear existing content
+                const container = document.getElementById('about-container');
+                container.innerHTML = '';
+                
+                // Load about sections
+                data.about.sections.forEach(section => {
+                    const sectionElement = document.createElement('section');
+                    sectionElement.className = 'content-section';
+                    
+                    // Add image if provided
+                    if (section.image) {
+                        const img = document.createElement('img');
+                        img.src = section.image;
+                        img.alt = section.title;
+                        img.className = 'section-image';
+                        img.onerror = function() {
+                            this.style.display = 'none';
+                        };
+                        sectionElement.appendChild(img);
+                    }
+                    
+                    // Add title
+                    const title = document.createElement('h2');
+                    title.textContent = section.title;
+                    sectionElement.appendChild(title);
+                    
+                    // Add content
+                    const content = document.createElement('p');
+                    content.textContent = section.content;
+                    sectionElement.appendChild(content);
+                    
+                    // Add details list if provided
+                    if (section.details && section.details.length > 0) {
+                        const ul = document.createElement('ul');
+                        section.details.forEach(detail => {
+                            const li = document.createElement('li');
+                            li.textContent = detail;
+                            ul.appendChild(li);
+                        });
+                        sectionElement.appendChild(ul);
+                    }
+                    
+                    container.appendChild(sectionElement);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading content:', error);
+                // Fallback to default content (already in HTML)
+            });
+    </script>
 </body>
 </html>

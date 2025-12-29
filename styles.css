@@ -48,6 +48,9 @@ header h1 {
     object-fit: cover;
     margin-bottom: 20px;
     border: 4px solid #2c3e50;
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
 }
 
 .profile p {
@@ -99,6 +102,7 @@ header h1 {
     font-size: 1.2em;
     font-weight: bold;
     text-align: center;
+    min-height: 44px;
 }
 
 /* Navigation */
@@ -113,6 +117,7 @@ nav ul {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
 nav ul li {
@@ -126,6 +131,11 @@ nav a {
     padding: 8px 15px;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+    display: inline-block;
+    min-height: 44px;
+    min-width: 44px;
+    text-align: center;
+    line-height: 1.6;
 }
 
 nav a:hover {
@@ -176,11 +186,62 @@ nav a:hover {
     color: #3498db;
     text-decoration: none;
     transition: color 0.3s ease;
+    min-height: 44px;
+    display: inline-block;
+    padding: 5px 0;
 }
 
 .content-section a:hover {
     color: #2980b9;
     text-decoration: underline;
+}
+
+/* Responsive Images */
+.section-image,
+.project-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0;
+    display: block;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Project Items */
+.project-item {
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.project-item img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+
+.project-link {
+    display: inline-block;
+    background-color: #3498db;
+    color: #fff !important;
+    padding: 12px 24px;
+    border-radius: 5px;
+    text-decoration: none !important;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    min-height: 44px;
+    line-height: 1.6;
+}
+
+.project-link:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
 }
 
 /* Footer */
@@ -192,10 +253,40 @@ footer {
     margin-top: 40px;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+/* Tablet Responsive Design (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .container {
+        padding: 15px;
+    }
+    
     header h1 {
-        font-size: 2em;
+        font-size: 2.2em;
+    }
+    
+    .profile,
+    .site-structure,
+    .content-section {
+        padding: 30px;
+    }
+    
+    .site-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile Responsive Design (< 768px) */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 1.8em;
+        padding: 0 10px;
+    }
+    
+    header {
+        padding: 15px 0;
     }
     
     .profile-img {
@@ -203,16 +294,123 @@ footer {
         height: 150px;
     }
     
+    .profile,
+    .site-structure,
+    .content-section {
+        padding: 20px;
+        margin: 15px 0;
+    }
+    
+    .profile p,
+    .content-section p {
+        font-size: 1em;
+    }
+    
+    .site-structure h2,
+    .content-section h2 {
+        font-size: 1.5em;
+    }
+    
+    .content-section h3 {
+        font-size: 1.3em;
+    }
+    
     .site-links {
         grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .site-links a {
+        padding: 20px;
+        font-size: 1.1em;
+    }
+    
+    nav {
+        padding: 10px 0;
     }
     
     nav ul {
         flex-direction: column;
         align-items: center;
+        gap: 5px;
     }
     
     nav ul li {
         margin: 5px 0;
+    }
+    
+    nav a {
+        font-size: 1em;
+        padding: 10px 20px;
+        display: block;
+        width: 100%;
+        max-width: 200px;
+    }
+    
+    .project-item {
+        margin-bottom: 30px;
+    }
+    
+    .project-link {
+        width: 100%;
+        text-align: center;
+        padding: 15px 20px;
+    }
+    
+    footer {
+        padding: 15px 10px;
+        font-size: 0.9em;
+    }
+}
+
+/* Extra Small Mobile (< 480px) */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+    
+    .profile-img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .profile,
+    .site-structure,
+    .content-section {
+        padding: 15px;
+    }
+    
+    .site-structure h2,
+    .content-section h2 {
+        font-size: 1.3em;
+    }
+    
+    .content-section h3 {
+        font-size: 1.1em;
+    }
+    
+    nav a {
+        font-size: 0.95em;
+    }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch targets on touch devices */
+    nav a,
+    .site-links a,
+    .content-section a,
+    .project-link {
+        min-height: 48px;
+        padding: 12px 20px;
+    }
+    
+    /* Remove hover effects on touch devices */
+    .site-links li:hover {
+        transform: none;
+    }
+    
+    nav a:hover {
+        background-color: #34495e;
     }
 }

@@ -1,0 +1,90 @@
+{
+  "header": {
+    "name": "James Puzon",
+    "title": "James Puzon - Personal Website"
+  },
+  "home": {
+    "profileImage": "images/profile.jpg",
+    "welcomeText": "Welcome to my personal website! I'm James Puzon, and I'm passionate about creating innovative solutions and making a positive impact in my community. This site showcases my journey, skills, and experiences across education, professional work, and community engagement.",
+    "exploreTitle": "Explore My Website",
+    "exploreDescription": "Navigate through the different sections to learn more about my background, work, and how to get in touch:"
+  },
+  "about": {
+    "sections": [
+      {
+        "title": "About Me",
+        "content": "Add your background and personal information here.",
+        "image": ""
+      },
+      {
+        "title": "Education",
+        "content": "This section highlights my educational background and academic achievements. My educational journey has provided me with a strong foundation in my field and equipped me with the knowledge and skills necessary to excel in my career.",
+        "details": [
+          "Details about university or college attended",
+          "Degree(s) earned and major(s)",
+          "Relevant coursework and academic projects",
+          "Academic honors and achievements"
+        ],
+        "image": ""
+      },
+      {
+        "title": "Experience",
+        "content": "Throughout my professional career, I have gained valuable experience working on diverse projects and collaborating with talented teams. This section showcases my work history and the skills I've developed along the way.",
+        "details": [
+          "Current and previous positions held",
+          "Key responsibilities and achievements",
+          "Technical skills and competencies",
+          "Notable projects and contributions"
+        ],
+        "image": ""
+      },
+      {
+        "title": "Leadership/Community Engagement",
+        "content": "I believe in giving back to the community and taking on leadership roles that create positive change. This section highlights my involvement in community initiatives, volunteer work, and leadership positions that have shaped my perspective and values.",
+        "details": [
+          "Leadership positions and roles",
+          "Community service and volunteer activities",
+          "Mentorship and teaching experiences",
+          "Organizations and causes supported"
+        ],
+        "image": ""
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "My Portfolio",
+    "description": "Welcome to my portfolio! Here you'll find a collection of my projects, accomplishments, and creative work. Each project represents a unique challenge and learning experience that has contributed to my professional growth.",
+    "projects": [
+      {
+        "title": "Project 1",
+        "description": "Description of a notable project, including the technologies used, challenges faced, and outcomes achieved.",
+        "image": "images/project1.jpg",
+        "link": ""
+      },
+      {
+        "title": "Project 2",
+        "description": "Description of another significant project, highlighting key features and your role in its development.",
+        "image": "images/project2.jpg",
+        "link": ""
+      },
+      {
+        "title": "Project 3",
+        "description": "Description of an additional project that showcases your skills and expertise.",
+        "image": "images/project3.jpg",
+        "link": ""
+      }
+    ]
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "description": "I'd love to hear from you! Whether you have a question, want to collaborate on a project, or just want to say hello, feel free to reach out.",
+    "email": "james@example.com",
+    "phone": "",
+    "social": {
+      "linkedin": "https://linkedin.com/in/jamespuzon",
+      "github": "https://github.com/jamesPuzon",
+      "twitter": ""
+    },
+    "additionalInfo": "Feel free to connect with me through any of the platforms above. I typically respond within 24-48 hours."
+  }
+}
