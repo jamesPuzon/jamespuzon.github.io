@@ -172,6 +172,17 @@ nav a:hover {
     color: #555;
 }
 
+.content-section a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.content-section a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
 /* Footer */
 footer {
     background-color: #2c3e50;
