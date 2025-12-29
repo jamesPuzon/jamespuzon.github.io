@@ -78,10 +78,11 @@
             .then(response => response.json())
             .then(data => {
                 // Update page title
-                document.getElementById('page-title').textContent = `About ${data.header.name.split(' ')[0]} - ${data.header.name}`;
+                const firstName = data.header.name ? data.header.name.split(' ')[0] : 'James';
+                document.getElementById('page-title').textContent = `About ${firstName} - ${data.header.name}`;
                 
                 // Update header
-                document.getElementById('header-name').textContent = `About ${data.header.name.split(' ')[0]}`;
+                document.getElementById('header-name').textContent = `About ${firstName}`;
                 
                 // Clear existing content
                 const container = document.getElementById('about-container');

@@ -83,7 +83,7 @@
                 // Add social links
                 const social = data.contact.social;
                 
-                if (social.linkedin) {
+                if (social.linkedin && typeof social.linkedin === 'string') {
                     const linkedinLi = document.createElement('li');
                     const linkedinUrl = social.linkedin.startsWith('http') ? social.linkedin : `https://linkedin.com/in/${social.linkedin}`;
                     const linkedinDisplay = social.linkedin.replace(/^https?:\/\/(www\.)?/, '');
@@ -91,7 +91,7 @@
                     contactInfo.appendChild(linkedinLi);
                 }
                 
-                if (social.github) {
+                if (social.github && typeof social.github === 'string') {
                     const githubLi = document.createElement('li');
                     const githubUrl = social.github.startsWith('http') ? social.github : `https://github.com/${social.github}`;
                     const githubDisplay = social.github.replace(/^https?:\/\/(www\.)?/, '');
@@ -99,7 +99,7 @@
                     contactInfo.appendChild(githubLi);
                 }
                 
-                if (social.twitter) {
+                if (social.twitter && typeof social.twitter === 'string') {
                     const twitterLi = document.createElement('li');
                     const twitterUrl = social.twitter.startsWith('http') ? social.twitter : `https://twitter.com/${social.twitter}`;
                     const twitterDisplay = social.twitter.replace(/^https?:\/\/(www\.)?/, '');
