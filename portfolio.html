@@ -82,7 +82,7 @@
         const stickyHeader = document.querySelector('.sticky-header');
         let navVisible = false;
         let lastScrollY = window.scrollY;
-        let isHoveringHeader = false;
+        let isHoveringNavArea = false;
 
         // Toggle menu on click
         hamburgerMenu.addEventListener('click', () => {
@@ -100,7 +100,7 @@
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
             
-            if (currentScrollY > lastScrollY && !isHoveringHeader) {
+            if (currentScrollY > lastScrollY && !isHoveringNavArea) {
                 // Scrolling down - hide nav unless it's manually toggled
                 if (!navVisible) {
                     stickyNav.classList.remove('visible');
@@ -113,17 +113,17 @@
 
         // Show nav on header hover
         stickyHeader.addEventListener('mouseenter', () => {
-            isHoveringHeader = true;
+            isHoveringNavArea = true;
             stickyNav.classList.add('visible');
             stickyNav.classList.remove('hidden');
         });
 
         stickyHeader.addEventListener('mouseleave', () => {
-            isHoveringHeader = false;
+            isHoveringNavArea = false;
             // If nav is not manually toggled, hide it after leaving header
             if (!navVisible) {
                 setTimeout(() => {
-                    if (!isHoveringHeader && !navVisible) {
+                    if (!isHoveringNavArea && !navVisible) {
                         stickyNav.classList.remove('visible');
                         stickyNav.classList.add('hidden');
                     }
@@ -133,11 +133,11 @@
 
         // Keep nav visible when hovering over it
         stickyNav.addEventListener('mouseenter', () => {
-            isHoveringHeader = true;
+            isHoveringNavArea = true;
         });
 
         stickyNav.addEventListener('mouseleave', () => {
-            isHoveringHeader = false;
+            isHoveringNavArea = false;
             if (!navVisible) {
                 stickyNav.classList.remove('visible');
                 stickyNav.classList.add('hidden');
