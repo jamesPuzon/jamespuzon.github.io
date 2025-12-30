@@ -741,9 +741,9 @@ body.has-sticky-header {
     padding-top: 80px;
 }
 
-/* Hide original header and nav when sticky header is present */
+/* Hide original header and nav when sticky header is present (but not sticky-nav) */
 body.has-sticky-header > header,
-body.has-sticky-header > nav {
+body.has-sticky-header > nav:not(.sticky-nav) {
     display: none;
 }
 
