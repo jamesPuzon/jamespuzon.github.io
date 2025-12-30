@@ -271,27 +271,40 @@
                                     subTitle.textContent = subsection.title;
                                     subsectionElement.appendChild(subTitle);
                                     
-                                    // Add subsection image if provided
-                                    if (subsection.image) {
-                                        const img = document.createElement('img');
-                                        img.src = subsection.image;
-                                        img.alt = subsection.title;
-                                        img.className = 'section-image';
-                                        img.onerror = function() {
-                                            this.style.display = 'none';
-                                        };
-                                        subsectionElement.appendChild(img);
+                                    // Handle items array with individual images
+                                    if (subsection.items && subsection.items.length > 0) {
+                                        const itemsGrid = document.createElement('div');
+                                        itemsGrid.className = 'items-grid';
+                                        
+                                        subsection.items.forEach(item => {
+                                            const itemElement = document.createElement('div');
+                                            itemElement.className = 'item';
+                                            
+                                            // Add item text
+                                            const itemText = document.createElement('div');
+                                            itemText.className = 'item-text';
+                                            itemText.textContent = item.text;
+                                            itemElement.appendChild(itemText);
+                                            
+                                            // Add item image if provided
+                                            if (item.image && item.image.trim() !== '') {
+                                                const img = document.createElement('img');
+                                                img.src = item.image;
+                                                img.alt = item.text;
+                                                img.className = 'item-image';
+                                                img.onerror = function() {
+                                                    this.style.display = 'none';
+                                                };
+                                                itemElement.appendChild(img);
+                                            }
+                                            
+                                            itemsGrid.appendChild(itemElement);
+                                        });
+                                        
+                                        subsectionElement.appendChild(itemsGrid);
                                     }
-                                    
-                                    // Add subsection content
-                                    if (subsection.content) {
-                                        const subContent = document.createElement('p');
-                                        subContent.textContent = subsection.content;
-                                        subsectionElement.appendChild(subContent);
-                                    }
-                                    
-                                    // Add subsection details if provided
-                                    if (subsection.details && subsection.details.length > 0) {
+                                    // Fallback to old details format if items doesn't exist
+                                    else if (subsection.details && subsection.details.length > 0) {
                                         const subUl = document.createElement('ul');
                                         subsection.details.forEach(detail => {
                                             const li = document.createElement('li');
@@ -299,6 +312,13 @@
                                             subUl.appendChild(li);
                                         });
                                         subsectionElement.appendChild(subUl);
+                                    }
+                                    
+                                    // Add subsection content if provided
+                                    if (subsection.content) {
+                                        const subContent = document.createElement('p');
+                                        subContent.textContent = subsection.content;
+                                        subsectionElement.appendChild(subContent);
                                     }
                                     
                                     gridContainer.appendChild(subsectionElement);

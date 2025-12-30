@@ -96,19 +96,29 @@
                     },
                     {
                         "title": "Intramurals",
-                        "details": [
-                            "Captain, IM Soccer",
-                            "IM Volleyball"
-                        ],
-                        "image": "soccer.jpg"
+                        "items": [
+                            {
+                                "text": "Captain, IM Soccer",
+                                "image": "images/soccer.jpg"
+                            },
+                            {
+                                "text": "IM Volleyball",
+                                "image": "images/volleyball.jpg"
+                            }
+                        ]
                     },
                     {
                         "title": "Other Clubs",
-                        "details": [
-                            "MMA Club",
-                            "Ski and Snowboard Club"
-                        ],
-                        "image": "mma.jpg"
+                        "items": [
+                            {
+                                "text": "MMA Club",
+                                "image": "images/mma.JPG"
+                            },
+                            {
+                                "text": "Ski and Snowboard Club",
+                                "image": ""
+                            }
+                        ]
                     }
                 ]
             }
