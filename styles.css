@@ -273,6 +273,72 @@ footer {
     margin-top: 10px;
 }
 
+/* Alternating Image Layout */
+.content-section-left,
+.content-section-right {
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.content-section-left .image-container {
+    flex-shrink: 0;
+    width: 350px;
+    order: -1;
+}
+
+.content-section-right .image-container {
+    flex-shrink: 0;
+    width: 350px;
+    order: 1;
+}
+
+.content-section-left .content-container,
+.content-section-right .content-container {
+    flex: 1;
+    min-width: 0;
+}
+
+.content-section-left .section-image,
+.content-section-right .section-image {
+    width: 100%;
+    margin: 0;
+}
+
+/* Special Grid Layout for Intramurals/Other Clubs */
+.subsection-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+}
+
+.subsection-grid .subsection {
+    margin: 0;
+    padding: 0;
+    border-left: none;
+}
+
+.subsection-grid .subsection h3 {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+.subsection-grid .subsection .section-image {
+    width: 100%;
+    margin: 15px 0;
+}
+
+.subsection-grid .subsection p,
+.subsection-grid .subsection ul {
+    text-align: left;
+}
+
 /* Tablet Responsive Design (768px - 1024px) */
 @media (max-width: 1024px) and (min-width: 769px) {
     .container {
@@ -380,6 +446,24 @@ footer {
     .subsection {
         margin-left: 10px;
         padding-left: 15px;
+    }
+    
+    /* Stack layout on mobile for alternating sections */
+    .content-section-left,
+    .content-section-right {
+        flex-direction: column;
+    }
+    
+    .content-section-left .image-container,
+    .content-section-right .image-container {
+        width: 100%;
+        order: -1;
+    }
+    
+    /* Stack grid layout on mobile */
+    .subsection-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     footer {
