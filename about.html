@@ -126,6 +126,51 @@
                         sectionElement.appendChild(ul);
                     }
                     
+                    // Handle subsections
+                    if (section.subsections && section.subsections.length > 0) {
+                        section.subsections.forEach(subsection => {
+                            const subsectionElement = document.createElement('div');
+                            subsectionElement.className = 'subsection';
+                            
+                            // Add subsection image if provided
+                            if (subsection.image) {
+                                const img = document.createElement('img');
+                                img.src = subsection.image;
+                                img.alt = subsection.title;
+                                img.className = 'section-image';
+                                img.onerror = function() {
+                                    this.style.display = 'none';
+                                };
+                                subsectionElement.appendChild(img);
+                            }
+                            
+                            // Add subsection title
+                            const subTitle = document.createElement('h3');
+                            subTitle.textContent = subsection.title;
+                            subsectionElement.appendChild(subTitle);
+                            
+                            // Add subsection content
+                            if (subsection.content) {
+                                const subContent = document.createElement('p');
+                                subContent.textContent = subsection.content;
+                                subsectionElement.appendChild(subContent);
+                            }
+                            
+                            // Add subsection details if provided
+                            if (subsection.details && subsection.details.length > 0) {
+                                const subUl = document.createElement('ul');
+                                subsection.details.forEach(detail => {
+                                    const li = document.createElement('li');
+                                    li.textContent = detail;
+                                    subUl.appendChild(li);
+                                });
+                                subsectionElement.appendChild(subUl);
+                            }
+                            
+                            sectionElement.appendChild(subsectionElement);
+                        });
+                    }
+                    
                     container.appendChild(sectionElement);
                 });
             })

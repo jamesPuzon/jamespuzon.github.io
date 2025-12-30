@@ -251,6 +251,28 @@ footer {
     margin-top: 40px;
 }
 
+/* Subsection Styles */
+.subsection {
+    margin-top: 30px;
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 3px solid #3498db;
+}
+
+.subsection h3 {
+    color: #34495e;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.subsection p {
+    color: #666;
+}
+
+.subsection ul {
+    margin-top: 10px;
+}
+
 /* Tablet Responsive Design (768px - 1024px) */
 @media (max-width: 1024px) and (min-width: 769px) {
     .container {
@@ -353,6 +375,11 @@ footer {
         width: 100%;
         text-align: center;
         padding: 15px 20px;
+    }
+    
+    .subsection {
+        margin-left: 10px;
+        padding-left: 15px;
     }
     
     footer {
