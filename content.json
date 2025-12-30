@@ -109,7 +109,7 @@
                             },
                             {
                                 "text": "Ski and Snowboard Club",
-                                "image": "ski.jpg"
+                                "image": "images/ski.jpg"
                             }
                         ]
                     }
@@ -130,13 +130,20 @@
             {
                 "title": "Robotics",
                 "description": "Fall 2025. Developed a ROS2 system to coordinate payload handoff between a PincherX-100 and Turtlebot3.",
-                "image": "images/project2.jpg",
+                "items": [
+                            {
+                                "image": "images/pincher.jpg"
+                            },
+                            {
+                                "image": "images/turtlebot.jpg"
+                            }
+                        ]
                 "link": ""
             },
             {
                 "title": "Rover Project",
                 "description": "Fall 2023. This project was for the Intro to Mechanical Design class at the University of Pittsburgh. The goal was to design a rover for speed and agility, given only a motor and solar panel.",
-                "image": "images/project3.jpg",
+                "image": "images/remy.jpg",
                 "link": ""
             }
         ]
