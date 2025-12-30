@@ -383,7 +383,7 @@ nav a:hover {
 
 .project-item.project-image-right .project-image-container {
     flex-shrink: 0;
-    width: 350px;
+    width: 250px;
 }
 
 .project-item.project-image-right .project-image-container img {
