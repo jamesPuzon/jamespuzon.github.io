@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        // GitHub Pages URL rewriting - redirect to .html file
+        (function() {
+            var path = window.location.pathname;
+            
+            // Remove trailing slash if present
+            if (path.endsWith('/') && path.length > 1) {
+                path = path.slice(0, -1);
+            }
+            
+            // If path doesn't end with .html and isn't a directory, try adding .html
+            if (!path.endsWith('.html') && !path.endsWith('/')) {
+                window.location.replace(path + '.html' + window.location.search + window.location.hash);
+            }
+        })();
+    </script>
+</head>
+<body>
+    <p>Redirecting...</p>
+</body>
+</html>

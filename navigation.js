@@ -16,6 +16,11 @@
         let isMenuOpen = false;
         let isHoveringBanner = false;
         
+        // Check if device is mobile (width <= 768px)
+        function isMobile() {
+            return window.innerWidth <= 768;
+        }
+        
         // Toggle menu on click
         if (menuToggle) {
             menuToggle.addEventListener('click', function() {
@@ -30,9 +35,18 @@
             });
         }
         
-        // Show/hide nav on scroll
+        // Show/hide nav on scroll (desktop only)
         let scrollTimeout;
         window.addEventListener('scroll', function() {
+            // On mobile, nav should only be visible when menu is toggled
+            if (isMobile()) {
+                if (!isMenuOpen) {
+                    nav.classList.remove('nav-visible');
+                    nav.classList.add('nav-hidden');
+                }
+                return;
+            }
+            
             clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(function() {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
@@ -63,15 +77,19 @@
             }, 100);
         });
         
-        // Show nav when hovering over top banner
+        // Show nav when hovering over top banner (desktop only)
         if (topBanner) {
             topBanner.addEventListener('mouseenter', function() {
+                if (isMobile()) return;
+                
                 isHoveringBanner = true;
                 nav.classList.remove('nav-hidden');
                 nav.classList.add('nav-visible');
             });
             
             topBanner.addEventListener('mouseleave', function() {
+                if (isMobile()) return;
+                
                 isHoveringBanner = false;
                 // Hide again if scrolled down and menu not toggled
                 if (!isMenuOpen) {
@@ -84,15 +102,19 @@
             });
         }
         
-        // Show nav when hovering over nav itself
+        // Show nav when hovering over nav itself (desktop only)
         if (nav) {
             nav.addEventListener('mouseenter', function() {
+                if (isMobile()) return;
+                
                 isHoveringBanner = true;
                 nav.classList.remove('nav-hidden');
                 nav.classList.add('nav-visible');
             });
             
             nav.addEventListener('mouseleave', function() {
+                if (isMobile()) return;
+                
                 isHoveringBanner = false;
             });
         }
@@ -107,7 +129,36 @@
             });
         });
         
-        // Initialize nav as visible
-        nav.classList.add('nav-visible');
+        // Initialize nav state based on device type
+        if (isMobile()) {
+            // On mobile, start with nav hidden
+            nav.classList.add('nav-hidden');
+            nav.classList.remove('nav-visible');
+        } else {
+            // On desktop, start with nav visible
+            nav.classList.add('nav-visible');
+            nav.classList.remove('nav-hidden');
+        }
+        
+        // Handle window resize with debouncing
+        let resizeTimeout;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                if (isMobile()) {
+                    // Switched to mobile - hide nav unless menu is toggled
+                    if (!isMenuOpen) {
+                        nav.classList.remove('nav-visible');
+                        nav.classList.add('nav-hidden');
+                    }
+                } else {
+                    // Switched to desktop - show nav
+                    if (!isMenuOpen) {
+                        nav.classList.remove('nav-hidden');
+                        nav.classList.add('nav-visible');
+                    }
+                }
+            }, 100);
+        });
     }
 })();
