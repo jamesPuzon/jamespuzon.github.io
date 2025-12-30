@@ -1,4 +1,4 @@
-ior{
+{
     "header": {
         "name": "James Puzon",
         "title": "James Puzon - Personal Website"
@@ -102,7 +102,6 @@ ior{
                             "IM Volleyball"
                         ],
                         "image": "soccer.jpg",
-                        "image": "volleyball.jpg"
                     },
                     {
                         "title": "Other Clubs",
