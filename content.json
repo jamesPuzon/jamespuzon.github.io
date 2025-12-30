@@ -4,7 +4,7 @@
         "title": "James Puzon - Personal Website"
     },
     "home": {
-        "profileImage": "images/profile.jpg",
+        "profileImage": "images/profile-formal.jpg",
         "welcomeText": "I'm James Puzon, an undergraduate mechanical engineering student at the University of Pittsburgh. This site showcases my journey, skills, and experiences across education, professional work, and community engagement.",
         "exploreTitle": "Explore My Website",
         "exploreDescription": "Navigate through the different sections to learn more about my background, work, and how to get in touch:"
@@ -35,7 +35,7 @@
                             "2 months",
                             "In Spain, James took classes to complete his Hispanic Languages and Culture Minor"
                         ],
-                        "image": "images/study-abroad.jpg"
+                        "image": "images/spain.jpg"
                     }
                 ]
             },
@@ -77,20 +77,13 @@
                             "Instructed campers on essential skills to achieve success in progressive skill levels",
                             "Supervised counselors in training, junior counselors, and full counselors to facilitate collaboration"
                         ],
-                        "image": ""
+                        "image": "sitedirector.jpg"
                     }
                 ]
             },
             {
                 "title": "Leadership/Community Engagement",
                 "content": "I believe in giving back to the community and taking on leadership roles that create positive change. This section highlights my involvement in community initiatives, volunteer work, and leadership positions that have shaped my perspective and values.",
-                "details": [
-                    "Leadership positions and roles",
-                    "Community service and volunteer activities",
-                    "Mentorship and teaching experiences",
-                    "Organizations and causes supported"
-                ],
-                "image": "",
                 "subsections": [
                     {
                         "title": "President, Ping Pong Club at Pitt",
@@ -107,14 +100,18 @@
                         "details": [
                             "Captain, IM Soccer",
                             "IM Volleyball"
-                        ]
+                        ],
+                        "image": "soccer.jpg",
+                        "image": "volleyball.jpg"
                     },
                     {
                         "title": "Other Clubs",
                         "details": [
                             "MMA Club",
                             "Ski and Snowboard Club"
-                        ]
+                        ],
+                        "image": "mma.jpg",
+                        "image": ""
                     }
                 ]
             }
