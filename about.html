@@ -269,55 +269,8 @@
                     // Check if section has image to apply alternating layout
                     const hasImage = section.image && section.image.trim() !== '';
                     
-                    // Check if this is "About Me" section for circular image
-                    const isCircularSection = section.title === 'About Me';
-                    
-                    if (hasImage && isCircularSection) {
-                        // Apply circular image layout for About Me only
-                        sectionElement.classList.add('about-section-circular');
-                        
-                        // Create image container
-                        const imageContainer = document.createElement('div');
-                        imageContainer.className = 'image-container';
-                        
-                        const img = document.createElement('img');
-                        img.src = section.image;
-                        img.alt = section.title;
-                        img.className = 'section-image';
-                        img.onerror = function() {
-                            this.parentElement.style.display = 'none';
-                        };
-                        imageContainer.appendChild(img);
-                        sectionElement.appendChild(imageContainer);
-                        
-                        // Create content container
-                        const contentContainer = document.createElement('div');
-                        contentContainer.className = 'content-container';
-                        
-                        // Add title
-                        const title = document.createElement('h2');
-                        title.textContent = section.title;
-                        contentContainer.appendChild(title);
-                        
-                        // Add content
-                        const content = document.createElement('p');
-                        content.textContent = section.content;
-                        contentContainer.appendChild(content);
-                        
-                        // Add details list if provided
-                        if (section.details && section.details.length > 0) {
-                            const ul = document.createElement('ul');
-                            section.details.forEach(detail => {
-                                const li = document.createElement('li');
-                                li.textContent = detail;
-                                ul.appendChild(li);
-                            });
-                            contentContainer.appendChild(ul);
-                        }
-                        
-                        sectionElement.appendChild(contentContainer);
-                    } else if (hasImage) {
-                        // Apply alternating layout class for other sections with images
+                    if (hasImage) {
+                        // Apply alternating layout class
                         sectionElement.classList.add(alternationCounter % 2 === 0 ? 'content-section-left' : 'content-section-right');
                         alternationCounter++;
                         
@@ -464,7 +417,7 @@
                                         subsectionElement.classList.contains('content-section-right')) {
                                         alternationCounter++;
                                     }
-                                    if (hasImage || isCircularSection) {
+                                    if (hasImage) {
                                         // If parent section has image, append to content container
                                         sectionElement.querySelector('.content-container').appendChild(subsectionElement);
                                     } else {
@@ -474,7 +427,7 @@
                             });
                             
                             // Append grid container to section
-                            if (hasImage || isCircularSection) {
+                            if (hasImage) {
                                 sectionElement.querySelector('.content-container').appendChild(gridContainer);
                             } else {
                                 sectionElement.appendChild(gridContainer);
@@ -487,8 +440,12 @@
                                     subsectionElement.classList.contains('content-section-right')) {
                                     alternationCounter++;
                                 }
-                                // Always append subsections at section level, not inside content container
-                                sectionElement.appendChild(subsectionElement);
+                                if (hasImage) {
+                                    // If parent section has image, append to content container
+                                    sectionElement.querySelector('.content-container').appendChild(subsectionElement);
+                                } else {
+                                    sectionElement.appendChild(subsectionElement);
+                                }
                             });
                         }
                     }
