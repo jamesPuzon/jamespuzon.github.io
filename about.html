@@ -202,14 +202,61 @@
                     // Check if section has image to apply alternating layout
                     const hasImage = section.image && section.image.trim() !== '';
                     
-                    if (hasImage && !isEducation) {
-                        // Standard layout with image (not Education section)
-                        // For About Me, always use left layout; otherwise alternate
-                        if (isAboutMe) {
-                            sectionElement.classList.add('content-section-left');
-                        } else {
-                            sectionElement.classList.add(alternationCounter % 2 === 0 ? 'content-section-left' : 'content-section-right');
+                    if ((isEducation || isAboutMe) && hasImage) {
+                        // Special layout for Education and About Me sections
+                        // Title comes first, then flex container for details+image
+                        
+                        // Add title first (outside flex container)
+                        const title = document.createElement('h2');
+                        title.textContent = section.title;
+                        sectionElement.appendChild(title);
+                        
+                        // Create flex container for details and image
+                        const flexContainer = document.createElement('div');
+                        flexContainer.className = isEducation ? 'education-flex-container' : 'aboutme-flex-container';
+                        
+                        // Create image container (on left)
+                        const imageContainer = document.createElement('div');
+                        imageContainer.className = isEducation ? 'education-image-container' : 'aboutme-image-container';
+                        
+                        const img = document.createElement('img');
+                        img.src = section.image.startsWith('images/') ? section.image : `images/${section.image}`;
+                        img.alt = section.title;
+                        img.className = 'section-image';
+                        img.onerror = function() {
+                            this.parentElement.style.display = 'none';
+                        };
+                        imageContainer.appendChild(img);
+                        flexContainer.appendChild(imageContainer);
+                        
+                        // Create details container (on right)
+                        const detailsContainer = document.createElement('div');
+                        detailsContainer.className = isEducation ? 'education-details-container' : 'aboutme-details-container';
+                        
+                        // Add content if provided
+                        if (section.content) {
+                            const content = document.createElement('p');
+                            content.textContent = section.content;
+                            detailsContainer.appendChild(content);
                         }
+                        
+                        // Add details list if provided
+                        if (section.details && section.details.length > 0) {
+                            const ul = document.createElement('ul');
+                            section.details.forEach(detail => {
+                                const li = document.createElement('li');
+                                li.textContent = detail;
+                                ul.appendChild(li);
+                            });
+                            detailsContainer.appendChild(ul);
+                        }
+                        
+                        flexContainer.appendChild(detailsContainer);
+                        sectionElement.appendChild(flexContainer);
+                    } else if (hasImage && !isEducation && !isAboutMe) {
+                        // Standard layout with image (not Education or About Me section)
+                        // Use alternating layout
+                        sectionElement.classList.add(alternationCounter % 2 === 0 ? 'content-section-left' : 'content-section-right');
                         alternationCounter++;
                         
                         // Create image container
@@ -253,57 +300,6 @@
                         }
                         
                         sectionElement.appendChild(contentContainer);
-                    } else if (isEducation && hasImage) {
-                        // Special layout for Education section
-                        // Title comes first, then flex container for details+image, then subsections span full width
-                        
-                        // Add title first (outside flex container)
-                        const title = document.createElement('h2');
-                        title.textContent = section.title;
-                        sectionElement.appendChild(title);
-                        
-                        // Create flex container for details and image
-                        const flexContainer = document.createElement('div');
-                        flexContainer.className = 'education-flex-container';
-                        
-                        // Create image container (on left)
-                        const imageContainer = document.createElement('div');
-                        imageContainer.className = 'education-image-container';
-                        
-                        const img = document.createElement('img');
-                        img.src = section.image.startsWith('images/') ? section.image : `images/${section.image}`;
-                        img.alt = section.title;
-                        img.className = 'section-image';
-                        img.onerror = function() {
-                            this.parentElement.style.display = 'none';
-                        };
-                        imageContainer.appendChild(img);
-                        flexContainer.appendChild(imageContainer);
-                        
-                        // Create details container (on right)
-                        const detailsContainer = document.createElement('div');
-                        detailsContainer.className = 'education-details-container';
-                        
-                        // Add content if provided
-                        if (section.content) {
-                            const content = document.createElement('p');
-                            content.textContent = section.content;
-                            detailsContainer.appendChild(content);
-                        }
-                        
-                        // Add details list if provided
-                        if (section.details && section.details.length > 0) {
-                            const ul = document.createElement('ul');
-                            section.details.forEach(detail => {
-                                const li = document.createElement('li');
-                                li.textContent = detail;
-                                ul.appendChild(li);
-                            });
-                            detailsContainer.appendChild(ul);
-                        }
-                        
-                        flexContainer.appendChild(detailsContainer);
-                        sectionElement.appendChild(flexContainer);
                     } else {
                         // No image, use traditional layout
                         // Add title

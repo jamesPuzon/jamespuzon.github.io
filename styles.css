@@ -292,17 +292,37 @@ nav a:hover {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Rectangular profile image for About Me section */
+/* Circular profile image for About Me section */
 .content-section.about-me-section .section-image {
-    border-radius: 8px;
+    border-radius: 50%;
     width: 200px;
-    height: auto;
+    height: 200px;
     object-fit: cover;
     border: none;
 }
 
-.content-section.about-me-section {
+/* About Me section special layout (similar to Education) */
+.aboutme-flex-container {
+    display: flex;
     align-items: flex-start;
+    gap: 30px;
+    margin: 20px 0;
+}
+
+.aboutme-image-container {
+    flex-shrink: 0;
+    width: 200px;
+    order: -1; /* Image on left */
+}
+
+.aboutme-image-container .section-image {
+    width: 100%;
+    margin: 0;
+}
+
+.aboutme-details-container {
+    flex: 1;
+    min-width: 0;
 }
 
 /* Education section special layout */
