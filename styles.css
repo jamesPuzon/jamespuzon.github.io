@@ -305,6 +305,22 @@ footer {
     margin: 0;
 }
 
+/* Subsections with images - align image top with title */
+.subsection.content-section-left,
+.subsection.content-section-right {
+    align-items: flex-start;
+}
+
+.subsection.content-section-left .image-container,
+.subsection.content-section-right .image-container {
+    margin-top: 0;
+}
+
+.subsection.content-section-left .section-image,
+.subsection.content-section-right .section-image {
+    margin-top: 0;
+}
+
 /* Special Grid Layout for Intramurals/Other Clubs */
 .subsection-grid {
     display: grid;

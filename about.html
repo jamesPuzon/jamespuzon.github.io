@@ -187,8 +187,13 @@
                     const hasImage = subsection.image && subsection.image.trim() !== '';
                     
                     if (hasImage) {
-                        // Apply alternating layout class
-                        subsectionElement.classList.add(counter % 2 === 0 ? 'content-section-left' : 'content-section-right');
+                        // Special handling for Study Abroad - always show text on left (image on right)
+                        if (subsection.title === 'Study Abroad') {
+                            subsectionElement.classList.add('content-section-right');
+                        } else {
+                            // Apply alternating layout class for other subsections
+                            subsectionElement.classList.add(counter % 2 === 0 ? 'content-section-left' : 'content-section-right');
+                        }
                         
                         // Create image container
                         const imageContainer = document.createElement('div');
