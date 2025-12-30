@@ -296,17 +296,13 @@ nav a:hover {
 .content-section.about-me-section .section-image {
     border-radius: 8px;
     width: 200px;
-    height: 100%;
+    height: auto;
     object-fit: cover;
     border: none;
 }
 
 .content-section.about-me-section {
-    align-items: stretch;
-}
-
-.content-section.about-me-section .image-container {
-    margin-left: 30px;
+    align-items: flex-start;
 }
 
 /* Education section special layout */
