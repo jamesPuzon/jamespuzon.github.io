@@ -373,6 +373,7 @@ nav a:hover {
     display: flex;
     gap: 30px;
     align-items: flex-start;
+    margin-bottom: 15px;
 }
 
 .project-item.project-image-right .project-content {
