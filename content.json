@@ -101,7 +101,7 @@
                             "Captain, IM Soccer",
                             "IM Volleyball"
                         ],
-                        "image": "soccer.jpg",
+                        "image": "soccer.jpg"
                     },
                     {
                         "title": "Other Clubs",
@@ -109,8 +109,7 @@
                             "MMA Club",
                             "Ski and Snowboard Club"
                         ],
-                        "image": "mma.jpg",
-                        "image": ""
+                        "image": "mma.jpg"
                     }
                 ]
             }
