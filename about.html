@@ -91,6 +91,88 @@
                 // Track alternation counter for left/right positioning
                 let alternationCounter = 0;
                 
+                // Helper function to create regular subsections with alternating layout
+                function createRegularSubsection(subsection, counter) {
+                    const subsectionElement = document.createElement('div');
+                    subsectionElement.className = 'subsection';
+                    
+                    const hasImage = subsection.image && subsection.image.trim() !== '';
+                    
+                    if (hasImage) {
+                        // Apply alternating layout class
+                        subsectionElement.classList.add(counter % 2 === 0 ? 'content-section-left' : 'content-section-right');
+                        
+                        // Create image container
+                        const imageContainer = document.createElement('div');
+                        imageContainer.className = 'image-container';
+                        
+                        const img = document.createElement('img');
+                        img.src = subsection.image;
+                        img.alt = subsection.title;
+                        img.className = 'section-image';
+                        img.onerror = function() {
+                            this.parentElement.style.display = 'none';
+                        };
+                        imageContainer.appendChild(img);
+                        subsectionElement.appendChild(imageContainer);
+                        
+                        // Create content container
+                        const contentContainer = document.createElement('div');
+                        contentContainer.className = 'content-container';
+                        
+                        // Add subsection title
+                        const subTitle = document.createElement('h3');
+                        subTitle.textContent = subsection.title;
+                        contentContainer.appendChild(subTitle);
+                        
+                        // Add subsection content
+                        if (subsection.content) {
+                            const subContent = document.createElement('p');
+                            subContent.textContent = subsection.content;
+                            contentContainer.appendChild(subContent);
+                        }
+                        
+                        // Add subsection details if provided
+                        if (subsection.details && subsection.details.length > 0) {
+                            const subUl = document.createElement('ul');
+                            subsection.details.forEach(detail => {
+                                const li = document.createElement('li');
+                                li.textContent = detail;
+                                subUl.appendChild(li);
+                            });
+                            contentContainer.appendChild(subUl);
+                        }
+                        
+                        subsectionElement.appendChild(contentContainer);
+                    } else {
+                        // No image, use traditional layout
+                        // Add subsection title
+                        const subTitle = document.createElement('h3');
+                        subTitle.textContent = subsection.title;
+                        subsectionElement.appendChild(subTitle);
+                        
+                        // Add subsection content
+                        if (subsection.content) {
+                            const subContent = document.createElement('p');
+                            subContent.textContent = subsection.content;
+                            subsectionElement.appendChild(subContent);
+                        }
+                        
+                        // Add subsection details if provided
+                        if (subsection.details && subsection.details.length > 0) {
+                            const subUl = document.createElement('ul');
+                            subsection.details.forEach(detail => {
+                                const li = document.createElement('li');
+                                li.textContent = detail;
+                                subUl.appendChild(li);
+                            });
+                            subsectionElement.appendChild(subUl);
+                        }
+                    }
+                    
+                    return subsectionElement;
+                }
+                
                 // Load about sections
                 data.about.sections.forEach(section => {
                     const sectionElement = document.createElement('section');
@@ -262,88 +344,6 @@
                     
                     container.appendChild(sectionElement);
                 });
-                
-                // Helper function to create regular subsections with alternating layout
-                function createRegularSubsection(subsection, counter) {
-                    const subsectionElement = document.createElement('div');
-                    subsectionElement.className = 'subsection';
-                    
-                    const hasImage = subsection.image && subsection.image.trim() !== '';
-                    
-                    if (hasImage) {
-                        // Apply alternating layout class
-                        subsectionElement.classList.add(counter % 2 === 0 ? 'content-section-left' : 'content-section-right');
-                        
-                        // Create image container
-                        const imageContainer = document.createElement('div');
-                        imageContainer.className = 'image-container';
-                        
-                        const img = document.createElement('img');
-                        img.src = subsection.image;
-                        img.alt = subsection.title;
-                        img.className = 'section-image';
-                        img.onerror = function() {
-                            this.parentElement.style.display = 'none';
-                        };
-                        imageContainer.appendChild(img);
-                        subsectionElement.appendChild(imageContainer);
-                        
-                        // Create content container
-                        const contentContainer = document.createElement('div');
-                        contentContainer.className = 'content-container';
-                        
-                        // Add subsection title
-                        const subTitle = document.createElement('h3');
-                        subTitle.textContent = subsection.title;
-                        contentContainer.appendChild(subTitle);
-                        
-                        // Add subsection content
-                        if (subsection.content) {
-                            const subContent = document.createElement('p');
-                            subContent.textContent = subsection.content;
-                            contentContainer.appendChild(subContent);
-                        }
-                        
-                        // Add subsection details if provided
-                        if (subsection.details && subsection.details.length > 0) {
-                            const subUl = document.createElement('ul');
-                            subsection.details.forEach(detail => {
-                                const li = document.createElement('li');
-                                li.textContent = detail;
-                                subUl.appendChild(li);
-                            });
-                            contentContainer.appendChild(subUl);
-                        }
-                        
-                        subsectionElement.appendChild(contentContainer);
-                    } else {
-                        // No image, use traditional layout
-                        // Add subsection title
-                        const subTitle = document.createElement('h3');
-                        subTitle.textContent = subsection.title;
-                        subsectionElement.appendChild(subTitle);
-                        
-                        // Add subsection content
-                        if (subsection.content) {
-                            const subContent = document.createElement('p');
-                            subContent.textContent = subsection.content;
-                            subsectionElement.appendChild(subContent);
-                        }
-                        
-                        // Add subsection details if provided
-                        if (subsection.details && subsection.details.length > 0) {
-                            const subUl = document.createElement('ul');
-                            subsection.details.forEach(detail => {
-                                const li = document.createElement('li');
-                                li.textContent = detail;
-                                subUl.appendChild(li);
-                            });
-                            subsectionElement.appendChild(subUl);
-                        }
-                    }
-                    
-                    return subsectionElement;
-                }
             })
             .catch(error => {
                 console.error('Error loading content:', error);
