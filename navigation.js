@@ -140,21 +140,25 @@
             nav.classList.remove('nav-hidden');
         }
         
-        // Handle window resize
+        // Handle window resize with debouncing
+        let resizeTimeout;
         window.addEventListener('resize', function() {
-            if (isMobile()) {
-                // Switched to mobile - hide nav unless menu is toggled
-                if (!isMenuOpen) {
-                    nav.classList.remove('nav-visible');
-                    nav.classList.add('nav-hidden');
+            clearTimeout(resizeTimeout);
+            resizeTimeout = setTimeout(function() {
+                if (isMobile()) {
+                    // Switched to mobile - hide nav unless menu is toggled
+                    if (!isMenuOpen) {
+                        nav.classList.remove('nav-visible');
+                        nav.classList.add('nav-hidden');
+                    }
+                } else {
+                    // Switched to desktop - show nav
+                    if (!isMenuOpen) {
+                        nav.classList.remove('nav-hidden');
+                        nav.classList.add('nav-visible');
+                    }
                 }
-            } else {
-                // Switched to desktop - show nav
-                if (!isMenuOpen) {
-                    nav.classList.remove('nav-hidden');
-                    nav.classList.add('nav-visible');
-                }
-            }
+            }, 100);
         });
     }
 })();
