@@ -7,11 +7,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="top-banner">
+        <div class="banner-left">
+            <img src="images/profile-formal.jpg" alt="James Puzon" class="banner-profile-img">
+            <h1 id="header-name">About James</h1>
+        </div>
+        <div class="menu-icon" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
     <header>
-        <h1 id="header-name">About James</h1>
+        <h1 id="header-name-fallback">About James</h1>
     </header>
 
-    <nav>
+    <nav id="main-nav">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About James</a></li>
@@ -72,6 +84,7 @@
         <p>&copy; 2024 James Puzon. All rights reserved.</p>
     </footer>
 
+    <script src="navigation.js"></script>
     <script>
         // Load content from JSON file
         fetch('content.json')
@@ -83,6 +96,7 @@
                 
                 // Update header
                 document.getElementById('header-name').textContent = `About ${firstName}`;
+                document.getElementById('header-name-fallback').textContent = `About ${firstName}`;
                 
                 // Clear existing content
                 const container = document.getElementById('about-container');
@@ -178,12 +192,22 @@
                     const sectionElement = document.createElement('section');
                     sectionElement.className = 'content-section';
                     
+                    // Check if this is the "About Me" section
+                    const isAboutMe = section.title.toLowerCase() === 'about me';
+                    if (isAboutMe) {
+                        sectionElement.classList.add('about-me-section');
+                    }
+                    
                     // Check if section has image to apply alternating layout
                     const hasImage = section.image && section.image.trim() !== '';
                     
                     if (hasImage) {
-                        // Apply alternating layout class
-                        sectionElement.classList.add(alternationCounter % 2 === 0 ? 'content-section-left' : 'content-section-right');
+                        // For About Me, always use left layout; otherwise alternate
+                        if (isAboutMe) {
+                            sectionElement.classList.add('content-section-left');
+                        } else {
+                            sectionElement.classList.add(alternationCounter % 2 === 0 ? 'content-section-left' : 'content-section-right');
+                        }
                         alternationCounter++;
                         
                         // Create image container
@@ -191,7 +215,8 @@
                         imageContainer.className = 'image-container';
                         
                         const img = document.createElement('img');
-                        img.src = section.image;
+                        // Prepend 'images/' if not already included
+                        img.src = section.image.startsWith('images/') ? section.image : `images/${section.image}`;
                         img.alt = section.title;
                         img.className = 'section-image';
                         img.onerror = function() {

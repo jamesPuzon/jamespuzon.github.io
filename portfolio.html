@@ -7,11 +7,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="top-banner">
+        <div class="banner-left">
+            <img src="images/profile-formal.jpg" alt="James Puzon" class="banner-profile-img">
+            <h1 id="header-name">Portfolio</h1>
+        </div>
+        <div class="menu-icon" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
     <header>
-        <h1 id="header-name">Portfolio</h1>
+        <h1 id="header-name-fallback">Portfolio</h1>
     </header>
 
-    <nav>
+    <nav id="main-nav">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About James</a></li>
@@ -56,6 +68,7 @@
         <p>&copy; 2024 James Puzon. All rights reserved.</p>
     </footer>
 
+    <script src="navigation.js"></script>
     <script>
         // Load content from JSON file
         fetch('content.json')
@@ -66,6 +79,7 @@
                 
                 // Update header and portfolio title
                 document.getElementById('header-name').textContent = data.portfolio.title;
+                document.getElementById('header-name-fallback').textContent = data.portfolio.title;
                 document.getElementById('portfolio-title').textContent = data.portfolio.title;
                 document.getElementById('portfolio-description').textContent = data.portfolio.description;
                 
@@ -74,40 +88,125 @@
                 projectsContainer.innerHTML = '';
                 
                 if (data.portfolio.projects && data.portfolio.projects.length > 0) {
-                    data.portfolio.projects.forEach(project => {
+                    data.portfolio.projects.forEach((project, index) => {
                         const projectDiv = document.createElement('div');
                         projectDiv.className = 'project-item';
                         
-                        // Add project image if provided
-                        if (project.image) {
+                        // Determine layout based on project
+                        const isSeniorDesign = project.title.toLowerCase().includes('senior') || project.title.toLowerCase().includes('capstone');
+                        const isRover = project.title.toLowerCase().includes('rover');
+                        const isRobotics = project.title.toLowerCase().includes('robotics');
+                        
+                        if ((isSeniorDesign || isRover) && project.image) {
+                            // Image on right layout
+                            projectDiv.classList.add('project-image-right');
+                            
+                            // Create content container
+                            const contentDiv = document.createElement('div');
+                            contentDiv.className = 'project-content';
+                            
+                            // Add project title
+                            const title = document.createElement('h3');
+                            title.textContent = project.title;
+                            contentDiv.appendChild(title);
+                            
+                            // Add project description
+                            const description = document.createElement('p');
+                            description.innerHTML = project.description;
+                            contentDiv.appendChild(description);
+                            
+                            // Add project link if provided or create placeholder
+                            const link = document.createElement('a');
+                            link.href = project.link || `${project.title.toLowerCase().replace(/\s+/g, '-')}.html`;
+                            link.textContent = 'View Project';
+                            link.className = 'project-link';
+                            contentDiv.appendChild(link);
+                            
+                            projectDiv.appendChild(contentDiv);
+                            
+                            // Create image container
+                            const imageContainer = document.createElement('div');
+                            imageContainer.className = 'project-image-container';
+                            
                             const img = document.createElement('img');
                             img.src = project.image;
                             img.alt = project.title;
                             img.className = 'project-image';
                             img.onerror = function() {
-                                this.style.display = 'none';
+                                this.parentElement.style.display = 'none';
                             };
-                            projectDiv.appendChild(img);
-                        }
-                        
-                        // Add project title
-                        const title = document.createElement('h3');
-                        title.textContent = project.title;
-                        projectDiv.appendChild(title);
-                        
-                        // Add project description
-                        const description = document.createElement('p');
-                        description.textContent = project.description;
-                        projectDiv.appendChild(description);
-                        
-                        // Add project link if provided
-                        if (project.link) {
+                            imageContainer.appendChild(img);
+                            
+                            projectDiv.appendChild(imageContainer);
+                        } else if (isRobotics && project.items && project.items.length > 0) {
+                            // Images side by side layout
+                            // Add project title
+                            const title = document.createElement('h3');
+                            title.textContent = project.title;
+                            projectDiv.appendChild(title);
+                            
+                            // Add project description
+                            const description = document.createElement('p');
+                            description.innerHTML = project.description;
+                            projectDiv.appendChild(description);
+                            
+                            // Add images grid
+                            const imagesGrid = document.createElement('div');
+                            imagesGrid.className = 'project-images-grid';
+                            
+                            project.items.forEach(item => {
+                                if (item.image) {
+                                    const img = document.createElement('img');
+                                    img.src = item.image;
+                                    img.alt = project.title;
+                                    img.onerror = function() {
+                                        this.style.display = 'none';
+                                    };
+                                    imagesGrid.appendChild(img);
+                                }
+                            });
+                            
+                            projectDiv.appendChild(imagesGrid);
+                            
+                            // Add project link
                             const link = document.createElement('a');
-                            link.href = project.link;
+                            link.href = project.link || `${project.title.toLowerCase().replace(/\s+/g, '-')}.html`;
                             link.textContent = 'View Project';
                             link.className = 'project-link';
-                            link.target = '_blank';
                             projectDiv.appendChild(link);
+                        } else {
+                            // Default layout
+                            // Add project image if provided
+                            if (project.image) {
+                                const img = document.createElement('img');
+                                img.src = project.image;
+                                img.alt = project.title;
+                                img.className = 'project-image';
+                                img.onerror = function() {
+                                    this.style.display = 'none';
+                                };
+                                projectDiv.appendChild(img);
+                            }
+                            
+                            // Add project title
+                            const title = document.createElement('h3');
+                            title.textContent = project.title;
+                            projectDiv.appendChild(title);
+                            
+                            // Add project description
+                            const description = document.createElement('p');
+                            description.innerHTML = project.description;
+                            projectDiv.appendChild(description);
+                            
+                            // Add project link if provided
+                            if (project.link) {
+                                const link = document.createElement('a');
+                                link.href = project.link;
+                                link.textContent = 'View Project';
+                                link.className = 'project-link';
+                                link.target = '_blank';
+                                projectDiv.appendChild(link);
+                            }
                         }
                         
                         projectsContainer.appendChild(projectDiv);

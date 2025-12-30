@@ -7,11 +7,23 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="top-banner">
+        <div class="banner-left">
+            <img src="images/profile-formal.jpg" alt="James Puzon" class="banner-profile-img">
+            <h1 id="header-name">Contact</h1>
+        </div>
+        <div class="menu-icon" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
     <header>
-        <h1 id="header-name">Contact</h1>
+        <h1 id="header-name-fallback">Contact</h1>
     </header>
 
-    <nav>
+    <nav id="main-nav">
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About James</a></li>
@@ -47,6 +59,7 @@
         <p>&copy; 2024 James Puzon. All rights reserved.</p>
     </footer>
 
+    <script src="navigation.js"></script>
     <script>
         // Load content from JSON file
         fetch('content.json')
@@ -57,6 +70,7 @@
                 
                 // Update header
                 document.getElementById('header-name').textContent = data.contact.title;
+                document.getElementById('header-name-fallback').textContent = data.contact.title;
                 
                 // Update contact content
                 document.getElementById('contact-title').textContent = data.contact.title;

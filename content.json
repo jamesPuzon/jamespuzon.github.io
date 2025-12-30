@@ -125,7 +125,7 @@
             "title":"Senior Capstone Project",
             "description":"Fall 2025. Robot-assisted construction of fibrous materials. <br>Academic sponsor: UPMC Laboratory of Ocular Biomechanics.",
             "image":"images/endeffector.jpg",
-            "link":""
+            "link":"senior-capstone-project.html"
          },
          {
             "title":"Robotics",
@@ -138,13 +138,13 @@
                   "image":"images/turtlebot.jpg"
                }
             ],
-            "link":""
+            "link":"robotics.html"
          },
          {
             "title":"Rover Project",
             "description":"Fall 2023. This project was for the Intro to Mechanical Design class at the University of Pittsburgh. The goal was to design a rover for speed and agility, given only a motor and solar panel.",
             "image":"images/remy.jpg",
-            "link":""
+            "link":"rover-project.html"
          }
       ]
    },
