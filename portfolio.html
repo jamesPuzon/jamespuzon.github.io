@@ -115,13 +115,6 @@
                             description.innerHTML = project.description;
                             contentDiv.appendChild(description);
                             
-                            // Add project link if provided or create placeholder
-                            const link = document.createElement('a');
-                            link.href = project.link || `${project.title.toLowerCase().replace(/\s+/g, '-')}.html`;
-                            link.textContent = 'View Project';
-                            link.className = 'project-link';
-                            contentDiv.appendChild(link);
-                            
                             projectDiv.appendChild(contentDiv);
                             
                             // Create image container
@@ -138,6 +131,13 @@
                             imageContainer.appendChild(img);
                             
                             projectDiv.appendChild(imageContainer);
+                            
+                            // Add project link after image
+                            const link = document.createElement('a');
+                            link.href = project.link || `${project.title.toLowerCase().replace(/\s+/g, '-')}.html`;
+                            link.textContent = 'View Project';
+                            link.className = 'project-link';
+                            projectDiv.appendChild(link);
                         } else if (isRobotics && project.items && project.items.length > 0) {
                             // Images side by side layout
                             // Add project title
