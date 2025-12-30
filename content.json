@@ -120,13 +120,13 @@
         "projects": [
             {
                 "title": "Senior Capstone Project",
-                "description": "Fall 2025Robot-assisted construction of fibrous materials. Academic sponsor: UPMC Laboratory of Ocular Biomechanics.",
+                "description": "Fall 2025. Robot-assisted construction of fibrous materials. <br>Academic sponsor: UPMC Laboratory of Ocular Biomechanics.",
                 "image": "images/endeffector.jpg",
                 "link": ""
             },
             {
                 "title": "Robotics",
-                "description": "Fall 2025. Description of another significant project, highlighting key features and your role in its development.",
+                "description": "Fall 2025. Developed a ROS2 system to coordinate payload handoff between a PincherX-100 and Turtlebot3",
                 "image": "images/project2.jpg",
                 "link": ""
             },
