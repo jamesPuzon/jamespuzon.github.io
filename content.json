@@ -13,19 +13,18 @@
         "sections": [
             {
                 "title": "About Me",
-                "content": "Add your background and personal information here.",
+                "content": "James grew up in Richmond, Virginia, but he now lives in Pittsburgh, Pennsylvania where he attends the University of Pittsburgh as an undergraduate mechanical engineering student. He is a very active, and competitive person, always engaged in multiple sports. He is outgoing and involved in his community, holding a few leadership positions, and he always seems to be teaching himself something new: from web development to proper pickleball technique.",
                 "image": "profile-casual.jpg"
             },
             {
                 "title": "Education",
-                "content": "This section highlights my educational background and academic achievements. My educational journey has provided me with a strong foundation in my field and equipped me with the knowledge and skills necessary to excel in my career.",
                 "details": [
                     "University of Pittsburgh, Swanson School of Engineering",
                     "B. S. Mechanical Engineering, Minors in Computer Science and Hispanic Language and Culture",
                     "Relevant coursework: Robotics, Mechatronics, Mechanical Design",
                     "Honors: Cathedral Presige Scholarship (full tuition), Frank V. Naugle Engineering Scholarship, Dean's List"
                 ],
-                "image": "",
+                "image": "pitt.jpg",
                 "subsections": [
                     {
                         "title": "Study Abroad",
@@ -40,8 +39,6 @@
             },
             {
                 "title": "Experience",
-                "content": "Throughout my professional career, I have gained valuable experience working on diverse projects and collaborating with talented teams. This section showcases my work history and the skills I've developed along the way.",
-                "image": "",
                 "subsections": [
                     {
                         "title": "Prosthetic Innovations",
@@ -79,7 +76,6 @@
             },
             {
                 "title": "Leadership/Community Engagement",
-                "content": "I believe in giving back to the community and taking on leadership roles that create positive change. This section highlights my involvement in community initiatives, volunteer work, and leadership positions that have shaped my perspective and values.",
                 "subsections": [
                     {
                         "title": "President, Ping Pong Club at Pitt",
