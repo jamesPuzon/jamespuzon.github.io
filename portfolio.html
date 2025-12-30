@@ -6,7 +6,26 @@
     <title id="page-title">Portfolio - James Puzon</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="has-sticky-header">
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+        <div class="sticky-header-left">
+            <img src="images/profile-formal.jpg" alt="James Puzon" class="sticky-header-profile">
+            <h1 id="sticky-header-title">Portfolio</h1>
+        </div>
+        <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle navigation menu">☰</button>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky-nav" id="sticky-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About James</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
     <header>
         <h1 id="header-name">Portfolio</h1>
     </header>
@@ -57,6 +76,74 @@
     </footer>
 
     <script>
+        // Sticky Header and Navigation Menu Functionality
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const stickyNav = document.getElementById('sticky-nav');
+        const stickyHeader = document.querySelector('.sticky-header');
+        let navVisible = false;
+        let lastScrollY = window.scrollY;
+        let isHoveringHeader = false;
+
+        // Toggle menu on click
+        hamburgerMenu.addEventListener('click', () => {
+            navVisible = !navVisible;
+            if (navVisible) {
+                stickyNav.classList.add('visible');
+                stickyNav.classList.remove('hidden');
+            } else {
+                stickyNav.classList.remove('visible');
+                stickyNav.classList.add('hidden');
+            }
+        });
+
+        // Handle scroll behavior
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > lastScrollY && !isHoveringHeader) {
+                // Scrolling down - hide nav unless it's manually toggled
+                if (!navVisible) {
+                    stickyNav.classList.remove('visible');
+                    stickyNav.classList.add('hidden');
+                }
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
+        // Show nav on header hover
+        stickyHeader.addEventListener('mouseenter', () => {
+            isHoveringHeader = true;
+            stickyNav.classList.add('visible');
+            stickyNav.classList.remove('hidden');
+        });
+
+        stickyHeader.addEventListener('mouseleave', () => {
+            isHoveringHeader = false;
+            // If nav is not manually toggled, hide it after leaving header
+            if (!navVisible) {
+                setTimeout(() => {
+                    if (!isHoveringHeader && !navVisible) {
+                        stickyNav.classList.remove('visible');
+                        stickyNav.classList.add('hidden');
+                    }
+                }, 300);
+            }
+        });
+
+        // Keep nav visible when hovering over it
+        stickyNav.addEventListener('mouseenter', () => {
+            isHoveringHeader = true;
+        });
+
+        stickyNav.addEventListener('mouseleave', () => {
+            isHoveringHeader = false;
+            if (!navVisible) {
+                stickyNav.classList.remove('visible');
+                stickyNav.classList.add('hidden');
+            }
+        });
+
         // Load content from JSON file
         fetch('content.json')
             .then(response => response.json())
@@ -64,7 +151,8 @@
                 // Update page title
                 document.getElementById('page-title').textContent = `${data.portfolio.title} - ${data.header.name}`;
                 
-                // Update header and portfolio title
+                // Update sticky header and regular header
+                document.getElementById('sticky-header-title').textContent = data.portfolio.title;
                 document.getElementById('header-name').textContent = data.portfolio.title;
                 document.getElementById('portfolio-title').textContent = data.portfolio.title;
                 document.getElementById('portfolio-description').textContent = data.portfolio.description;
@@ -74,40 +162,125 @@
                 projectsContainer.innerHTML = '';
                 
                 if (data.portfolio.projects && data.portfolio.projects.length > 0) {
-                    data.portfolio.projects.forEach(project => {
+                    data.portfolio.projects.forEach((project, index) => {
                         const projectDiv = document.createElement('div');
-                        projectDiv.className = 'project-item';
                         
-                        // Add project image if provided
-                        if (project.image) {
-                            const img = document.createElement('img');
-                            img.src = project.image;
-                            img.alt = project.title;
-                            img.className = 'project-image';
-                            img.onerror = function() {
-                                this.style.display = 'none';
-                            };
-                            projectDiv.appendChild(img);
-                        }
-                        
-                        // Add project title
-                        const title = document.createElement('h3');
-                        title.textContent = project.title;
-                        projectDiv.appendChild(title);
-                        
-                        // Add project description
-                        const description = document.createElement('p');
-                        description.textContent = project.description;
-                        projectDiv.appendChild(description);
-                        
-                        // Add project link if provided
-                        if (project.link) {
-                            const link = document.createElement('a');
-                            link.href = project.link;
-                            link.textContent = 'View Project';
-                            link.className = 'project-link';
-                            link.target = '_blank';
-                            projectDiv.appendChild(link);
+                        // Apply specific layouts based on project
+                        if (project.title === 'Senior Capstone Project' || project.title === 'Rover Project') {
+                            // Layout: Image to the RIGHT of text
+                            projectDiv.className = 'project-layout-right';
+                            
+                            // Create content container
+                            const contentDiv = document.createElement('div');
+                            contentDiv.className = 'project-content';
+                            
+                            const title = document.createElement('h3');
+                            title.textContent = project.title;
+                            contentDiv.appendChild(title);
+                            
+                            const description = document.createElement('p');
+                            description.innerHTML = project.description;
+                            contentDiv.appendChild(description);
+                            
+                            // Add "Learn More" button if link is provided and not empty
+                            if (project.link && project.link.trim() !== '') {
+                                const learnMoreBtn = document.createElement('a');
+                                learnMoreBtn.href = project.link;
+                                learnMoreBtn.textContent = 'Learn More';
+                                learnMoreBtn.className = 'learn-more-btn';
+                                learnMoreBtn.target = '_blank';
+                                contentDiv.appendChild(learnMoreBtn);
+                            }
+                            
+                            projectDiv.appendChild(contentDiv);
+                            
+                            // Create image container
+                            if (project.image) {
+                                const imageContainer = document.createElement('div');
+                                imageContainer.className = 'project-image-container';
+                                
+                                const img = document.createElement('img');
+                                img.src = project.image;
+                                img.alt = project.title;
+                                img.onerror = function() {
+                                    this.parentElement.style.display = 'none';
+                                };
+                                imageContainer.appendChild(img);
+                                
+                                projectDiv.appendChild(imageContainer);
+                            }
+                        } else if (project.title === 'Robotics') {
+                            // Layout: Two images side-by-side UNDER the text
+                            projectDiv.className = 'project-item';
+                            
+                            const title = document.createElement('h3');
+                            title.textContent = project.title;
+                            projectDiv.appendChild(title);
+                            
+                            const description = document.createElement('p');
+                            description.innerHTML = project.description;
+                            projectDiv.appendChild(description);
+                            
+                            // Add "Learn More" button if link is provided and not empty
+                            if (project.link && project.link.trim() !== '') {
+                                const learnMoreBtn = document.createElement('a');
+                                learnMoreBtn.href = project.link;
+                                learnMoreBtn.textContent = 'Learn More';
+                                learnMoreBtn.className = 'learn-more-btn';
+                                learnMoreBtn.target = '_blank';
+                                projectDiv.appendChild(learnMoreBtn);
+                            }
+                            
+                            // Add images side-by-side
+                            if (project.items && project.items.length > 0) {
+                                const imagesContainer = document.createElement('div');
+                                imagesContainer.className = 'project-images-horizontal';
+                                
+                                project.items.forEach(item => {
+                                    if (item.image) {
+                                        const img = document.createElement('img');
+                                        img.src = item.image;
+                                        img.alt = project.title;
+                                        img.onerror = function() {
+                                            this.style.display = 'none';
+                                        };
+                                        imagesContainer.appendChild(img);
+                                    }
+                                });
+                                
+                                projectDiv.appendChild(imagesContainer);
+                            }
+                        } else {
+                            // Default layout
+                            projectDiv.className = 'project-item';
+                            
+                            if (project.image) {
+                                const img = document.createElement('img');
+                                img.src = project.image;
+                                img.alt = project.title;
+                                img.className = 'project-image';
+                                img.onerror = function() {
+                                    this.style.display = 'none';
+                                };
+                                projectDiv.appendChild(img);
+                            }
+                            
+                            const title = document.createElement('h3');
+                            title.textContent = project.title;
+                            projectDiv.appendChild(title);
+                            
+                            const description = document.createElement('p');
+                            description.innerHTML = project.description;
+                            projectDiv.appendChild(description);
+                            
+                            if (project.link && project.link.trim() !== '') {
+                                const learnMoreBtn = document.createElement('a');
+                                learnMoreBtn.href = project.link;
+                                learnMoreBtn.textContent = 'Learn More';
+                                learnMoreBtn.className = 'learn-more-btn';
+                                learnMoreBtn.target = '_blank';
+                                projectDiv.appendChild(learnMoreBtn);
+                            }
                         }
                         
                         projectsContainer.appendChild(projectDiv);

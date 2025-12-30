@@ -6,7 +6,26 @@
     <title id="page-title">About James - James Puzon</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="has-sticky-header">
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+        <div class="sticky-header-left">
+            <img src="images/profile-formal.jpg" alt="James Puzon" class="sticky-header-profile">
+            <h1 id="sticky-header-title">About James</h1>
+        </div>
+        <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle navigation menu">☰</button>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky-nav" id="sticky-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About James</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
     <header>
         <h1 id="header-name">About James</h1>
     </header>
@@ -73,6 +92,74 @@
     </footer>
 
     <script>
+        // Sticky Header and Navigation Menu Functionality
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const stickyNav = document.getElementById('sticky-nav');
+        const stickyHeader = document.querySelector('.sticky-header');
+        let navVisible = false;
+        let lastScrollY = window.scrollY;
+        let isHoveringHeader = false;
+
+        // Toggle menu on click
+        hamburgerMenu.addEventListener('click', () => {
+            navVisible = !navVisible;
+            if (navVisible) {
+                stickyNav.classList.add('visible');
+                stickyNav.classList.remove('hidden');
+            } else {
+                stickyNav.classList.remove('visible');
+                stickyNav.classList.add('hidden');
+            }
+        });
+
+        // Handle scroll behavior
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > lastScrollY && !isHoveringHeader) {
+                // Scrolling down - hide nav unless it's manually toggled
+                if (!navVisible) {
+                    stickyNav.classList.remove('visible');
+                    stickyNav.classList.add('hidden');
+                }
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
+        // Show nav on header hover
+        stickyHeader.addEventListener('mouseenter', () => {
+            isHoveringHeader = true;
+            stickyNav.classList.add('visible');
+            stickyNav.classList.remove('hidden');
+        });
+
+        stickyHeader.addEventListener('mouseleave', () => {
+            isHoveringHeader = false;
+            // If nav is not manually toggled, hide it after leaving header
+            if (!navVisible) {
+                setTimeout(() => {
+                    if (!isHoveringHeader && !navVisible) {
+                        stickyNav.classList.remove('visible');
+                        stickyNav.classList.add('hidden');
+                    }
+                }, 300);
+            }
+        });
+
+        // Keep nav visible when hovering over it
+        stickyNav.addEventListener('mouseenter', () => {
+            isHoveringHeader = true;
+        });
+
+        stickyNav.addEventListener('mouseleave', () => {
+            isHoveringHeader = false;
+            if (!navVisible) {
+                stickyNav.classList.remove('visible');
+                stickyNav.classList.add('hidden');
+            }
+        });
+
         // Load content from JSON file
         fetch('content.json')
             .then(response => response.json())
@@ -81,7 +168,8 @@
                 const firstName = data.header.name ? data.header.name.split(' ')[0] : 'James';
                 document.getElementById('page-title').textContent = `About ${firstName} - ${data.header.name}`;
                 
-                // Update header
+                // Update sticky header and regular header
+                document.getElementById('sticky-header-title').textContent = `About ${firstName}`;
                 document.getElementById('header-name').textContent = `About ${firstName}`;
                 
                 // Clear existing content
@@ -181,8 +269,55 @@
                     // Check if section has image to apply alternating layout
                     const hasImage = section.image && section.image.trim() !== '';
                     
-                    if (hasImage) {
-                        // Apply alternating layout class
+                    // Check if this is "About Me" or "Education" section for circular images
+                    const isCircularSection = section.title === 'About Me' || section.title === 'Education';
+                    
+                    if (hasImage && isCircularSection) {
+                        // Apply circular image layout for About Me and Education
+                        sectionElement.classList.add('about-section-circular');
+                        
+                        // Create image container
+                        const imageContainer = document.createElement('div');
+                        imageContainer.className = 'image-container';
+                        
+                        const img = document.createElement('img');
+                        img.src = section.image;
+                        img.alt = section.title;
+                        img.className = 'section-image';
+                        img.onerror = function() {
+                            this.parentElement.style.display = 'none';
+                        };
+                        imageContainer.appendChild(img);
+                        sectionElement.appendChild(imageContainer);
+                        
+                        // Create content container
+                        const contentContainer = document.createElement('div');
+                        contentContainer.className = 'content-container';
+                        
+                        // Add title
+                        const title = document.createElement('h2');
+                        title.textContent = section.title;
+                        contentContainer.appendChild(title);
+                        
+                        // Add content
+                        const content = document.createElement('p');
+                        content.textContent = section.content;
+                        contentContainer.appendChild(content);
+                        
+                        // Add details list if provided
+                        if (section.details && section.details.length > 0) {
+                            const ul = document.createElement('ul');
+                            section.details.forEach(detail => {
+                                const li = document.createElement('li');
+                                li.textContent = detail;
+                                ul.appendChild(li);
+                            });
+                            contentContainer.appendChild(ul);
+                        }
+                        
+                        sectionElement.appendChild(contentContainer);
+                    } else if (hasImage) {
+                        // Apply alternating layout class for other sections with images
                         sectionElement.classList.add(alternationCounter % 2 === 0 ? 'content-section-left' : 'content-section-right');
                         alternationCounter++;
                         
@@ -329,7 +464,7 @@
                                         subsectionElement.classList.contains('content-section-right')) {
                                         alternationCounter++;
                                     }
-                                    if (hasImage) {
+                                    if (hasImage || isCircularSection) {
                                         // If parent section has image, append to content container
                                         sectionElement.querySelector('.content-container').appendChild(subsectionElement);
                                     } else {
@@ -339,7 +474,7 @@
                             });
                             
                             // Append grid container to section
-                            if (hasImage) {
+                            if (hasImage || isCircularSection) {
                                 sectionElement.querySelector('.content-container').appendChild(gridContainer);
                             } else {
                                 sectionElement.appendChild(gridContainer);
@@ -352,7 +487,7 @@
                                     subsectionElement.classList.contains('content-section-right')) {
                                     alternationCounter++;
                                 }
-                                if (hasImage) {
+                                if (hasImage || isCircularSection) {
                                     // If parent section has image, append to content container
                                     sectionElement.querySelector('.content-container').appendChild(subsectionElement);
                                 } else {

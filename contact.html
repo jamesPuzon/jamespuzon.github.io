@@ -6,7 +6,26 @@
     <title id="page-title">Contact - James Puzon</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="has-sticky-header">
+    <!-- Sticky Header -->
+    <div class="sticky-header">
+        <div class="sticky-header-left">
+            <img src="images/profile-formal.jpg" alt="James Puzon" class="sticky-header-profile">
+            <h1 id="sticky-header-title">Contact</h1>
+        </div>
+        <button class="hamburger-menu" id="hamburger-menu" aria-label="Toggle navigation menu">☰</button>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky-nav" id="sticky-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About James</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
     <header>
         <h1 id="header-name">Contact</h1>
     </header>
@@ -48,6 +67,74 @@
     </footer>
 
     <script>
+        // Sticky Header and Navigation Menu Functionality
+        const hamburgerMenu = document.getElementById('hamburger-menu');
+        const stickyNav = document.getElementById('sticky-nav');
+        const stickyHeader = document.querySelector('.sticky-header');
+        let navVisible = false;
+        let lastScrollY = window.scrollY;
+        let isHoveringHeader = false;
+
+        // Toggle menu on click
+        hamburgerMenu.addEventListener('click', () => {
+            navVisible = !navVisible;
+            if (navVisible) {
+                stickyNav.classList.add('visible');
+                stickyNav.classList.remove('hidden');
+            } else {
+                stickyNav.classList.remove('visible');
+                stickyNav.classList.add('hidden');
+            }
+        });
+
+        // Handle scroll behavior
+        window.addEventListener('scroll', () => {
+            const currentScrollY = window.scrollY;
+            
+            if (currentScrollY > lastScrollY && !isHoveringHeader) {
+                // Scrolling down - hide nav unless it's manually toggled
+                if (!navVisible) {
+                    stickyNav.classList.remove('visible');
+                    stickyNav.classList.add('hidden');
+                }
+            }
+            
+            lastScrollY = currentScrollY;
+        });
+
+        // Show nav on header hover
+        stickyHeader.addEventListener('mouseenter', () => {
+            isHoveringHeader = true;
+            stickyNav.classList.add('visible');
+            stickyNav.classList.remove('hidden');
+        });
+
+        stickyHeader.addEventListener('mouseleave', () => {
+            isHoveringHeader = false;
+            // If nav is not manually toggled, hide it after leaving header
+            if (!navVisible) {
+                setTimeout(() => {
+                    if (!isHoveringHeader && !navVisible) {
+                        stickyNav.classList.remove('visible');
+                        stickyNav.classList.add('hidden');
+                    }
+                }, 300);
+            }
+        });
+
+        // Keep nav visible when hovering over it
+        stickyNav.addEventListener('mouseenter', () => {
+            isHoveringHeader = true;
+        });
+
+        stickyNav.addEventListener('mouseleave', () => {
+            isHoveringHeader = false;
+            if (!navVisible) {
+                stickyNav.classList.remove('visible');
+                stickyNav.classList.add('hidden');
+            }
+        });
+
         // Load content from JSON file
         fetch('content.json')
             .then(response => response.json())
@@ -55,7 +142,8 @@
                 // Update page title
                 document.getElementById('page-title').textContent = `${data.contact.title} - ${data.header.name}`;
                 
-                // Update header
+                // Update sticky header and regular header
+                document.getElementById('sticky-header-title').textContent = data.contact.title;
                 document.getElementById('header-name').textContent = data.contact.title;
                 
                 // Update contact content
