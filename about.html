@@ -187,13 +187,8 @@
                     const hasImage = subsection.image && subsection.image.trim() !== '';
                     
                     if (hasImage) {
-                        // Special handling for Study Abroad - always show text on left (image on right)
-                        if (subsection.title === 'Study Abroad') {
-                            subsectionElement.classList.add('content-section-right');
-                        } else {
-                            // Apply alternating layout class for other subsections
-                            subsectionElement.classList.add(counter % 2 === 0 ? 'content-section-left' : 'content-section-right');
-                        }
+                        // Apply alternating layout class
+                        subsectionElement.classList.add(counter % 2 === 0 ? 'content-section-left' : 'content-section-right');
                         
                         // Create image container
                         const imageContainer = document.createElement('div');
@@ -492,12 +487,8 @@
                                     subsectionElement.classList.contains('content-section-right')) {
                                     alternationCounter++;
                                 }
-                                if (hasImage || isCircularSection) {
-                                    // If parent section has image, append to content container
-                                    sectionElement.querySelector('.content-container').appendChild(subsectionElement);
-                                } else {
-                                    sectionElement.appendChild(subsectionElement);
-                                }
+                                // Always append subsections at section level, not inside content container
+                                sectionElement.appendChild(subsectionElement);
                             });
                         }
                     }

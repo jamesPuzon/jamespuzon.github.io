@@ -273,40 +273,6 @@ footer {
     margin-top: 10px;
 }
 
-/* Subsections with flex layout - remove left margin/padding to align properly */
-.subsection.content-section-left,
-.subsection.content-section-right {
-    margin-left: 0;
-    padding-left: 0;
-    border-left: none;
-    margin-top: 20px;
-}
-
-/* Make subsection content more compact to match image height */
-.subsection.content-section-left .content-container,
-.subsection.content-section-right .content-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.subsection.content-section-left h3,
-.subsection.content-section-right h3 {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.subsection.content-section-left p,
-.subsection.content-section-right p {
-    margin-bottom: 10px;
-}
-
-.subsection.content-section-left ul,
-.subsection.content-section-right ul {
-    margin-top: 5px;
-    margin-bottom: 0;
-}
-
 /* Alternating Image Layout */
 .content-section-left,
 .content-section-right {
