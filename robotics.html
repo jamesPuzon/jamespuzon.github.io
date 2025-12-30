@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robotics - James Puzon</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-banner">
+        <div class="banner-left">
+            <img src="images/profile-formal.jpg" alt="James Puzon" class="banner-profile-img">
+            <h1>Robotics</h1>
+        </div>
+        <div class="menu-icon" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <header>
+        <h1>Robotics</h1>
+    </header>
+
+    <nav id="main-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About James</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="content-section">
+            <h2>Robotics Project</h2>
+            <p><strong>Project Timeline:</strong> Fall 2025</p>
+            
+            <h3>Overview</h3>
+            <p>
+                Developed a ROS2 system to coordinate payload handoff between a PincherX-100 robotic arm and 
+                Turtlebot3 mobile robot. This project demonstrates integration of multiple robotic platforms 
+                and coordination of complex autonomous behaviors.
+            </p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0;">
+                <div>
+                    <img src="images/pincher.jpg" alt="PincherX-100 Robotic Arm" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <p style="text-align: center; margin-top: 10px; font-weight: bold;">PincherX-100 Robotic Arm</p>
+                </div>
+                <div>
+                    <img src="images/turtlebot.jpg" alt="Turtlebot3" style="width: 100%; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                    <p style="text-align: center; margin-top: 10px; font-weight: bold;">Turtlebot3 Mobile Robot</p>
+                </div>
+            </div>
+            
+            <h3>Project Components</h3>
+            <ul>
+                <li><strong>PincherX-100 Robotic Arm:</strong> 4-DOF manipulator for precise payload handling</li>
+                <li><strong>Turtlebot3:</strong> Mobile robot platform for autonomous navigation</li>
+                <li><strong>ROS2 Framework:</strong> Robot Operating System for inter-robot communication</li>
+                <li><strong>Coordination System:</strong> Custom software for synchronized handoff operations</li>
+            </ul>
+            
+            <h3>Key Features</h3>
+            <ul>
+                <li>Autonomous payload detection and grasping</li>
+                <li>Coordinated motion planning between arm and mobile base</li>
+                <li>Real-time communication using ROS2 topics and services</li>
+                <li>Collision avoidance and safety monitoring</li>
+                <li>Precise positioning for successful payload transfer</li>
+            </ul>
+            
+            <h3>Technologies Used</h3>
+            <ul>
+                <li>ROS2 (Robot Operating System 2)</li>
+                <li>Python for robot control and coordination</li>
+                <li>Computer vision for object detection</li>
+                <li>Path planning algorithms</li>
+                <li>Kinematics and inverse kinematics</li>
+            </ul>
+            
+            <h3>Challenges & Solutions</h3>
+            <ul>
+                <li><strong>Synchronization:</strong> Implemented state machine to coordinate timing between robots</li>
+                <li><strong>Positioning Accuracy:</strong> Used sensor feedback and calibration for precise alignment</li>
+                <li><strong>Communication Latency:</strong> Optimized ROS2 message passing for real-time performance</li>
+            </ul>
+            
+            <div style="margin-top: 30px;">
+                <a href="portfolio.html" class="project-link">← Back to Portfolio</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 James Puzon. All rights reserved.</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+</body>
+</html>

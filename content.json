@@ -14,7 +14,7 @@
          {
             "title":"About Me",
             "content":"James grew up in Richmond, Virginia, but he now lives in Pittsburgh, Pennsylvania where he attends the University of Pittsburgh as an undergraduate mechanical engineering student. He is a very active, and competitive person, always engaged in multiple sports. He is outgoing and involved in his community, holding a few leadership positions, and he always seems to be teaching himself something new: from web development to proper pickleball technique.",
-            "image":"profile-casual.jpg"
+            "image":"images/profile-casual.jpg"
          },
          {
             "title":"Education",
@@ -24,7 +24,7 @@
                "Relevant coursework: Robotics, Mechatronics, Mechanical Design",
                "Honors: Cathedral Presige Scholarship (full tuition), Frank V. Naugle Engineering Scholarship, Dean's List"
             ],
-            "image":"pitt.jpg",
+            "image":"images/pitt.jpg",
             "subsections":[
                {
                   "title":"Study Abroad",
@@ -70,7 +70,7 @@
                      "Instructed campers on essential skills to achieve success in progressive skill levels",
                      "Supervised counselors in training, junior counselors, and full counselors to facilitate collaboration"
                   ],
-                  "image":"sitedirector.jpg"
+                  "image":"images/sitedirector.jpg"
                }
             ]
          },
@@ -125,7 +125,7 @@
             "title":"Senior Capstone Project",
             "description":"Fall 2025. Robot-assisted construction of fibrous materials. <br>Academic sponsor: UPMC Laboratory of Ocular Biomechanics.",
             "image":"images/endeffector.jpg",
-            "link":""
+            "link":"senior-capstone-project.html"
          },
          {
             "title":"Robotics",
@@ -138,13 +138,13 @@
                   "image":"images/turtlebot.jpg"
                }
             ],
-            "link":""
+            "link":"robotics.html"
          },
          {
             "title":"Rover Project",
             "description":"Fall 2023. This project was for the Intro to Mechanical Design class at the University of Pittsburgh. The goal was to design a rover for speed and agility, given only a motor and solar panel.",
             "image":"images/remy.jpg",
-            "link":""
+            "link":"rover-project.html"
          }
       ]
    },
