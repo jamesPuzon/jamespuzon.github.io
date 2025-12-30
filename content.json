@@ -1,4 +1,4 @@
-{
+ior{
     "header": {
         "name": "James Puzon",
         "title": "James Puzon - Personal Website"
@@ -122,20 +122,20 @@
         "description": "Welcome to my portfolio! Here you'll find a collection of my projects, accomplishments, and creative work. Each project represents a unique challenge and learning experience that has contributed to my professional growth.",
         "projects": [
             {
-                "title": "Project 1",
-                "description": "Description of a notable project, including the technologies used, challenges faced, and outcomes achieved.",
-                "image": "images/project1.jpg",
+                "title": "Senior Capstone Project",
+                "description": "Fall 2025Robot-assisted construction of fibrous materials. Academic sponsor: UPMC Laboratory of Ocular Biomechanics.",
+                "image": "images/endeffector.jpg",
                 "link": ""
             },
             {
-                "title": "Project 2",
-                "description": "Description of another significant project, highlighting key features and your role in its development.",
+                "title": "Robotics",
+                "description": "Fall 2025. Description of another significant project, highlighting key features and your role in its development.",
                 "image": "images/project2.jpg",
                 "link": ""
             },
             {
-                "title": "Project 3",
-                "description": "Description of an additional project that showcases your skills and expertise.",
+                "title": "Rover Project",
+                "description": "Fall 2023. This project was for the Intro to Mechanical Design class at the University of Pittsburgh. The goal was to design a rover for speed and agility, given only a motor and solar panel.",
                 "image": "images/project3.jpg",
                 "link": ""
             }
