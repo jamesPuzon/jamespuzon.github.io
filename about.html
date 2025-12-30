@@ -269,11 +269,11 @@
                     // Check if section has image to apply alternating layout
                     const hasImage = section.image && section.image.trim() !== '';
                     
-                    // Check if this is "About Me" or "Education" section for circular images
-                    const isCircularSection = section.title === 'About Me' || section.title === 'Education';
+                    // Check if this is "About Me" section for circular image
+                    const isCircularSection = section.title === 'About Me';
                     
                     if (hasImage && isCircularSection) {
-                        // Apply circular image layout for About Me and Education
+                        // Apply circular image layout for About Me only
                         sectionElement.classList.add('about-section-circular');
                         
                         // Create image container
