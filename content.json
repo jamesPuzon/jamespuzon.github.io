@@ -134,7 +134,7 @@
             "link":"portfolio/senior-capstone"
          },
          {
-            "title":"Robotics",
+            "title":"Multi-Robot Delivery System",
             "description":"Fall 2025. Developed a ROS2 system to coordinate payload handoff between a PincherX-100 and Turtlebot3.",
             "details": [
                "ROS2",
