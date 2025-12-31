@@ -62,7 +62,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2024 James Puzon. All rights reserved.</p>
+        <p>&copy; <span id="copyright-year">2025</span> James Puzon. All rights reserved.</p>
     </footer>
 
     <script>
@@ -97,6 +97,11 @@
                 console.error('Error loading content:', error);
                 // Fallback to default content (already in HTML)
             });
+    </script>
+    
+    <script>
+        // Auto-update copyright year
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
