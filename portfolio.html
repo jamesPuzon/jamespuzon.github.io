@@ -139,7 +139,8 @@
                         // Determine layout based on project
                         const isSeniorDesign = project.title.toLowerCase().includes('senior') || project.title.toLowerCase().includes('capstone');
                         const isRover = project.title.toLowerCase().includes('rover');
-                        const isRobotics = project.title.toLowerCase().includes('robotics');
+                        const isRobotics = project.title.toLowerCase().includes('robotics') || project.title.toLowerCase().includes('multi-robot');
+                        const isPCBuild = project.title.toLowerCase().includes('pc build');
                         
                         if ((isSeniorDesign || isRover) && project.image) {
                             // Add project title
@@ -228,6 +229,29 @@
                             link.textContent = 'View Project';
                             link.className = 'project-link';
                             projectDiv.appendChild(link);
+                        } else if (isPCBuild) {
+                            // PC Build layout - show skills without image requirement
+                            // Add project title
+                            const title = document.createElement('h3');
+                            title.textContent = project.title;
+                            projectDiv.appendChild(title);
+                            
+                            // Add project description
+                            const description = document.createElement('p');
+                            description.innerHTML = project.description;
+                            projectDiv.appendChild(description);
+                            
+                            // Add skills list
+                            projectDiv.appendChild(createSkillsList(project));
+                            
+                            // Add project link if provided
+                            if (project.link) {
+                                const link = document.createElement('a');
+                                link.href = project.link;
+                                link.textContent = 'View Project';
+                                link.className = 'project-link';
+                                projectDiv.appendChild(link);
+                            }
                         } else {
                             // Default layout
                             // Add project image if provided
