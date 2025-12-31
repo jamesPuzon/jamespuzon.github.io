@@ -1,9 +1,10 @@
 // Navigation functionality for sticky banner and menu toggle
 (function() {
     // Add has-banner class to body if not on home page
-    const isHomePage = window.location.pathname.endsWith('index.html') || 
-                       window.location.pathname === '/' ||
-                       window.location.pathname.endsWith('/');
+    const pathname = window.location.pathname;
+    const isHomePage = pathname === '/' || 
+                       pathname === '/index.html' ||
+                       pathname.endsWith('/index.html');
     
     if (!isHomePage) {
         document.body.classList.add('has-banner');
@@ -16,22 +17,18 @@
         let isMenuOpen = false;
         let isHoveringHeader = false;
         let navHideAmount = 0; // Pixels the nav is hidden (0 = fully visible, navHeight = fully hidden)
+        let navHeight = nav.offsetHeight; // Cache nav height
         
         // Check if device is mobile (width <= 768px)
         function isMobile() {
             return window.innerWidth <= 768;
         }
         
-        // Get nav height
-        function getNavHeight() {
-            return nav.offsetHeight;
-        }
-        
         // Update nav transform based on hide amount
         function updateNavTransform() {
             nav.style.transform = `translateY(-${navHideAmount}px)`;
             
-            if (navHideAmount >= getNavHeight()) {
+            if (navHideAmount >= navHeight) {
                 nav.style.pointerEvents = 'none';
                 nav.classList.remove('nav-visible');
                 nav.classList.add('nav-hidden');
@@ -52,7 +49,7 @@
         
         // Hide nav (slide up)
         function hideNav() {
-            navHideAmount = getNavHeight();
+            navHideAmount = navHeight;
             updateNavTransform();
         }
         
@@ -98,7 +95,7 @@
             // Update hide amount based on scroll - synchronized movement
             if (scrollDelta > 0) {
                 // Scrolling down - increase hide amount by scroll delta
-                navHideAmount = Math.min(getNavHeight(), navHideAmount + scrollDelta);
+                navHideAmount = Math.min(navHeight, navHideAmount + scrollDelta);
             } else if (scrollDelta < 0) {
                 // Scrolling up - decrease hide amount by scroll delta
                 navHideAmount = Math.max(0, navHideAmount + scrollDelta);
@@ -179,6 +176,9 @@
         window.addEventListener('resize', function() {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(function() {
+                // Update cached nav height on resize
+                navHeight = nav.offsetHeight;
+                
                 if (isMobile()) {
                     // Switched to mobile - hide nav unless menu is toggled
                     if (!isMenuOpen) {
