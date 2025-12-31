@@ -393,29 +393,6 @@ nav a:hover {
     margin: 15px 0;
 }
 
-/* Portfolio project layout with image on right */
-.project-item.project-image-right {
-    display: flex;
-    gap: 30px;
-    align-items: flex-start;
-    margin-bottom: 15px;
-}
-
-.project-item.project-image-right .project-content {
-    flex: 1;
-    min-width: 0;
-}
-
-.project-item.project-image-right .project-image-container {
-    flex-shrink: 0;
-    width: 250px;
-}
-
-.project-item.project-image-right .project-image-container img {
-    width: 100%;
-    margin: 0;
-}
-
 /* Portfolio project skills grid layout */
 .project-skills-grid {
     display: grid;
@@ -748,15 +725,6 @@ footer {
     
     .project-item {
         margin-bottom: 30px;
-    }
-    
-    /* Stack project layout on mobile */
-    .project-item.project-image-right {
-        flex-direction: column;
-    }
-    
-    .project-item.project-image-right .project-image-container {
-        width: 100%;
     }
     
     /* Stack skills grid on mobile */
