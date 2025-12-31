@@ -105,6 +105,28 @@
                 document.getElementById('portfolio-title').textContent = data.portfolio.title;
                 document.getElementById('portfolio-description').textContent = data.portfolio.description;
                 
+                // Helper function to create skills list
+                function createSkillsList(project) {
+                    const skillsContainer = document.createElement('div');
+                    skillsContainer.className = 'project-skills-list';
+                    
+                    if (project.details && project.details.length > 0) {
+                        const skillsTitle = document.createElement('h4');
+                        skillsTitle.textContent = 'Skills Used:';
+                        skillsContainer.appendChild(skillsTitle);
+                        
+                        const skillsList = document.createElement('ul');
+                        project.details.forEach(skill => {
+                            const li = document.createElement('li');
+                            li.textContent = skill;
+                            skillsList.appendChild(li);
+                        });
+                        skillsContainer.appendChild(skillsList);
+                    }
+                    
+                    return skillsContainer;
+                }
+                
                 // Load projects
                 const projectsContainer = document.getElementById('projects-container');
                 projectsContainer.innerHTML = '';
@@ -134,25 +156,8 @@
                             const gridWrapper = document.createElement('div');
                             gridWrapper.className = 'project-skills-grid';
                             
-                            // Create skills container (left side)
-                            const skillsContainer = document.createElement('div');
-                            skillsContainer.className = 'project-skills-list';
-                            
-                            if (project.details && project.details.length > 0) {
-                                const skillsTitle = document.createElement('h4');
-                                skillsTitle.textContent = 'Skills Used:';
-                                skillsContainer.appendChild(skillsTitle);
-                                
-                                const skillsList = document.createElement('ul');
-                                project.details.forEach(skill => {
-                                    const li = document.createElement('li');
-                                    li.textContent = skill;
-                                    skillsList.appendChild(li);
-                                });
-                                skillsContainer.appendChild(skillsList);
-                            }
-                            
-                            gridWrapper.appendChild(skillsContainer);
+                            // Add skills list
+                            gridWrapper.appendChild(createSkillsList(project));
                             
                             // Create image container (right side)
                             const imageContainer = document.createElement('div');
@@ -191,25 +196,8 @@
                             const gridWrapper = document.createElement('div');
                             gridWrapper.className = 'project-skills-grid';
                             
-                            // Create skills container (left side)
-                            const skillsContainer = document.createElement('div');
-                            skillsContainer.className = 'project-skills-list';
-                            
-                            if (project.details && project.details.length > 0) {
-                                const skillsTitle = document.createElement('h4');
-                                skillsTitle.textContent = 'Skills Used:';
-                                skillsContainer.appendChild(skillsTitle);
-                                
-                                const skillsList = document.createElement('ul');
-                                project.details.forEach(skill => {
-                                    const li = document.createElement('li');
-                                    li.textContent = skill;
-                                    skillsList.appendChild(li);
-                                });
-                                skillsContainer.appendChild(skillsList);
-                            }
-                            
-                            gridWrapper.appendChild(skillsContainer);
+                            // Add skills list
+                            gridWrapper.appendChild(createSkillsList(project));
                             
                             // Create images container (right side)
                             const imagesContainer = document.createElement('div');
