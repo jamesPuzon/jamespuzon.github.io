@@ -165,8 +165,12 @@
         });
     });
     
-    // Initialize nav state - always start visible
-    showNav();
+    // Initialize nav state - visible on desktop, hidden on mobile
+    if (isMobile()) {
+        hideNav();
+    } else {
+        showNav();
+    }
     
     // Handle window resize with debouncing
     let resizeTimeout;
