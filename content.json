@@ -127,7 +127,7 @@
                "Mechanical Design",
                "Robot Programming",
                "CAD Modeling",
-               "Biomechanics",
+               "Project Planning",
                "System Integration"
             ],
             "image":"images/endeffector.jpg",
@@ -140,8 +140,8 @@
                "ROS2",
                "Python",
                "Robot Kinematics",
-               "Path Planning",
-               "System Coordination"
+               "PID Control",
+               "Computer Vision"
             ],
             "items":[
                {
@@ -160,8 +160,8 @@
                "CAD Design (SolidWorks)",
                "3D Printing",
                "Mechanical Assembly",
-               "Performance Testing",
-               "Design Optimization"
+               "Laser Cutting",
+               "CNC Machining"
             ],
             "image":"images/remy.jpg",
             "link":"portfolio/rover-project"
