@@ -5,7 +5,7 @@
    },
    "home":{
       "profileImage":"images/profile-formal.jpg",
-      "welcomeText":"I'm James Puzon, an undergraduate mechanical engineering student at the University of Pittsburgh. This site showcases my journey, skills, and experiences across education, professional work, and community engagement.",
+      "welcomeText":"Hi, I'm James Puzon, an undergraduate mechanical engineering student at the University of Pittsburgh. This site showcases my journey, skills, and experiences across education, professional work, and community engagement.",
       "exploreTitle":"Explore My Website",
       "exploreDescription":"Navigate through the different sections to learn more about my background, work, and how to get in touch:"
    },
@@ -70,7 +70,7 @@
                      "Instructed campers on essential skills to achieve success in progressive skill levels",
                      "Supervised counselors in training, junior counselors, and full counselors to facilitate collaboration"
                   ],
-                  "image":"images/sitedirector.jpg"
+                  "image":""
                }
             ]
          },
@@ -79,7 +79,7 @@
             "subsections":[
                {
                   "title":"President, Ping Pong Club at Pitt",
-                  "content":"James started playing ping pong competively as a freshman at Pitt when the joined the club’s competitive team. He was elected as President of the club as a Junior, and his duties include organizing four weekly meetings and managing the competitive team. As a part of the competitive team, James has competed in several NCTTA (National Collegiate Table Tennis Association) tournamnents",
+                  "content":"James started playing ping pong competively as a freshman at Pitt when the joined the club’s competitive team. He was elected as President of the club as a Junior, and his duties include organizing four weekly meetings and managing the competitive team. As a part of the competitive team, James has competed in several NCTTA (National Collegiate Table Tennis Association) tournamnents.",
                   "image":"images/pingpong.jpg"
                },
                {
@@ -122,7 +122,7 @@
       "projects":[
          {
             "title":"Senior Capstone Project",
-            "description":"Fall 2025. Robot-assisted construction of fibrous materials. <br>Academic sponsor: UPMC Laboratory of Ocular Biomechanics.",
+            "description":"Fall 2025. Robot-assisted construction of fibrous materials. Academic sponsor: UPMC Laboratory of Ocular Biomechanics. <br>Description: Designed an end-effector for the Standard Bots RO1 to lay down and weave fibers.",
             "details": [
                "Skill 1",
                "Skill 2",
