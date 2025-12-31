@@ -138,7 +138,7 @@
                             
                             // Add project link below the flex container, aligned left
                             const link = document.createElement('a');
-                            link.href = project.link || `${project.title.toLowerCase().replace(/\s+/g, '-')}.html`;
+                            link.href = project.link || `portfolio/${project.title.toLowerCase().replace(/\s+/g, '-')}`;
                             link.textContent = 'View Project';
                             link.className = 'project-link';
                             projectDiv.appendChild(link);
@@ -174,7 +174,7 @@
                             
                             // Add project link
                             const link = document.createElement('a');
-                            link.href = project.link || `${project.title.toLowerCase().replace(/\s+/g, '-')}.html`;
+                            link.href = project.link || `portfolio/${project.title.toLowerCase().replace(/\s+/g, '-')}`;
                             link.textContent = 'View Project';
                             link.className = 'project-link';
                             projectDiv.appendChild(link);
