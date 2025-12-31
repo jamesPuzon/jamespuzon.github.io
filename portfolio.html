@@ -120,27 +120,41 @@
                         const isRobotics = project.title.toLowerCase().includes('robotics');
                         
                         if ((isSeniorDesign || isRover) && project.image) {
-                            // Image on right layout - wrapper for flex content
-                            const flexWrapper = document.createElement('div');
-                            flexWrapper.className = 'project-image-right';
-                            
-                            // Create content container
-                            const contentDiv = document.createElement('div');
-                            contentDiv.className = 'project-content';
-                            
                             // Add project title
                             const title = document.createElement('h3');
                             title.textContent = project.title;
-                            contentDiv.appendChild(title);
+                            projectDiv.appendChild(title);
                             
                             // Add project description
                             const description = document.createElement('p');
                             description.innerHTML = project.description;
-                            contentDiv.appendChild(description);
+                            projectDiv.appendChild(description);
                             
-                            flexWrapper.appendChild(contentDiv);
+                            // Create grid layout with skills on left and image on right
+                            const gridWrapper = document.createElement('div');
+                            gridWrapper.className = 'project-skills-grid';
                             
-                            // Create image container
+                            // Create skills container (left side)
+                            const skillsContainer = document.createElement('div');
+                            skillsContainer.className = 'project-skills-list';
+                            
+                            if (project.details && project.details.length > 0) {
+                                const skillsTitle = document.createElement('h4');
+                                skillsTitle.textContent = 'Skills Used:';
+                                skillsContainer.appendChild(skillsTitle);
+                                
+                                const skillsList = document.createElement('ul');
+                                project.details.forEach(skill => {
+                                    const li = document.createElement('li');
+                                    li.textContent = skill;
+                                    skillsList.appendChild(li);
+                                });
+                                skillsContainer.appendChild(skillsList);
+                            }
+                            
+                            gridWrapper.appendChild(skillsContainer);
+                            
+                            // Create image container (right side)
                             const imageContainer = document.createElement('div');
                             imageContainer.className = 'project-image-container';
                             
@@ -153,17 +167,16 @@
                             };
                             imageContainer.appendChild(img);
                             
-                            flexWrapper.appendChild(imageContainer);
-                            projectDiv.appendChild(flexWrapper);
+                            gridWrapper.appendChild(imageContainer);
+                            projectDiv.appendChild(gridWrapper);
                             
-                            // Add project link below the flex container, aligned left
+                            // Add project link below the grid container
                             const link = document.createElement('a');
                             link.href = project.link || `portfolio/${project.title.toLowerCase().replace(/\s+/g, '-')}`;
                             link.textContent = 'View Project';
                             link.className = 'project-link';
                             projectDiv.appendChild(link);
                         } else if (isRobotics && project.items && project.items.length > 0) {
-                            // Images side by side layout
                             // Add project title
                             const title = document.createElement('h3');
                             title.textContent = project.title;
@@ -174,7 +187,34 @@
                             description.innerHTML = project.description;
                             projectDiv.appendChild(description);
                             
-                            // Add images grid
+                            // Create grid layout with skills on left and images on right
+                            const gridWrapper = document.createElement('div');
+                            gridWrapper.className = 'project-skills-grid';
+                            
+                            // Create skills container (left side)
+                            const skillsContainer = document.createElement('div');
+                            skillsContainer.className = 'project-skills-list';
+                            
+                            if (project.details && project.details.length > 0) {
+                                const skillsTitle = document.createElement('h4');
+                                skillsTitle.textContent = 'Skills Used:';
+                                skillsContainer.appendChild(skillsTitle);
+                                
+                                const skillsList = document.createElement('ul');
+                                project.details.forEach(skill => {
+                                    const li = document.createElement('li');
+                                    li.textContent = skill;
+                                    skillsList.appendChild(li);
+                                });
+                                skillsContainer.appendChild(skillsList);
+                            }
+                            
+                            gridWrapper.appendChild(skillsContainer);
+                            
+                            // Create images container (right side)
+                            const imagesContainer = document.createElement('div');
+                            imagesContainer.className = 'project-images-container';
+                            
                             const imagesGrid = document.createElement('div');
                             imagesGrid.className = 'project-images-grid';
                             
@@ -190,7 +230,9 @@
                                 }
                             });
                             
-                            projectDiv.appendChild(imagesGrid);
+                            imagesContainer.appendChild(imagesGrid);
+                            gridWrapper.appendChild(imagesContainer);
+                            projectDiv.appendChild(gridWrapper);
                             
                             // Add project link
                             const link = document.createElement('a');

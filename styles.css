@@ -416,6 +416,66 @@ nav a:hover {
     margin: 0;
 }
 
+/* Portfolio project skills grid layout */
+.project-skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 20px 0;
+    align-items: start;
+}
+
+.project-skills-list {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #3498db;
+}
+
+.project-skills-list h4 {
+    color: #2c3e50;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    margin-top: 0;
+}
+
+.project-skills-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.project-skills-list li {
+    color: #555;
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.project-skills-list li:before {
+    content: "▸";
+    color: #3498db;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.project-images-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-skills-grid .project-image-container {
+    width: 100%;
+}
+
+.project-skills-grid .project-image-container img {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
 /* Portfolio project with images side by side */
 .project-item .project-images-grid {
     display: grid;
@@ -697,6 +757,12 @@ footer {
     
     .project-item.project-image-right .project-image-container {
         width: 100%;
+    }
+    
+    /* Stack skills grid on mobile */
+    .project-skills-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
     
     /* Stack project images on mobile */
