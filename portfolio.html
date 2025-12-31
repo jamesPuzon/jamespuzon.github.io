@@ -9,7 +9,9 @@
 <body>
     <div class="top-banner">
         <div class="banner-left">
-            <img src="images/profile-formal.jpg" alt="James Puzon" class="banner-profile-img">
+            <a href="/" class="banner-profile-link">
+                <img src="images/profile-formal.jpg" alt="James Puzon" class="banner-profile-img">
+            </a>
             <h1 id="header-name">Portfolio</h1>
         </div>
         <div class="menu-icon" id="menu-toggle">
@@ -25,10 +27,10 @@
 
     <nav id="main-nav">
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About James</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About James</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/contact">Contact</a></li>
         </ul>
     </nav>
 
@@ -136,7 +138,7 @@
                             
                             // Add project link below the flex container, aligned left
                             const link = document.createElement('a');
-                            link.href = project.link || `${project.title.toLowerCase().replace(/\s+/g, '-')}.html`;
+                            link.href = project.link || `portfolio/${project.title.toLowerCase().replace(/\s+/g, '-')}`;
                             link.textContent = 'View Project';
                             link.className = 'project-link';
                             projectDiv.appendChild(link);
@@ -172,7 +174,7 @@
                             
                             // Add project link
                             const link = document.createElement('a');
-                            link.href = project.link || `${project.title.toLowerCase().replace(/\s+/g, '-')}.html`;
+                            link.href = project.link || `portfolio/${project.title.toLowerCase().replace(/\s+/g, '-')}`;
                             link.textContent = 'View Project';
                             link.className = 'project-link';
                             projectDiv.appendChild(link);

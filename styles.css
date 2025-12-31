@@ -65,6 +65,21 @@ header h1 {
     border: 2px solid #fff;
 }
 
+.top-banner .banner-profile-link {
+    display: inline-block;
+    cursor: pointer;
+    transition: opacity 0.3s ease, transform 0.2s ease;
+}
+
+.top-banner .banner-profile-link:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+}
+
+.top-banner .banner-profile-link:active {
+    transform: scale(0.95);
+}
+
 .top-banner h1 {
     font-size: 1.5em;
     margin: 0;
