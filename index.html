@@ -27,11 +27,25 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="top-banner">
+        <div class="banner-left">
+            <a href="/" class="banner-profile-link">
+                <img src="images/profile-formal.jpg" alt="James Puzon" class="banner-profile-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2250%22 height=%2250%22%3E%3Ccircle cx=%2225%22 cy=%2225%22 r=%2225%22 fill=%22%232c3e50%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2214%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22%23fff%22%3EJP%3C/text%3E%3C/svg%3E'">
+            </a>
+            <h1 id="header-name">James Puzon</h1>
+        </div>
+        <div class="menu-icon" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
     <header>
-        <h1 id="header-name">James Puzon</h1>
+        <h1 id="header-name-fallback">James Puzon</h1>
     </header>
 
-    <nav>
+    <nav id="main-nav">
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/about">About James</a></li>
@@ -65,6 +79,7 @@
         <p>&copy; <span id="copyright-year">2025</span> James Puzon. All rights reserved.</p>
     </footer>
 
+    <script src="navigation.js"></script>
     <script>
         // Load content from JSON file
         fetch('content.json')
@@ -75,6 +90,7 @@
                 
                 // Update header
                 document.getElementById('header-name').textContent = data.header.name;
+                document.getElementById('header-name-fallback').textContent = data.header.name;
                 
                 // Update home page content
                 const home = data.home;
