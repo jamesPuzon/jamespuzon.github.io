@@ -56,52 +56,226 @@
 
     <div class="container">
         <section class="content-section">
-            <h2>Senior Capstone Project</h2>
+            <h2>Robot-Assisted Construction of Fibrous Materials</h2>
             <p><strong>Project Timeline:</strong> Fall 2025</p>
+            <p><strong>Academic Sponsor:</strong> Dr. Ian Sigal - UPMC Laboratory of Ocular Biomechanics</p>
+            <p><strong>Team Members:</strong> Karan Choudhari (Coordinator), James Puzon (Planner), Logan Radomicki (Resource Manager), Lowell Shaw (Resource Manager), Max Mongiello (Presenter)</p>
             
-            <h3>Overview</h3>
+            <h3>Project Overview</h3>
             <p>
-                Robot-assisted construction of fibrous materials. This project represents the culmination of my 
-                undergraduate mechanical engineering education, combining robotics mechanical design principles.
+                This senior capstone project focuses on developing a robot-assisted system for constructing three-dimensional 
+                fibrous structures. The project addresses a critical need in ocular biomechanics research by creating physical 
+                models that simulate the complex fiber-fiber interactions found in the human eye. This work has direct applications 
+                in glaucoma research and the development of improved medical textiles, such as surgical meshes for hernia and 
+                pelvic prolapse repair.
+            </p>
+            
+            <p>
+                Our team was tasked with adapting a Standard Bots RO1 robotic arm to precisely manipulate and weave fibers in 
+                three-dimensional space. The project builds upon previous work by Dr. Sigal's lab and represents a significant 
+                advancement in the physical simulation of ocular biomechanics.
             </p>
             
             <div style="text-align: center; margin: 30px 0;">
                 <img src="../images/endeffector.jpg" alt="End Effector" style="max-width: 600px; width: 100%; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <p style="font-style: italic; color: #666; margin-top: 10px;">Custom-designed end effector for fiber manipulation and weaving</p>
             </div>
             
-            <!-- Example: Add a short video demo
-            <h3>Video Demo</h3>
+            <h3>Project Objectives</h3>
+            <ul>
+                <li>Successfully program the new Standard Bots RO1 robot arm to replicate structures created by previous teams</li>
+                <li>Design and implement a custom end effector capable of dispensing fiber under tension</li>
+                <li>Develop a weaving mechanism to enable the creation of complex 3D fiber structures</li>
+                <li>Create a start/stop function to minimize human intervention during operation</li>
+                <li>Build demonstration structures that showcase the robot's capabilities</li>
+                <li>Achieve a success rate greater than 70% in reliably reproducing fiber structures</li>
+            </ul>
+            
+            <h3>Design Process and Key Milestones</h3>
+            
+            <h4>Milestone I: Project Planning and Initial Design</h4>
+            <p>
+                The first milestone focused on understanding the project requirements and developing a comprehensive plan. 
+                Key activities included:
+            </p>
+            <ul>
+                <li><strong>Requirements Analysis:</strong> Working closely with Dr. Sigal to identify user needs and establish 
+                    clear objectives for the robot system</li>
+                <li><strong>Initial Concepts:</strong> Using ideation techniques from mechanical design coursework to develop 
+                    multiple design approaches</li>
+                <li><strong>Resource Planning:</strong> Identifying necessary equipment, materials, and support from the 
+                    Swanson Center for Product Innovation and Pitt Makerspace</li>
+                <li><strong>Budget Management:</strong> Maintaining project costs under $100, well below the $250 departmental standard</li>
+            </ul>
+            
+            <h4>Milestone II: Design Concepts and Selection</h4>
+            <p>
+                The second milestone involved developing and evaluating three distinct design concepts for the end effector:
+            </p>
+            
+            <p><strong>Concept 1: Compliant Mechanism</strong></p>
+            <ul>
+                <li>Simple, passive design using mechanical compliance to secure fiber starting and ending points</li>
+                <li>Advantages: No electronics, low cost, simple programming</li>
+                <li>Challenges: Cannot address weaving functionality, requires human assembly</li>
+            </ul>
+            
+            <p><strong>Concept 2: Weaving End Effector (Adopted)</strong></p>
+            <ul>
+                <li>Active design using gears and a stepper motor to enable on-demand fiber dispensing and weaving</li>
+                <li>Advantages: Full weaving capability, well-understood mechanisms, maintains fiber tension</li>
+                <li>Challenges: Requires mechatronics integration, more complex programming, higher cost</li>
+            </ul>
+            
+            <p><strong>Concept 3: Magnetic Carriage</strong></p>
+            <ul>
+                <li>Passive design using magnetic attachments for fiber manipulation</li>
+                <li>Advantages: Potentially faster than motorized options, no additional programming needed</li>
+                <li>Challenges: Significant resolution limitations, uncertain mechanical behavior</li>
+            </ul>
+            
+            <p>
+                After conducting a Pugh chart analysis and incorporating feedback from peer reviews and our sponsor, we selected 
+                a combination of the <strong>Weaving End Effector</strong> and <strong>Compliant Mechanism</strong> designs to 
+                achieve both weaving capability and start/stop functionality.
+            </p>
+            
+            <h4>Milestone III: Validation and Final Deliverables</h4>
+            <p>
+                The final milestone focused on building, testing, and validating our designs:
+            </p>
+            
+            <p><strong>Final End Effector Design:</strong></p>
+            <ul>
+                <li>Successfully designed a gear-based system capable of dispensing and weaving fiber on demand</li>
+                <li>Integrated a stepper motor drive system for precise control</li>
+                <li>Applied stress analysis using Lewis' equation, achieving a factor of safety greater than 10 for gear teeth</li>
+                <li>Conducted practical testing under realistic motor loading conditions</li>
+            </ul>
+            
+            <p><strong>Compliant Clips for Start/Stop:</strong></p>
+            <ul>
+                <li>Designed clips capable of securing fiber in place</li>
+                <li>Identified areas for future improvement, including clip width and force requirements</li>
+            </ul>
+            
+            <p><strong>3D Fiber Structures:</strong></p>
+            <ul>
+                <li>Successfully programmed the robot arm to create three-dimensional fiber structures</li>
+                <li>Demonstrated fiber-laying capabilities to the project sponsor</li>
+            </ul>
+            
+            <h3>Technical Challenges and Solutions</h3>
+            <ul>
+                <li><strong>Motor Torque:</strong> The initially selected stepper motor did not provide sufficient torque to rotate 
+                    the gears. Testing with a function generator confirmed mechanical viability; future iterations will require a 
+                    higher-torque motor.</li>
+                <li><strong>Robot Interface:</strong> The proprietary software for the Standard Bots RO1 had limitations. We recommend 
+                    future teams use an API that supports forward and inverse kinematics for enhanced programming flexibility.</li>
+                <li><strong>Clip Design:</strong> The compliant clips were too narrow for easy fiber insertion, requiring design 
+                    refinement for future iterations.</li>
+                <li><strong>Fiber Tension:</strong> Maintaining consistent fiber tension throughout the weaving process required 
+                    careful design of the dispensing mechanism and material selection for contact surfaces.</li>
+            </ul>
+            
+            <h3>Video Demonstrations</h3>
+            <p>
+                The following videos showcase key capabilities of our robotic fiber manipulation system:
+            </p>
+            <p style="font-style: italic; color: #666;">
+                <strong>Note:</strong> Videos will be uploaded to demonstrate the end effector wrapping yarn around nails 
+                and the motor-driven rotation functionality.
+            </p>
+            
+            <h4>End Effector Yarn Wrapping</h4>
             <div style="text-align: center; margin: 30px 0;">
-                <video width="100%" style="max-width: 800px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);" controls>
-                    <source src="../videos/your-video-name.mp4" type="video/mp4">
-                    <source src="../videos/your-video-name.webm" type="video/webm">
+                <video width="100%" style="max-width: 800px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);" controls aria-label="End effector wrapping yarn around nails demonstration">
+                    <source src="../videos/yarn-wrapping.mp4" type="video/mp4">
+                    <source src="../videos/yarn-wrapping.webm" type="video/webm">
                     Your browser does not support the video tag.
                 </video>
+                <p style="font-style: italic; color: #666; margin-top: 10px;">Video showing the end effector wrapping yarn around nails</p>
             </div>
-            -->
             
-            <h3>Academic Sponsor</h3>
-            <p>UPMC Laboratory of Ocular Biomechanics</p>
+            <h4>Motor-Driven End Effector Rotation</h4>
+            <div style="text-align: center; margin: 30px 0;">
+                <video width="100%" style="max-width: 800px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);" controls aria-label="Motor-driven end effector rotation demonstration">
+                    <source src="../videos/motor-rotation.mp4" type="video/mp4">
+                    <source src="../videos/motor-rotation.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                <p style="font-style: italic; color: #666; margin-top: 10px;">Video demonstrating the end effector being turned by the motor when it receives voltage</p>
+            </div>
             
-            <h3>Project Goals</h3>
-            <ul>
-                <li>Develop a robotic system for precise manipulation of fibrous materials</li>
-                <li>Design custom end effector for material handling</li>
-            </ul>
+            <h3>Project Outcomes and Impact</h3>
             
-            <h3>Technologies Used</h3>
-            <ul>
-                <li>Robotics and automation systems</li>
-                <li>CAD design (SolidWorks)</li>
-                <li>Material science</li>
-                <li>Control systems and programming</li>
-            </ul>
-            
-            <h3>Current Status</h3>
+            <p><strong>Technical Achievement:</strong></p>
             <p>
-                This project is currently in progress as part of my senior year capstone. More details and results 
-                will be added as the project develops.
+                Despite challenges with motor torque and software limitations, our sponsor considers this project successful. 
+                We achieved the minimum goal of building 3D structures with the new robot arm and end effector, and we successfully 
+                designed a mechanically viable weaving system—one of the two challenge goals set at the project's outset.
             </p>
+            
+            <p><strong>Community Impact:</strong></p>
+            <ul>
+                <li><strong>Immediate Benefit:</strong> Dr. Sigal's Ocular Biomechanics Lab gains a new tool for physical simulation 
+                    of fiber mechanics in the eye, opening new research avenues in glaucoma treatment</li>
+                <li><strong>Broader Applications:</strong> The techniques developed can contribute to improved surgical meshes and 
+                    other medical textiles, potentially improving patient outcomes and quality of life</li>
+                <li><strong>Future Research:</strong> The project establishes a foundation for continued development of robotic 
+                    systems for precise fiber manipulation in medical and research applications</li>
+            </ul>
+            
+            <p><strong>Educational Value:</strong></p>
+            <p>
+                This project provided invaluable experience in developing novel solutions without existing commercial or research 
+                precedents. Key skills developed include:
+            </p>
+            <ul>
+                <li>Robotic system programming and control</li>
+                <li>Mechanical design using CAD (SolidWorks)</li>
+                <li>Mechatronics integration and troubleshooting</li>
+                <li>Stress analysis and materials selection</li>
+                <li>Team collaboration and project management</li>
+                <li>Adaptability in the face of technical challenges</li>
+                <li>Communication with sponsors and stakeholders</li>
+            </ul>
+            
+            <h3>Technologies and Methodologies Used</h3>
+            <ul>
+                <li><strong>Robotics:</strong> Standard Bots RO1 robotic arm with custom end effector mounting</li>
+                <li><strong>CAD Design:</strong> SolidWorks for 3D modeling and assembly design</li>
+                <li><strong>Manufacturing:</strong> FDM 3D printing for rapid prototyping</li>
+                <li><strong>Mechanical Engineering:</strong> Gear design, stress analysis (Lewis' equation), materials selection (MEMS 1030 principles)</li>
+                <li><strong>Mechatronics:</strong> Stepper motor selection and control, voltage splitter design, circuit analysis</li>
+                <li><strong>Control Systems:</strong> Forward and inverse kinematics, robot programming</li>
+                <li><strong>Design Methodology:</strong> Pugh chart analysis, iterative prototyping, user needs analysis</li>
+            </ul>
+            
+            <h3>Future Work and Recommendations</h3>
+            <ul>
+                <li>Install a higher-torque stepper motor to achieve reliable weaving functionality</li>
+                <li>Redesign the end effector assembly to allow for easier motor replacement</li>
+                <li>Refine the compliant clip design to enable easier fiber insertion and implement start functionality</li>
+                <li>Transition to an API-based control system for enhanced programming flexibility</li>
+                <li>Develop additional test structures to explore the full capabilities of the fiber-laying system</li>
+                <li>Document assembly procedures and design rationale for future teams</li>
+            </ul>
+            
+            <h3>Course Integration</h3>
+            <p>
+                This project synthesized knowledge from multiple mechanical engineering courses:
+            </p>
+            <ul>
+                <li><strong>ENGR 0011:</strong> User needs analysis and requirement identification</li>
+                <li><strong>MEMS 0024:</strong> Design ideation, gallery method, CAD modeling</li>
+                <li><strong>MEMS 0031:</strong> Electrical circuit analysis and voltage splitter design</li>
+                <li><strong>MEMS 1028:</strong> Failure analysis and stress evaluation</li>
+                <li><strong>MEMS 1029:</strong> Mechanical Design II - Gear stress analysis</li>
+                <li><strong>MEMS 1030:</strong> Materials selection methodology</li>
+                <li><strong>MEMS 1049:</strong> Mechatronics - Motor and motor controller selection</li>
+                <li><strong>MEMS 1097:</strong> Introduction to Robotics - Forward and inverse kinematics</li>
+            </ul>
             
             <div style="margin-top: 30px;">
                 <a href="/portfolio" class="project-link">← Back to Portfolio</a>
