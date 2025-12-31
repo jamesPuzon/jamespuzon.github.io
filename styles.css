@@ -24,6 +24,10 @@ header {
     color: #fff;
     padding: 20px 0;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 header h1 {
@@ -43,7 +47,7 @@ header h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    z-index: 1000;
+    z-index: 200;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
@@ -188,7 +192,7 @@ nav {
     background-color: #34495e;
     padding: 15px 0;
     margin-bottom: 20px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.1s linear;
 }
 
 body.has-banner nav {
@@ -196,20 +200,26 @@ body.has-banner nav {
     top: 70px;
     left: 0;
     right: 0;
-    z-index: 999;
+    z-index: 100;
     margin-bottom: 0;
 }
 
 body.has-banner nav.nav-hidden {
     transform: translateY(-100%);
-    opacity: 0;
     pointer-events: none;
 }
 
 body.has-banner nav.nav-visible {
     transform: translateY(0);
-    opacity: 1;
     pointer-events: auto;
+}
+
+/* Home page sticky navbar */
+body:not(.has-banner) nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    margin-bottom: 20px;
 }
 
 nav ul {
