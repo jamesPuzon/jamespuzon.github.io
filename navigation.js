@@ -1,8 +1,8 @@
 // Navigation functionality for sticky banner and menu toggle
 (function() {
     // Add has-banner class to body if not on home page
-    const isHomePage = window.location.pathname.endsWith('index.html') || 
-                       window.location.pathname === '/' ||
+    const isHomePage = window.location.pathname === '/' || 
+                       window.location.pathname.endsWith('index.html') || 
                        window.location.pathname.endsWith('/');
     
     if (!isHomePage) {
