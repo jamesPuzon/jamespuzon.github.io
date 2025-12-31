@@ -24,6 +24,10 @@ header {
     color: #fff;
     padding: 20px 0;
     text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 header h1 {
@@ -173,7 +177,7 @@ nav {
     background-color: #34495e;
     padding: 15px 0;
     margin-bottom: 20px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.1s linear;
 }
 
 body.has-banner nav {
@@ -187,14 +191,20 @@ body.has-banner nav {
 
 body.has-banner nav.nav-hidden {
     transform: translateY(-100%);
-    opacity: 0;
     pointer-events: none;
 }
 
 body.has-banner nav.nav-visible {
     transform: translateY(0);
-    opacity: 1;
     pointer-events: auto;
+}
+
+/* Home page sticky navbar */
+body:not(.has-banner) nav {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    margin-bottom: 20px;
 }
 
 nav ul {
