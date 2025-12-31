@@ -66,10 +66,8 @@
             // Close menu when scrolling on mobile
             if (isMenuOpen) {
                 isMenuOpen = false;
-                hideNav();
-            } else if (!isMenuOpen) {
-                hideNav();
             }
+            hideNav();
             lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
             return;
         }
@@ -95,8 +93,6 @@
             // Scrolling down - increase hide amount by scroll delta
             navHideAmount = Math.min(navHeight, navHideAmount + scrollDelta);
         }
-        // Removed: scrolling up behavior - navbar should not appear when scrolling up
-        // The navbar only appears when hovering over header or clicking menu icon
         
         updateNavTransform();
         lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
