@@ -154,6 +154,19 @@
             "link":"portfolio/robotics"
          },
          {
+            "title":"PC Build",
+            "description":"Custom built gaming/workstation PC. Full build process documented in 4K, showcasing hands-on hardware knowledge, component selection, cable management, and system optimization.",
+            "details": [
+               "Hardware Assembly",
+               "Component Selection",
+               "Cable Management",
+               "System Optimization",
+               "Thermal Management"
+            ],
+            "image":"images/pc-build-final.jpg",
+            "link":"portfolio/pc-build"
+         },
+         {
             "title":"Rover Project",
             "description":"Fall 2023. This project was for the Intro to Mechanical Design class at the University of Pittsburgh. The goal was to design a rover for speed and agility, given only a motor and solar panel.",
             "details": [
