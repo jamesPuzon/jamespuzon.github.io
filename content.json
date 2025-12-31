@@ -124,9 +124,11 @@
             "title":"Senior Capstone Project",
             "description":"Fall 2025. Robot-assisted construction of fibrous materials. Academic sponsor: UPMC Laboratory of Ocular Biomechanics. <br>Description: Designed an end-effector for the Standard Bots RO1 to lay down and weave fibers.",
             "details": [
-               "Skill 1",
-               "Skill 2",
-               "Skill 3"
+               "Mechanical Design",
+               "Robot Programming",
+               "CAD Modeling",
+               "Biomechanics",
+               "System Integration"
             ],
             "image":"images/endeffector.jpg",
             "link":"portfolio/senior-capstone"
@@ -135,9 +137,11 @@
             "title":"Robotics",
             "description":"Fall 2025. Developed a ROS2 system to coordinate payload handoff between a PincherX-100 and Turtlebot3.",
             "details": [
-               "Skill 1",
-               "Skill 2",
-               "Skill 3"
+               "ROS2",
+               "Python",
+               "Robot Kinematics",
+               "Path Planning",
+               "System Coordination"
             ],
             "items":[
                {
@@ -153,9 +157,11 @@
             "title":"Rover Project",
             "description":"Fall 2023. This project was for the Intro to Mechanical Design class at the University of Pittsburgh. The goal was to design a rover for speed and agility, given only a motor and solar panel.",
             "details": [
-               "Skill 1",
-               "Skill 2",
-               "Skill 3"
+               "CAD Design (SolidWorks)",
+               "3D Printing",
+               "Mechanical Assembly",
+               "Performance Testing",
+               "Design Optimization"
             ],
             "image":"images/remy.jpg",
             "link":"portfolio/rover-project"
