@@ -24,7 +24,7 @@
     </script>
     
     <title>LEGO Brick Sorter - James Puzon</title>
-    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="../styles.css">
     <style>
         .data-table {
             width: 100%;
@@ -118,13 +118,20 @@
         .github-link-box svg {
             flex-shrink: 0;
         }
+        @media (max-width: 768px) {
+            .data-table,
+            .doe-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="top-banner">
         <div class="banner-left">
             <a href="/" class="banner-profile-link">
-                <img src="../../images/profile-formal.jpg" alt="James Puzon" class="banner-profile-img">
+                <img src="../images/profile-formal.jpg" alt="James Puzon" class="banner-profile-img">
             </a>
             <h1>LEGO Brick Sorter</h1>
         </div>
@@ -171,7 +178,7 @@
             </p>
 
             <div style="text-align: center; margin: 30px 0;">
-                <img src="../../images/LegoBrickSorter.jpg" alt="LEGO Brick Sorter experimental set-up" style="max-width: 600px; width: 100%; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <img src="../images/LegoBrickSorter.jpg" alt="LEGO Brick Sorter experimental set-up" style="max-width: 600px; width: 100%; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
                 <p style="font-style: italic; color: #666; margin-top: 10px;">Experimental set-up: ultrasonic distance sensors and webcam for LEGO block identification</p>
             </div>
 
@@ -489,7 +496,7 @@
         <p>&copy; <span id="copyright-year">2025</span> James Puzon. All rights reserved.</p>
     </footer>
 
-    <script src="../../navigation.js"></script>
+    <script src="../navigation.js"></script>
     
     <script>
         // Auto-update copyright year
