@@ -780,22 +780,15 @@ footer {
         max-width: 200px;
     }
     
-    /* Projects: horizontal scroll showing ~1.5 cards */
+    /* Projects: vertical scroll on mobile */
     #projects-container {
-        grid-template-columns: unset;
-        display: flex;
-        flex-direction: row;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        -webkit-overflow-scrolling: touch;
-        gap: 16px;
-        padding-bottom: 12px;
+        grid-template-columns: 1fr;
+        gap: 20px;
         margin-top: 20px;
     }
 
     .project-item {
-        flex: 0 0 65%;
-        scroll-snap-align: start;
+        width: 100%;
     }
 
     /* Stack skills grid on mobile */
