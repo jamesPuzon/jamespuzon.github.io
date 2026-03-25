@@ -30,7 +30,7 @@
                   "title": "Study Abroad",
                   "content": "In Spain, James took classes to complete his Hispanic Languages and Culture Minor",
                   "details": [
-                     "Universidad de Alcal\u00e1, Alcal\u00e1 de Henares, Spain",
+                     "Universidad de Alcalá, Alcalá de Henares, Spain",
                      "2 months"
                   ],
                   "image": "images/spain.jpg"
@@ -79,7 +79,7 @@
             "subsections": [
                {
                   "title": "President, Ping Pong Club at Pitt",
-                  "content": "James started playing ping pong competively as a freshman at Pitt when he joined the club\u2019s competitive team. He was elected as President of the club as a Junior, and his duties include organizing four weekly meetings and managing the competitive team. As a part of the competitive team, James has competed in several NCTTA (National Collegiate Table Tennis Association) tournamnents.",
+                  "content": "James started playing ping pong competively as a freshman at Pitt when he joined the club’s competitive team. He was elected as President of the club as a Junior, and his duties include organizing four weekly meetings and managing the competitive team. As a part of the competitive team, James has competed in several NCTTA (National Collegiate Table Tennis Association) tournamnents.",
                   "image": "images/pingpong.jpg"
                },
                {
@@ -154,17 +154,17 @@
             "link": "portfolio/multi-robot-delivery-system"
          },
          {
-            "title": "PC Build",
-            "description": "Custom built gaming/workstation PC. Full build process documented in 4K, showcasing hands-on hardware knowledge, component selection, cable management, and system optimization.",
+            "title": "Lego Brick Sorter",
+            "description": "Measurements 2 Final Project (Team 14). Developed a system to identify and sort LEGO bricks by geometry and color using ultrasonic sensors, an Arduino Uno, and a Python/OpenCV color detection script.",
             "details": [
-               "Hardware Assembly",
-               "Component Selection",
-               "Cable Management",
-               "System Optimization",
-               "Thermal Management"
+               "Python / OpenCV",
+               "Arduino",
+               "Ultrasonic Sensors",
+               "Data Analysis",
+               "Design of Experiments"
             ],
-            "image": "images/pc-build-final.jpg",
-            "link": "portfolio/pc-build"
+            "image": "images/LegoBrickSorter.jpg",
+            "link": "portfolio/lego-brick-sorter"
          },
          {
             "title": "Rover Project",
@@ -180,17 +180,17 @@
             "link": "portfolio/rover-project"
          },
          {
-            "title": "Lego Brick Sorter",
-            "description": "Measurements 2 Final Project (Team 14). Developed a system to identify and sort LEGO bricks by geometry and color using ultrasonic sensors, an Arduino Uno, and a Python/OpenCV color detection script.",
+            "title": "PC Build",
+            "description": "Custom built gaming/workstation PC. Full build process documented in 4K, showcasing hands-on hardware knowledge, component selection, cable management, and system optimization.",
             "details": [
-               "Python / OpenCV",
-               "Arduino",
-               "Ultrasonic Sensors",
-               "Data Analysis",
-               "Design of Experiments"
+               "Hardware Assembly",
+               "Component Selection",
+               "Cable Management",
+               "System Optimization",
+               "Thermal Management"
             ],
-            "image": "images/LegoBrickSorter.jpg",
-            "link": "portfolio/lego-brick-sorter"
+            "image": "images/pc-build-final.jpg",
+            "link": "portfolio/pc-build"
          }
       ]
    },
