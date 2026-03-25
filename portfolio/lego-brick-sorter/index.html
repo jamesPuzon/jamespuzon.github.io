@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <meta name="description" content="LEGO Brick Sorter - System to identify and sort LEGO blocks using ultrasonic sensors, an Arduino, and computer vision. Measurements 2 Final Project, University of Pittsburgh.">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ED4EXMV1JF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-ED4EXMV1JF');
+    </script>
+    
+    <title>LEGO Brick Sorter - James Puzon</title>
+    <link rel="stylesheet" href="../../styles.css">
+    <style>
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        .data-table th,
+        .data-table td {
+            border: 1px solid #d0d0d0;
+            padding: 10px 14px;
+            text-align: left;
+        }
+        .data-table th {
+            background-color: #2c3e50;
+            color: #fff;
+            font-weight: 600;
+        }
+        .data-table tr:nth-child(even) {
+            background-color: #f2f6fa;
+        }
+        .data-table tr:hover {
+            background-color: #e8f0f8;
+        }
+        .error-highlight {
+            background-color: #fdf3f3;
+            border-left: 4px solid #e74c3c;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+        }
+        .error-highlight .error-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid #f0d0d0;
+        }
+        .error-highlight .error-stat:last-child {
+            border-bottom: none;
+        }
+        .error-highlight .error-label {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .error-highlight .error-value {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #e74c3c;
+        }
+        .error-highlight .error-value.good {
+            color: #27ae60;
+        }
+        .doe-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+            text-align: center;
+        }
+        .doe-table th,
+        .doe-table td {
+            border: 1px solid #d0d0d0;
+            padding: 8px 12px;
+        }
+        .doe-table th {
+            background-color: #34495e;
+            color: #fff;
+        }
+        .doe-table tr:nth-child(even) {
+            background-color: #f2f6fa;
+        }
+        .github-link-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #24292e;
+            color: #fff !important;
+            padding: 10px 18px;
+            border-radius: 6px;
+            text-decoration: none !important;
+            font-weight: 600;
+            margin: 10px 0;
+            transition: background-color 0.2s ease;
+        }
+        .github-link-box:hover {
+            background-color: #444d56;
+            color: #fff !important;
+            text-decoration: none !important;
+        }
+        .github-link-box svg {
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-banner">
+        <div class="banner-left">
+            <a href="/" class="banner-profile-link">
+                <img src="../../images/profile-formal.jpg" alt="James Puzon" class="banner-profile-img">
+            </a>
+            <h1>LEGO Brick Sorter</h1>
+        </div>
+        <div class="menu-icon" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <header>
+        <h1>LEGO Brick Sorter</h1>
+    </header>
+
+    <nav id="main-nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About James</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="content-section">
+            <h2>LEGO Brick Sorter</h2>
+            <p><strong>Course:</strong> Measurements 2 (MEMS 1043) — University of Pittsburgh</p>
+            <p><strong>Team 14:</strong> James Puzon, Kalinda Wagner, Kyleigh Motley</p>
+
+            <p>
+                <a href="https://github.com/jamesPuzon/LegoBrickSorter" target="_blank" rel="noopener noreferrer" class="github-link-box">
+                    <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+                        0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+                        -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+                        .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+                        -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27
+                        .68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12
+                        .51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+                        0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    View on GitHub
+                </a>
+            </p>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <img src="../../images/LegoBrickSorter.jpg" alt="LEGO Brick Sorter experimental set-up" style="max-width: 600px; width: 100%; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <p style="font-style: italic; color: #666; margin-top: 10px;">Experimental set-up: ultrasonic distance sensors and webcam for LEGO block identification</p>
+            </div>
+
+            <h3>Project Overview</h3>
+            <p>
+                This project developed a system to identify LEGO blocks based on geometric and visual data, with
+                the potential application of sorting LEGO bricks automatically. The system combines two independent
+                sensing approaches:
+            </p>
+            <ul>
+                <li><strong>Ultrasonic sensors + Arduino Uno:</strong> Measure block geometry (length, width, height) using non-contact distance measurement</li>
+                <li><strong>Web camera + Python:</strong> Capture images and extract color information using HSV-based color detection</li>
+            </ul>
+            <p>
+                Error analysis was performed for each measurement method to assess the capabilities and limitations of the system.
+            </p>
+
+            <h3>Sensor Selections</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Sensor</th>
+                        <th>Quantity</th>
+                        <th>Manufacturer</th>
+                        <th>Make / Model</th>
+                        <th>Sensitivity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ultrasonic Distance Sensor</td>
+                        <td>2</td>
+                        <td>Adafruit</td>
+                        <td>4007</td>
+                        <td>±0.5 cm</td>
+                    </tr>
+                    <tr>
+                        <td>Ultrasonic Distance Sensor</td>
+                        <td>1</td>
+                        <td>Adafruit</td>
+                        <td>HC-SR04</td>
+                        <td>±0.5 cm</td>
+                    </tr>
+                    <tr>
+                        <td>Web Camera</td>
+                        <td>1</td>
+                        <td>Logitech</td>
+                        <td>C920s Pro HD Webcam</td>
+                        <td>—</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul>
+                <li>All three distance sensors were interfaced via a single Arduino Uno for power and data acquisition</li>
+                <li>The web camera was combined with a custom Python script for color identification</li>
+            </ul>
+
+            <h3>Equipment List</h3>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Equipment</th>
+                        <th>Quantity</th>
+                        <th>Availability</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Distance Sensor (Adafruit 4007)</td>
+                        <td>2</td>
+                        <td>In lab</td>
+                        <td>$3.95 / sensor</td>
+                    </tr>
+                    <tr>
+                        <td>Distance Sensor (HC-SR04)</td>
+                        <td>1</td>
+                        <td>In lab</td>
+                        <td>$3.95</td>
+                    </tr>
+                    <tr>
+                        <td>Web Camera (Logitech C920s)</td>
+                        <td>1</td>
+                        <td>From group member</td>
+                        <td>$54.99</td>
+                    </tr>
+                    <tr>
+                        <td>Arduino</td>
+                        <td>1</td>
+                        <td>In lab</td>
+                        <td>$19.99</td>
+                    </tr>
+                    <tr>
+                        <td>Wire</td>
+                        <td>1 ft</td>
+                        <td>In lab</td>
+                        <td>$5.00 (approx.)</td>
+                    </tr>
+                    <tr>
+                        <td>Small Breadboard</td>
+                        <td>3</td>
+                        <td>In lab</td>
+                        <td>$4.95</td>
+                    </tr>
+                    <tr>
+                        <td>Poster Board</td>
+                        <td>1</td>
+                        <td>From group member</td>
+                        <td>$5.00 (approx.)</td>
+                    </tr>
+                    <tr>
+                        <td>Tape</td>
+                        <td>8 in</td>
+                        <td>In lab</td>
+                        <td>$2.00</td>
+                    </tr>
+                    <tr>
+                        <td>LEGOs (various sizes)</td>
+                        <td>20 pieces</td>
+                        <td>From group member</td>
+                        <td>$50.00 (approx.)</td>
+                    </tr>
+                    <tr>
+                        <td>Ruler</td>
+                        <td>1</td>
+                        <td>In lab</td>
+                        <td>$4.50</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td></td>
+                        <td></td>
+                        <td><strong>$162.19 (approx.)</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Color Recognition</h3>
+
+            <h4>Calibration</h4>
+            <p>
+                Before detection, the system is calibrated to build a dictionary of color ranges for accurate color
+                classification. This calibration process is run once (or whenever new colors need to be added):
+            </p>
+            <ol>
+                <li>Center a LEGO block within the defined detection region on screen</li>
+                <li>The script samples and outputs HSV pixel data from the detection box</li>
+                <li>The user inputs the corresponding color label</li>
+                <li>The script appends or replaces the HSV range and label in the color database</li>
+            </ol>
+
+            <h4>Detection Process</h4>
+            <p>
+                A custom Python script identifies each LEGO block's color in real time using the Logitech C920s webcam:
+            </p>
+            <ol>
+                <li>LEGO piece is placed within the camera's field of view</li>
+                <li>Script converts the image from BGR to HSV color space</li>
+                <li>Measured HSV values are compared to the saved color dictionary</li>
+                <li>The detected color label is output to the user</li>
+            </ol>
+            <p>
+                The script supports both vibrant colors (red, yellow, green, blue) and neutral colors (black, white,
+                gray, brown). A secondary window displays the full color dictionary with HSV ranges, updated in real time.
+                Tolerance values used: Hue ±3, Saturation ±15, Value ±3.
+            </p>
+
+            <h3>Distance Measurements</h3>
+
+            <h4>Calibration</h4>
+            <p>
+                Sensors are calibrated using an Arduino sketch run while the measurement area is empty of LEGOs:
+            </p>
+            <ol>
+                <li>Sensors collect data for 5 seconds in each direction (X, Y, Z)</li>
+                <li>Data is averaged to produce the nominal distance to the wall in each direction</li>
+                <li>These nominal values are entered into the measurement script as reference baselines</li>
+            </ol>
+
+            <h4>Measurement Process</h4>
+            <p>
+                Ultrasonic sensors determine LEGO geometry by emitting and receiving sound pulses:
+            </p>
+            <ol>
+                <li>LEGO block is placed within the sensing range of all three sensors</li>
+                <li>Sensors fire a few milliseconds apart to avoid signal interference between them</li>
+                <li>For 10 seconds, each sensor records its distance to the LEGO block</li>
+                <li>Measured distances are subtracted from the nominal (empty-area) distance</li>
+                <li>Final dimensions are obtained by averaging the X, Y, and Z measurements</li>
+                <li>Final dimensions are recorded in Excel for analysis</li>
+            </ol>
+
+            <h3>Experimental Results</h3>
+            <p>
+                A sample of five LEGO blocks was measured using the test and calibration procedures. Percent and
+                RMS errors were calculated for each block.
+            </p>
+
+            <div class="error-highlight">
+                <div class="error-stat">
+                    <span class="error-label">Average Length Error</span>
+                    <span class="error-value">23.24%</span>
+                </div>
+                <div class="error-stat">
+                    <span class="error-label">Average Width Error</span>
+                    <span class="error-value">16.19%</span>
+                </div>
+                <div class="error-stat">
+                    <span class="error-label">Average Height Error</span>
+                    <span class="error-value">113.65%</span>
+                </div>
+                <div class="error-stat">
+                    <span class="error-label">Global RMS Error</span>
+                    <span class="error-value">116.33%</span>
+                </div>
+                <div class="error-stat">
+                    <span class="error-label">Color Detection Accuracy</span>
+                    <span class="error-value good">100%</span>
+                </div>
+            </div>
+
+            <p>
+                In general, average absolute geometric error was high, indicating issues with sensor placement,
+                set-up design, or signal interference — particularly for height measurements. Color detection
+                accuracy was 100%, demonstrating that the Python/OpenCV-based approach is highly reliable for this task.
+            </p>
+
+            <h3>Design of Experiments</h3>
+            <p>
+                <strong>Research Question:</strong> How does lighting, background color, and camera quality affect
+                how the camera reads the LEGO brick color?
+            </p>
+            <ul>
+                <li><strong>Lighting:</strong> Dim (300 lumens) vs. Bright (1,500–2,000 lumens)</li>
+                <li><strong>Background Color:</strong> White vs. Black</li>
+                <li><strong>Camera Quality:</strong> Low (320×240) vs. High (1920×1080)</li>
+            </ul>
+
+            <table class="doe-table">
+                <thead>
+                    <tr>
+                        <th>Run</th>
+                        <th>Lighting</th>
+                        <th>Background</th>
+                        <th>Camera Quality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>1</td><td>Dim</td><td>White</td><td>Low</td></tr>
+                    <tr><td>2</td><td>Bright</td><td>White</td><td>Low</td></tr>
+                    <tr><td>3</td><td>Dim</td><td>Black</td><td>Low</td></tr>
+                    <tr><td>4</td><td>Bright</td><td>Black</td><td>Low</td></tr>
+                    <tr><td>5</td><td>Dim</td><td>White</td><td>High</td></tr>
+                    <tr><td>6</td><td>Bright</td><td>White</td><td>High</td></tr>
+                    <tr><td>7</td><td>Dim</td><td>Black</td><td>High</td></tr>
+                    <tr><td>8</td><td>Bright</td><td>Black</td><td>High</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Experimental Strengths</h3>
+            <ul>
+                <li><strong>Simple, Low-Cost Set-Up:</strong> Uses readily available components (ultrasonic sensors, Arduino, webcam) that are easy to assemble and modify</li>
+                <li><strong>Non-Contact Measurements:</strong> Ultrasonic distance sensors measure geometry without touching the block, reducing wear and alignment issues</li>
+                <li><strong>Easy Calibration:</strong> The color recognition script can easily be updated to include new LEGO colors; distance calibration uses simple offsets</li>
+                <li><strong>Modular Architecture:</strong> Color detection and geometry measurement operate independently using different sensors, so components can be replaced without impacting the rest of the system</li>
+            </ul>
+
+            <h3>Experimental Limitations</h3>
+            <ul>
+                <li><strong>Geometric Constraints:</strong> System is optimized for rectangular or square blocks; irregular shapes may cause incorrect geometry classification</li>
+                <li><strong>Color Detection Sensitivity:</strong> Webcam performance depends heavily on lighting conditions; neutral colors (black, white, gray) are difficult to distinguish reliably under poor lighting</li>
+                <li><strong>Possible Sensor Interference:</strong> Ultrasonic sensors can interfere with each other when placed close together; echoes bouncing off walls may cause inaccurate readings even with small firing delays</li>
+                <li><strong>Surface Material and Orientation Effects:</strong> Distance sensors perform poorly with angled or irregular surfaces; LEGO studs on top surfaces can introduce height measurement errors</li>
+            </ul>
+
+            <h3>Future Improvements</h3>
+            <ul>
+                <li><strong>Additional Classification Parameters:</strong> Incorporate weight, number of studs, or surface texture to improve geometric classification</li>
+                <li><strong>Improved Lighting:</strong> Add dedicated LED lighting around the camera to reduce color recognition errors under variable ambient conditions</li>
+                <li><strong>Automated Testing:</strong> LEGO bricks are currently placed by hand; automation (e.g., a feed ramp) would improve throughput and repeatability</li>
+                <li><strong>More Robust Geometric Sensing:</strong> Replace ultrasonic sensors with infrared or laser distance sensors for higher accuracy at short ranges</li>
+                <li><strong>Sensor Filtering:</strong> Apply digital filters (e.g., moving average, Kalman) to reduce noise and improve geometric measurement accuracy</li>
+                <li><strong>Machine Learning Classification:</strong> Replace HSV thresholding with a trained classifier for more robust performance across lighting conditions and brick colors</li>
+            </ul>
+
+            <h3>Technologies Used</h3>
+            <ul>
+                <li><strong>Python / OpenCV:</strong> Real-time color detection using HSV color space, calibration workflow, and dictionary-based classification</li>
+                <li><strong>Arduino Uno:</strong> Data acquisition and timing control for three ultrasonic distance sensors</li>
+                <li><strong>Ultrasonic Distance Sensors (Adafruit 4007, HC-SR04):</strong> Non-contact geometry measurement</li>
+                <li><strong>Logitech C920s HD Webcam:</strong> High-resolution image capture for color identification</li>
+                <li><strong>Excel:</strong> Data recording, averaging, and error analysis</li>
+            </ul>
+
+            <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap; align-items: center;">
+                <a href="https://github.com/jamesPuzon/LegoBrickSorter" target="_blank" rel="noopener noreferrer" class="github-link-box">
+                    <svg height="20" width="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38
+                        0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13
+                        -.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66
+                        .07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15
+                        -.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27
+                        .68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12
+                        .51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48
+                        0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+                    </svg>
+                    View on GitHub
+                </a>
+                <a href="/portfolio" class="project-link">← Back to Portfolio</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; <span id="copyright-year">2025</span> James Puzon. All rights reserved.</p>
+    </footer>
+
+    <script src="../../navigation.js"></script>
+    
+    <script>
+        // Auto-update copyright year
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
