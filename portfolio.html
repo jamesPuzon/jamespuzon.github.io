@@ -105,188 +105,50 @@
                 document.getElementById('portfolio-title').textContent = data.portfolio.title;
                 document.getElementById('portfolio-description').textContent = data.portfolio.description;
                 
-                // Helper function to create skills list
-                function createSkillsList(project) {
-                    const skillsContainer = document.createElement('div');
-                    skillsContainer.className = 'project-skills-list';
-                    
-                    if (project.details && project.details.length > 0) {
-                        const skillsTitle = document.createElement('h4');
-                        skillsTitle.textContent = 'Skills Used:';
-                        skillsContainer.appendChild(skillsTitle);
-                        
-                        const skillsList = document.createElement('ul');
-                        project.details.forEach(skill => {
-                            const li = document.createElement('li');
-                            li.textContent = skill;
-                            skillsList.appendChild(li);
-                        });
-                        skillsContainer.appendChild(skillsList);
-                    }
-                    
-                    return skillsContainer;
-                }
-                
                 // Load projects
                 const projectsContainer = document.getElementById('projects-container');
                 projectsContainer.innerHTML = '';
                 
                 if (data.portfolio.projects && data.portfolio.projects.length > 0) {
-                    data.portfolio.projects.forEach((project, index) => {
+                    data.portfolio.projects.forEach((project) => {
                         const projectDiv = document.createElement('div');
                         projectDiv.className = 'project-item';
                         
-                        // Determine layout based on project
-                        const isSeniorDesign = project.title.toLowerCase().includes('senior') || project.title.toLowerCase().includes('capstone');
-                        const isRover = project.title.toLowerCase().includes('rover');
-                        const isRobotics = project.title.toLowerCase().includes('robotics') || project.title.toLowerCase().includes('multi-robot');
-                        const isPCBuild = project.title.toLowerCase().includes('pc build');
-                        
-                        if ((isSeniorDesign || isRover) && project.image) {
-                            // Add project title
-                            const title = document.createElement('h3');
-                            title.textContent = project.title;
-                            projectDiv.appendChild(title);
-                            
-                            // Add project description
-                            const description = document.createElement('p');
-                            description.innerHTML = project.description;
-                            projectDiv.appendChild(description);
-                            
-                            // Create grid layout with skills on left and image on right
-                            const gridWrapper = document.createElement('div');
-                            gridWrapper.className = 'project-skills-grid';
-                            
-                            // Add skills list
-                            gridWrapper.appendChild(createSkillsList(project));
-                            
-                            // Create image container (right side)
-                            const imageContainer = document.createElement('div');
-                            imageContainer.className = 'project-image-container';
-                            
+                        // Use project.image or first item image as fallback
+                        const imageUrl = project.image || (project.items && project.items[0] && project.items[0].image);
+                        if (imageUrl) {
+                            const imgWrapper = document.createElement('div');
+                            imgWrapper.className = 'project-card-image';
                             const img = document.createElement('img');
-                            img.src = project.image;
+                            img.src = imageUrl;
                             img.alt = project.title;
-                            img.className = 'project-image';
                             img.onerror = function() {
-                                this.parentElement.style.display = 'none';
+                                imgWrapper.style.display = 'none';
                             };
-                            imageContainer.appendChild(img);
-                            
-                            gridWrapper.appendChild(imageContainer);
-                            projectDiv.appendChild(gridWrapper);
-                            
-                            // Add project link below the grid container
-                            const link = document.createElement('a');
-                            link.href = project.link || `portfolio/${project.title.toLowerCase().replace(/\s+/g, '-')}`;
-                            link.textContent = 'View Project';
-                            link.className = 'project-link';
-                            projectDiv.appendChild(link);
-                        } else if (isRobotics && project.items && project.items.length > 0) {
-                            // Add project title
-                            const title = document.createElement('h3');
-                            title.textContent = project.title;
-                            projectDiv.appendChild(title);
-                            
-                            // Add project description
-                            const description = document.createElement('p');
-                            description.innerHTML = project.description;
-                            projectDiv.appendChild(description);
-                            
-                            // Create grid layout with skills on left and images on right
-                            const gridWrapper = document.createElement('div');
-                            gridWrapper.className = 'project-skills-grid';
-                            
-                            // Add skills list
-                            gridWrapper.appendChild(createSkillsList(project));
-                            
-                            // Create images container (right side)
-                            const imagesContainer = document.createElement('div');
-                            imagesContainer.className = 'project-images-container';
-                            
-                            const imagesGrid = document.createElement('div');
-                            imagesGrid.className = 'project-images-grid';
-                            
-                            project.items.forEach(item => {
-                                if (item.image) {
-                                    const img = document.createElement('img');
-                                    img.src = item.image;
-                                    img.alt = project.title;
-                                    img.onerror = function() {
-                                        this.style.display = 'none';
-                                    };
-                                    imagesGrid.appendChild(img);
-                                }
-                            });
-                            
-                            imagesContainer.appendChild(imagesGrid);
-                            gridWrapper.appendChild(imagesContainer);
-                            projectDiv.appendChild(gridWrapper);
-                            
-                            // Add project link
-                            const link = document.createElement('a');
-                            link.href = project.link || `portfolio/${project.title.toLowerCase().replace(/\s+/g, '-')}`;
-                            link.textContent = 'View Project';
-                            link.className = 'project-link';
-                            projectDiv.appendChild(link);
-                        } else if (isPCBuild) {
-                            // PC Build layout - show skills without image requirement
-                            // Add project title
-                            const title = document.createElement('h3');
-                            title.textContent = project.title;
-                            projectDiv.appendChild(title);
-                            
-                            // Add project description
-                            const description = document.createElement('p');
-                            description.innerHTML = project.description;
-                            projectDiv.appendChild(description);
-                            
-                            // Add skills list
-                            projectDiv.appendChild(createSkillsList(project));
-                            
-                            // Add project link if provided
-                            if (project.link) {
-                                const link = document.createElement('a');
-                                link.href = project.link;
-                                link.textContent = 'View Project';
-                                link.className = 'project-link';
-                                projectDiv.appendChild(link);
-                            }
-                        } else {
-                            // Default layout
-                            // Add project image if provided
-                            if (project.image) {
-                                const img = document.createElement('img');
-                                img.src = project.image;
-                                img.alt = project.title;
-                                img.className = 'project-image';
-                                img.onerror = function() {
-                                    this.style.display = 'none';
-                                };
-                                projectDiv.appendChild(img);
-                            }
-                            
-                            // Add project title
-                            const title = document.createElement('h3');
-                            title.textContent = project.title;
-                            projectDiv.appendChild(title);
-                            
-                            // Add project description
-                            const description = document.createElement('p');
-                            description.innerHTML = project.description;
-                            projectDiv.appendChild(description);
-                            
-                            // Add project link if provided
-                            if (project.link) {
-                                const link = document.createElement('a');
-                                link.href = project.link;
-                                link.textContent = 'View Project';
-                                link.className = 'project-link';
-                                link.target = '_blank';
-                                projectDiv.appendChild(link);
-                            }
+                            imgWrapper.appendChild(img);
+                            projectDiv.appendChild(imgWrapper);
                         }
                         
+                        // Card body: title, description, link
+                        const cardBody = document.createElement('div');
+                        cardBody.className = 'project-card-body';
+                        
+                        const title = document.createElement('h3');
+                        title.textContent = project.title;
+                        cardBody.appendChild(title);
+                        
+                        const description = document.createElement('p');
+                        description.innerHTML = project.description;
+                        cardBody.appendChild(description);
+                        
+                        const linkHref = project.link || `portfolio/${project.title.toLowerCase().replace(/\s+/g, '-')}`;
+                        const link = document.createElement('a');
+                        link.href = linkHref;
+                        link.textContent = 'View Project';
+                        link.className = 'project-link';
+                        cardBody.appendChild(link);
+                        
+                        projectDiv.appendChild(cardBody);
                         projectsContainer.appendChild(projectDiv);
                     });
                 } else {

@@ -374,23 +374,63 @@ nav a:hover {
     min-width: 0;
 }
 
-/* Project Items */
-.project-item {
-    margin-bottom: 40px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid #e0e0e0;
+/* Projects Grid Container */
+#projects-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+    margin-top: 30px;
 }
 
-.project-item:last-child {
+/* Project Card */
+.project-item {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+    padding-bottom: 0;
     border-bottom: none;
 }
 
-.project-item img {
+.project-card-image {
     width: 100%;
-    max-width: 800px;
-    height: auto;
-    border-radius: 8px;
-    margin: 15px 0;
+    height: 220px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.project-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    margin: 0;
+    display: block;
+}
+
+.project-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.project-card-body h3 {
+    color: #34495e;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.project-card-body p {
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.7;
+    flex: 1;
 }
 
 /* Portfolio project skills grid layout */
@@ -740,10 +780,24 @@ footer {
         max-width: 200px;
     }
     
-    .project-item {
-        margin-bottom: 30px;
+    /* Projects: horizontal scroll showing ~1.5 cards */
+    #projects-container {
+        grid-template-columns: unset;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        gap: 16px;
+        padding-bottom: 12px;
+        margin-top: 20px;
     }
-    
+
+    .project-item {
+        flex: 0 0 65%;
+        scroll-snap-align: start;
+    }
+
     /* Stack skills grid on mobile */
     .project-skills-grid {
         grid-template-columns: 1fr;
