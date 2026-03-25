@@ -122,7 +122,7 @@
       "projects": [
          {
             "title": "Senior Capstone Project",
-            "description": "Fall 2025. Robot-assisted construction of fibrous materials. Academic sponsor: UPMC Laboratory of Ocular Biomechanics. <br>Description: Designed an end-effector for the Standard Bots RO1 to lay down and weave fibers.",
+            "description": "Fall 2025. Robot-assisted construction of fibrous materials for the UPMC Laboratory of Ocular Biomechanics. Designed an end-effector for the Standard Bots RO1 to lay down and weave fibers.",
             "details": [
                "Mechanical Design",
                "Robot Programming",
@@ -145,9 +145,6 @@
             ],
             "items": [
                {
-                  "image": "images/pincher.jpg"
-               },
-               {
                   "image": "images/turtlebot.jpg"
                }
             ],
@@ -155,7 +152,7 @@
          },
          {
             "title": "Lego Brick Sorter",
-            "description": "Measurements 2 Final Project (Team 14). Developed a system to identify and sort LEGO bricks by geometry and color using ultrasonic sensors, an Arduino Uno, and a Python/OpenCV color detection script.",
+            "description": "Fall 2025. Developed a system to identify and sort LEGO bricks by geometry and color using ultrasonic sensors, an Arduino Uno, and a Python/OpenCV color detection script.",
             "details": [
                "Python / OpenCV",
                "Arduino",
@@ -168,7 +165,7 @@
          },
          {
             "title": "Rover Project",
-            "description": "Fall 2023. This project was for the Intro to Mechanical Design class at the University of Pittsburgh. The goal was to design a rover for speed and agility, given only a motor and solar panel.",
+            "description": "Fall 2023. Designed a rover for speed and agility, given only a motor and solar panel.",
             "details": [
                "CAD Design (SolidWorks)",
                "3D Printing",
@@ -181,7 +178,7 @@
          },
          {
             "title": "PC Build",
-            "description": "Custom built gaming/workstation PC. Full build process documented in 4K, showcasing hands-on hardware knowledge, component selection, cable management, and system optimization.",
+            "description": "Summer 2025. Custom-built gaming/workstation PC. Full build process documented on video, showcasing hands-on hardware knowledge, component selection, cable management, and system optimization.",
             "details": [
                "Hardware Assembly",
                "Component Selection",
