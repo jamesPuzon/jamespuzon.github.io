@@ -181,13 +181,13 @@
          },
          {
             "title": "Lego Brick Sorter",
-            "description": "Designed and built an automated Lego brick sorting machine that uses computer vision to classify bricks by color and shape, then routes them to the correct bin using a custom mechanical sorting mechanism.",
+            "description": "Measurements 2 Final Project (Team 14). Developed a system to identify and sort LEGO bricks by geometry and color using ultrasonic sensors, an Arduino Uno, and a Python/OpenCV color detection script.",
             "details": [
-               "Computer Vision",
-               "Machine Design",
-               "Python",
-               "Embedded Systems",
-               "3D Printing"
+               "Python / OpenCV",
+               "Arduino",
+               "Ultrasonic Sensors",
+               "Data Analysis",
+               "Design of Experiments"
             ],
             "image": "images/LegoBrickSorter.jpg",
             "link": "portfolio/lego-brick-sorter"
