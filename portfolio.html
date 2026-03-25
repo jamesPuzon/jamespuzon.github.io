@@ -155,7 +155,38 @@
                         cardBody.appendChild(link);
                         
                         projectDiv.appendChild(cardBody);
+
+                        projectDiv.setAttribute('tabindex', '0');
+                        projectDiv.setAttribute('aria-expanded', 'false');
+
                         projectsContainer.appendChild(projectDiv);
+                    });
+
+                    // Toggle expand/collapse on click or keyboard activation (event delegation)
+                    function toggleProjectCard(projectItem) {
+                        var isExpanded = projectItem.classList.contains('expanded');
+                        document.querySelectorAll('.project-item.expanded').forEach(function(item) {
+                            item.classList.remove('expanded');
+                            item.setAttribute('aria-expanded', 'false');
+                        });
+                        if (!isExpanded) {
+                            projectItem.classList.add('expanded');
+                            projectItem.setAttribute('aria-expanded', 'true');
+                        }
+                    }
+
+                    projectsContainer.addEventListener('click', function(e) {
+                        if (e.target.closest('.project-link')) return;
+                        var projectItem = e.target.closest('.project-item');
+                        if (projectItem) toggleProjectCard(projectItem);
+                    });
+
+                    projectsContainer.addEventListener('keydown', function(e) {
+                        if (e.key !== 'Enter' && e.key !== ' ') return;
+                        var projectItem = e.target.closest('.project-item');
+                        if (!projectItem || e.target.closest('.project-link')) return;
+                        e.preventDefault();
+                        toggleProjectCard(projectItem);
                     });
                 } else {
                     const emptyMessage = document.createElement('p');

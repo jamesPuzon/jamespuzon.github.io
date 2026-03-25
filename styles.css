@@ -395,6 +395,7 @@ nav a:hover {
     margin-bottom: 0;
     padding-bottom: 0;
     border-bottom: none;
+    cursor: pointer;
 }
 
 .project-card-image {
@@ -430,8 +431,14 @@ nav a:hover {
     transition: max-height 0.35s ease;
 }
 
-.project-item:hover .project-card-content {
+.project-item:hover .project-card-content,
+.project-item.expanded .project-card-content {
     max-height: 180px;
+}
+
+.project-item:focus-visible {
+    outline: 3px solid #3498db;
+    outline-offset: 2px;
 }
 
 .project-card-body h3 {
@@ -451,7 +458,8 @@ nav a:hover {
     -webkit-line-clamp: 1;
 }
 
-.project-item:hover .project-card-body p {
+.project-item:hover .project-card-body p,
+.project-item.expanded .project-card-body p {
     display: block;
     overflow: visible;
 }
