@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <meta name="description" content="Lego Brick Sorter - Automated machine that sorts Lego bricks by color and shape using computer vision and a custom mechanical sorting mechanism.">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ED4EXMV1JF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-ED4EXMV1JF');
+    </script>
+    
+    <title>Lego Brick Sorter - James Puzon</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="top-banner">
+        <div class="banner-left">
+            <a href="/" class="banner-profile-link">
+                <img src="../images/profile-formal.jpg" alt="James Puzon" class="banner-profile-img">
+            </a>
+            <h1>Lego Brick Sorter</h1>
+        </div>
+        <div class="menu-icon" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <header>
+        <h1>Lego Brick Sorter</h1>
+    </header>
+
+    <nav id="main-nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About James</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="content-section">
+            <h2>Lego Brick Sorter</h2>
+
+            <h3>Overview</h3>
+            <p>
+                This project involved designing and building an automated Lego brick sorting machine capable of 
+                identifying Lego bricks by color and shape using computer vision, then physically routing each 
+                brick into the correct bin via a custom mechanical sorting mechanism.
+            </p>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <img src="../images/LegoBrickSorter.jpg" alt="Lego Brick Sorter" style="max-width: 600px; width: 100%; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+                <p style="font-style: italic; color: #666; margin-top: 10px;">Lego brick sorting machine with camera and sorting mechanism</p>
+            </div>
+
+            <h3>Design Goals</h3>
+            <ul>
+                <li>Automatically detect and classify Lego bricks by color and shape</li>
+                <li>Route each brick to the correct output bin without human intervention</li>
+                <li>Handle multiple brick types reliably at a reasonable throughput rate</li>
+                <li>Keep the build cost low by using 3D-printed parts and off-the-shelf components</li>
+            </ul>
+
+            <h3>Computer Vision System</h3>
+            <p>
+                A camera mounted above the conveyor belt captures images of each brick as it passes by. 
+                A Python-based vision pipeline processes the images in real time:
+            </p>
+            <ul>
+                <li><strong>Color Detection:</strong> HSV thresholding isolates the brick color from the background, 
+                    categorizing each brick into a predefined set of color groups</li>
+                <li><strong>Shape Classification:</strong> Contour analysis and aspect-ratio calculations identify 
+                    key brick dimensions to distinguish between stud counts and brick profiles</li>
+                <li><strong>Decision Logic:</strong> Color and shape results are combined to determine the target 
+                    output bin for each brick before it reaches the sorting gate</li>
+            </ul>
+
+            <h3>Mechanical Design</h3>
+            <p>
+                The machine consists of three main mechanical subsystems:
+            </p>
+            <ul>
+                <li><strong>Conveyor Belt:</strong> Moves bricks under the camera at a controlled speed to allow 
+                    consistent image capture and reliable detection</li>
+                <li><strong>Sorting Gate:</strong> A servo-driven diverter positioned downstream of the camera 
+                    directs each brick into the appropriate output bin based on the vision system's classification</li>
+                <li><strong>Hopper and Feed System:</strong> A passive hopper with a vibration motor ensures a 
+                    steady single-file supply of bricks onto the conveyor belt</li>
+            </ul>
+
+            <h3>Embedded Systems and Control</h3>
+            <ul>
+                <li>A Raspberry Pi handles image capture and runs the Python vision pipeline</li>
+                <li>GPIO pins control the servo motor and conveyor belt motor driver</li>
+                <li>Timing logic synchronizes belt speed with classification results to ensure the gate 
+                    actuates at the correct moment for each brick</li>
+            </ul>
+
+            <h3>Technologies and Tools</h3>
+            <ul>
+                <li><strong>Python / OpenCV:</strong> Image processing, color and shape classification</li>
+                <li><strong>Raspberry Pi:</strong> Embedded computing and GPIO control</li>
+                <li><strong>SolidWorks:</strong> Mechanical design and assembly modeling</li>
+                <li><strong>FDM 3D Printing:</strong> Rapid prototyping of custom brackets, hoppers, and gate components</li>
+                <li><strong>Servo and DC Motors:</strong> Actuation for the sorting gate and conveyor belt</li>
+            </ul>
+
+            <h3>Challenges and Solutions</h3>
+            <ul>
+                <li><strong>Lighting Variability:</strong> Ambient lighting caused inconsistent color readings. 
+                    Solution: Added a diffused LED ring around the camera to ensure uniform, controlled illumination</li>
+                <li><strong>Brick Orientation:</strong> Bricks arriving at random orientations complicated shape 
+                    detection. Solution: Designed a passive alignment channel that orients bricks before they reach the camera</li>
+                <li><strong>Timing Accuracy:</strong> Delayed actuation caused bricks to miss the target bin. 
+                    Solution: Calibrated the belt speed and gate trigger time to account for the travel distance between 
+                    the camera and the sorting gate</li>
+            </ul>
+
+            <h3>Results</h3>
+            <p>
+                The finished machine successfully sorts common Lego brick types with high accuracy. 
+                The system demonstrates how low-cost hardware and open-source computer vision tools can be 
+                combined to automate a practical physical sorting task.
+            </p>
+
+            <div style="margin-top: 30px;">
+                <a href="/portfolio" class="project-link">← Back to Portfolio</a>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; <span id="copyright-year">2025</span> James Puzon. All rights reserved.</p>
+    </footer>
+
+    <script src="../navigation.js"></script>
+    
+    <script>
+        // Auto-update copyright year
+        document.getElementById('copyright-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -133,13 +133,19 @@
                         const cardBody = document.createElement('div');
                         cardBody.className = 'project-card-body';
                         
+                        // Content wrapper (title + description) — expands on hover
+                        const cardContent = document.createElement('div');
+                        cardContent.className = 'project-card-content';
+                        
                         const title = document.createElement('h3');
                         title.textContent = project.title;
-                        cardBody.appendChild(title);
+                        cardContent.appendChild(title);
                         
                         const description = document.createElement('p');
                         description.innerHTML = project.description;
-                        cardBody.appendChild(description);
+                        cardContent.appendChild(description);
+                        
+                        cardBody.appendChild(cardContent);
                         
                         const linkHref = project.link || `portfolio/${project.title.toLowerCase().replace(/\s+/g, '-')}`;
                         const link = document.createElement('a');
