@@ -13,7 +13,7 @@
       "sections": [
          {
             "title": "About James",
-            "content": "James grew up in Richmond, Virginia, but he now lives in Pittsburgh, Pennsylvania where he attends the University of Pittsburgh as an undergraduate mechanical engineering student. He is a very active, and competitive person, always engaged in multiple sports. He is outgoing and involved in his community, holding a few leadership positions, and he always seems to be teaching himself something new: from web development to proper table tennis technique.",
+            "content": "James grew up in Richmond, Virginia, but he now lives in Pittsburgh, Pennsylvania where he attended the University of Pittsburgh for his undergraduate mechanical engineering degree. He is a very active, and competitive person, always engaged in multiple sports. He is outgoing and involved in his community, holding a few leadership positions, and he always seems to be teaching himself something new, such as web development and homelabbing with a Raspberry Pi.",
             "image": "images/profile-formal.jpg"
          },
          {
@@ -22,7 +22,8 @@
                "University of Pittsburgh, Swanson School of Engineering",
                "B. S. Mechanical Engineering, Minors in Computer Science and Hispanic Language and Culture",
                "Relevant coursework: Robotics, Mechatronics, Mechanical Design",
-               "Honors: Cathedral Presige Scholarship (full tuition), Frank V. Naugle Engineering Scholarship, Dean's List"
+               "Honors: Cathedral Presige Scholarship (full tuition), Frank V. Naugle Engineering Scholarship, Dean's List",
+               "Graduated May 2026"
             ],
             "image": "images/pitt.jpg",
             "subsections": [
@@ -79,12 +80,12 @@
             "subsections": [
                {
                   "title": "President, Ping Pong Club at Pitt",
-                  "content": "James started playing ping pong competively as a freshman at Pitt when he joined the club’s competitive team. He was elected as President of the club as a Junior, and his duties include organizing four weekly meetings and managing the competitive team. As a part of the competitive team, James has competed in several NCTTA (National Collegiate Table Tennis Association) tournamnents.",
+                  "content": "James started playing ping pong competively as a freshman at Pitt when he joined the club’s competitive team. He was elected as President of the club as a Junior, and his duties included organizing four weekly meetings and managing the competitive team. As a part of the competitive team, James has competed in several NCTTA (National Collegiate Table Tennis Association) tournamnents.",
                   "image": "images/pingpong.jpg"
                },
                {
                   "title": "Vice President, Outdoors Club at Pitt, Whitewater Section",
-                  "content": "James organizes kayaking and rafting trips for the Outdoors Club at Pitt. He manages safety and logistics to ensure that trips run smoothly.",
+                  "content": "James organized kayaking and rafting trips for the Outdoors Club at Pitt. He managed safety and logistics to ensure that trips run smoothly.",
                   "image": "images/kayaking.jpg"
                },
                {
