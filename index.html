@@ -6,9 +6,9 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     
     <meta name="description" content="James Puzon - Mechanical Engineering student at University of Pittsburgh. Explore my portfolio of robotics projects, capstone work, and engineering experience.">
@@ -80,44 +80,7 @@
     </footer>
 
     <script src="navigation.js"></script>
-    <script>
-        // Load content from JSON file
-        fetch('/content.json')
-            .then(response => response.json())
-            .then(data => {
-                // Update page title
-                document.getElementById('page-title').textContent = data.header.title;
-                
-                // Update header
-                document.getElementById('header-name').textContent = data.header.name;
-                document.getElementById('header-name-fallback').textContent = data.header.name;
-                
-                // Update home page content
-                const home = data.home;
-                
-                // Update profile image
-                const profileImg = document.getElementById('profile-img');
-                if (home.profileImage) {
-                    profileImg.src = home.profileImage;
-                    profileImg.alt = data.header.name;
-                }
-                
-                // Update welcome text
-                document.getElementById('welcome-text').textContent = home.welcomeText;
-                
-                // Update explore section
-                document.getElementById('explore-title').textContent = home.exploreTitle;
-                document.getElementById('explore-description').textContent = home.exploreDescription;
-            })
-            .catch(error => {
-                console.error('Error loading content:', error);
-                // Fallback to default content (already in HTML)
-            });
-    </script>
-    
-    <script>
-        // Auto-update copyright year
-        document.getElementById('copyright-year').textContent = new Date().getFullYear();
-    </script>
+    <script src="content.js"></script>
+    <script src="home.js"></script>
 </body>
 </html>

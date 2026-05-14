@@ -25,7 +25,7 @@
                "Honors: Cathedral Presige Scholarship (full tuition), Frank V. Naugle Engineering Scholarship, Dean's List",
                "Graduated May 2026"
             ],
-            "image": "images/pitt.jpg",
+            "image": "images/about/pitt.jpg",
             "subsections": [
                {
                   "title": "Study Abroad",
@@ -34,7 +34,7 @@
                      "Universidad de Alcalá, Alcalá de Henares, Spain",
                      "2 months"
                   ],
-                  "image": "images/spain.jpg"
+                  "image": "images/about/spain.jpg"
                }
             ]
          },
@@ -81,23 +81,23 @@
                {
                   "title": "President, Ping Pong Club at Pitt",
                   "content": "James started playing ping pong competively as a freshman at Pitt when he joined the club’s competitive team. He was elected as President of the club as a Junior, and his duties included organizing four weekly meetings and managing the competitive team. As a part of the competitive team, James has competed in several NCTTA (National Collegiate Table Tennis Association) tournamnents.",
-                  "image": "images/pingpong.jpg"
+                  "image": "images/about/pingpong.jpg"
                },
                {
                   "title": "Vice President, Outdoors Club at Pitt, Whitewater Section",
                   "content": "James organized kayaking and rafting trips for the Outdoors Club at Pitt. He managed safety and logistics to ensure that trips run smoothly.",
-                  "image": "images/kayaking.jpg"
+                  "image": "images/about/kayaking.jpg"
                },
                {
                   "title": "Intramurals",
                   "items": [
                      {
                         "text": "Captain, IM Soccer",
-                        "image": "images/soccer.jpg"
+                        "image": "images/about/soccer.jpg"
                      },
                      {
                         "text": "IM Volleyball",
-                        "image": "images/volleyball.jpg"
+                        "image": "images/about/volleyball.jpg"
                      }
                   ]
                },
@@ -106,11 +106,11 @@
                   "items": [
                      {
                         "text": "MMA Club",
-                        "image": "images/mma.JPG"
+                        "image": "images/about/mma.JPG"
                      },
                      {
                         "text": "Ski and Snowboard Club",
-                        "image": "images/ski-group.jpg"
+                        "image": "images/about/ski-group.jpg"
                      }
                   ]
                }
@@ -131,7 +131,7 @@
                "Project Planning",
                "System Integration"
             ],
-            "image": "images/endeffector.jpg",
+            "image": "images/portfolio/endeffector.jpg",
             "link": "portfolio/senior-capstone"
          },
          {
@@ -146,7 +146,7 @@
             ],
             "items": [
                {
-                  "image": "images/turtlebot.jpg"
+                  "image": "images/portfolio/turtlebot.jpg"
                }
             ],
             "link": "portfolio/multi-robot-delivery-system"
@@ -161,7 +161,7 @@
                "Prototyping",
                "System Integration"
             ],
-            "image": "images/CatFeederImage",
+            "image": "images/portfolio/CatFeederImage.jpg",
             "link": "portfolio/automatic-cat-feeder"
          },
          {
@@ -174,7 +174,7 @@
                "Data Analysis",
                "Design of Experiments"
             ],
-            "image": "images/LegoBrickSorter.jpg",
+            "image": "images/portfolio/LegoBrickSorter.jpg",
             "link": "portfolio/lego-brick-sorter"
          },
          {
@@ -187,7 +187,7 @@
                "Laser Cutting",
                "CNC Machining"
             ],
-            "image": "images/remy.jpg",
+            "image": "images/portfolio/remy.jpg",
             "link": "portfolio/rover-project"
          },
          {
@@ -200,7 +200,7 @@
                "System Optimization",
                "Thermal Management"
             ],
-            "image": "images/pc-build-final.jpg",
+            "image": "images/portfolio/pc-build-final.jpg",
             "link": "portfolio/pc-build"
          }
       ]
