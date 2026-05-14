@@ -6,9 +6,9 @@
     
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
     
     <meta name="description" content="Get in touch with James Puzon. Connect via email or LinkedIn to discuss engineering projects, collaboration opportunities, or career inquiries.">
@@ -82,81 +82,7 @@
     </footer>
 
     <script src="navigation.js"></script>
-    <script>
-        // Load content from JSON file
-        fetch('/content.json')
-            .then(response => response.json())
-            .then(data => {
-                // Update page title
-                document.getElementById('page-title').textContent = `${data.contact.title} - ${data.header.name}`;
-                
-                // Update header
-                document.getElementById('header-name').textContent = data.contact.title;
-                document.getElementById('header-name-fallback').textContent = data.contact.title;
-                
-                // Update contact content
-                document.getElementById('contact-title').textContent = data.contact.title;
-                document.getElementById('contact-description').textContent = data.contact.description;
-                
-                // Update contact information
-                const contactInfo = document.getElementById('contact-info');
-                contactInfo.innerHTML = '';
-                
-                // Add email if provided
-                if (data.contact.email) {
-                    const emailLi = document.createElement('li');
-                    emailLi.innerHTML = `<strong>Email:</strong> <a href="mailto:${data.contact.email}">${data.contact.email}</a>`;
-                    contactInfo.appendChild(emailLi);
-                }
-                
-                // Add phone if provided
-                if (data.contact.phone) {
-                    const phoneLi = document.createElement('li');
-                    phoneLi.innerHTML = `<strong>Phone:</strong> <a href="tel:${data.contact.phone}">${data.contact.phone}</a>`;
-                    contactInfo.appendChild(phoneLi);
-                }
-                
-                // Add social links
-                const social = data.contact.social;
-                
-                if (social.linkedin && typeof social.linkedin === 'string') {
-                    const linkedinLi = document.createElement('li');
-                    const linkedinUrl = social.linkedin.startsWith('http') ? social.linkedin : `https://linkedin.com/in/${social.linkedin}`;
-                    const linkedinDisplay = social.linkedin.replace(/^https?:\/\/(www\.)?/, '');
-                    linkedinLi.innerHTML = `<strong>LinkedIn:</strong> <a href="${linkedinUrl}" target="_blank">${linkedinDisplay}</a>`;
-                    contactInfo.appendChild(linkedinLi);
-                }
-                
-                if (social.github && typeof social.github === 'string') {
-                    const githubLi = document.createElement('li');
-                    const githubUrl = social.github.startsWith('http') ? social.github : `https://github.com/${social.github}`;
-                    const githubDisplay = social.github.replace(/^https?:\/\/(www\.)?/, '');
-                    githubLi.innerHTML = `<strong>GitHub:</strong> <a href="${githubUrl}" target="_blank">${githubDisplay}</a>`;
-                    contactInfo.appendChild(githubLi);
-                }
-                
-                if (social.twitter && typeof social.twitter === 'string') {
-                    const twitterLi = document.createElement('li');
-                    const twitterUrl = social.twitter.startsWith('http') ? social.twitter : `https://twitter.com/${social.twitter}`;
-                    const twitterDisplay = social.twitter.replace(/^https?:\/\/(www\.)?/, '');
-                    twitterLi.innerHTML = `<strong>Twitter:</strong> <a href="${twitterUrl}" target="_blank">${twitterDisplay}</a>`;
-                    contactInfo.appendChild(twitterLi);
-                }
-                
-                // Update additional info
-                if (data.contact.additionalInfo) {
-                    document.getElementById('additional-info').textContent = data.contact.additionalInfo;
-                }
-            })
-            .catch(error => {
-                console.error('Error loading content:', error);
-                // Fallback to default content (already in HTML)
-            });
-    </script>
-    
-    <script>
-        // Auto-update copyright year
-        document.getElementById('copyright-year').textContent = new Date().getFullYear();
-    </script>
+    <script src="content.js"></script>
+    <script src="contact.js"></script>
 </body>
 </html>
