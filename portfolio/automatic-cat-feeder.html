@@ -58,12 +58,7 @@
         <section class="content-section">
             <h2>Automatic Cat Feeder</h2>
 
-            <h3>Overview</h3>
-            <p>
-                This project focuses on building an automatic cat feeder that can reliably dispense food on schedule.
-                It combines mechanical design, simple automation logic, and practical prototyping to create a dependable
-                day-to-day feeding system.
-            </p>
+            <p>MEMS1049 — Spring 2026<br>Team 27 — James Puzon, Tom Kisiel, Sean Savidge</p>
 
             <h3>Project Demo</h3>
             <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 30px 0;">
@@ -77,13 +72,115 @@
                 </iframe>
             </div>
 
-            <h3>Key Features</h3>
+            <h3>System Overview</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Mechatronic Element</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Feeder automatically dispenses food portions</td><td>Stepper motor</td></tr>
+                    <tr><td>"Feed Now" button triggers feeding cycle</td><td>Interrupt</td></tr>
+                    <tr><td>Dispensing timing control</td><td>Delay</td></tr>
+                    <tr><td>Bowl food level check</td><td>Analog measurement</td></tr>
+                    <tr><td>Feeding time display</td><td>4× 7-segment displays</td></tr>
+                    <tr><td>7-segment control</td><td>MAX7221 driver</td></tr>
+                    <tr><td>12V to 5V conversion</td><td>Voltage regulator</td></tr>
+                    <tr><td>Time-setting and control inputs</td><td>3× push buttons</td></tr>
+                    <tr><td>Power status indicator</td><td>LED</td></tr>
+                    <tr><td>Pre-feed activity indicator</td><td>LED (blinking)</td></tr>
+                    <tr><td>Weight sensor activity indicator</td><td>LED</td></tr>
+                    <tr><td>Enabled feeding-time indicators</td><td>2× LEDs</td></tr>
+                    <tr><td>Portion size adjustment</td><td>Potentiometer</td></tr>
+                    <tr><td>Reservoir empty detection</td><td>Force sensor</td></tr>
+                    <tr><td>Reservoir empty warning</td><td>Software-controlled LEDs</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Motor Analysis</h3>
+            <p>
+                The primary dispensing actuator is a stepper motor. It rotates in 90° increments to move a paddle wheel and dispense repeatable portions of food from the reservoir into the bowl.<br>
+                For analysis, the interaction between the paddle and food is modeled as an equivalent drag/friction force on one paddle face.
+            </p>
+
+            <h4>Free-Body Diagram</h4>
+            <p>&lt;img&gt;</p>
+
+            <h4>Speed Derivation</h4>
+            <p><strong>Variable form</strong></p>
+            <p><code>n = N<sub>rev</sub> / t<sub>dispense</sub></code></p>
+            <p>Where:</p>
             <ul>
-                <li>Automated food dispensing at set intervals</li>
-                <li>Integrated mechanical and electrical subsystem design</li>
-                <li>Prototype-focused build and iterative improvement process</li>
-                <li>Reliable operation for routine pet care use</li>
+                <li><code>n</code>: required rotational speed (rev/s)</li>
+                <li><code>N<sub>rev</sub></code>: revolutions needed to dispense one full portion (rev)</li>
+                <li><code>t<sub>dispense</sub></code>: desired dispensing time (s)</li>
             </ul>
+            <p><strong>Numeric form</strong></p>
+            <p><code>n = 2.5 rev / 5 s = 0.5 rev/s</code></p>
+            <p><code>0.5 rev/s × 60 s/min = 30 RPM</code></p>
+
+            <h4>Torque Derivation</h4>
+            <h5>Step 1: Rotational Dynamics</h5>
+            <p>Using Newton's second law for rotation:</p>
+            <p><code>ΣM = Iα</code></p>
+            <p>Summing moments about the shaft axis (CCW positive):</p>
+            <p><code>τ<sub>Motor</sub> - F<sub>Drag</sub> · r = I<sub>wheel</sub> · α</code></p>
+
+            <h5>Step 2: Inertia Check</h5>
+            <p>Estimated paddle-wheel inertia (plastic, ~20 g, <code>R ≈ 0.02</code> m), approximated as a solid disk:</p>
+            <p><code>I<sub>wheel</sub> ≈ (1/2) mR² ≈ (1/2)(0.02)(0.02)² ≈ 4×10<sup>-6</sup> kg·m²</code></p>
+            <p>Worst-case angular acceleration (0 to 30 RPM in ~0.1 s):</p>
+            <p><code>α<sub>max</sub> ≈ π rad/s / 0.1 s ≈ 31 rad/s²</code></p>
+            <p>Inertial torque:</p>
+            <p><code>Iα ≈ (4×10<sup>-6</sup>)(31) ≈ 1.3×10<sup>-4</sup> N·m ≈ 0.013 N·cm</code></p>
+            <p>This is approximately 0.25% of the calculated resistance torque, so inertia is neglected (<code>α ≈ 0</code>):</p>
+            <p><code>τ<sub>Motor</sub> = F<sub>Drag</sub> · r</code></p>
+
+            <h5>Step 3: Drag Force Estimate</h5>
+            <p>The paddle moves through granular food, so <code>F<sub>Drag</sub></code> is modeled as Coulomb friction:</p>
+            <p><code>W<sub>food</sub> = m<sub>food</sub> · g</code></p>
+            <p><code>F<sub>Drag</sub> = μ<sub>food</sub> · W<sub>food</sub></code></p>
+            <p>Where <code>μ<sub>food</sub> ≈ 0.5</code> (estimated kibble-plastic friction coefficient). This is an estimate; testing can refine it.</p>
+
+            <h5>Step 4: Required Torque with Safety Factor</h5>
+            <p><code>τ<sub>Motor,req</sub> = SF · F<sub>Drag</sub> · r</code></p>
+            <p>Using <code>SF = 2</code> to account for:</p>
+            <ul>
+                <li>Friction uncertainty</li>
+                <li>Startup compaction/friction effects</li>
+                <li>Secondary losses (e.g., wall rubbing, pellet jams)</li>
+            </ul>
+            <p><strong>Numeric form</strong></p>
+            <p><code>W<sub>food</sub> = 0.496 kg · 9.81 m/s² = 4.87 N</code></p>
+            <p><code>F<sub>Drag</sub> = 0.5 · 4.87 = 2.44 N</code></p>
+            <p><code>r = 0.8 in = 0.0203 m</code></p>
+            <p><code>τ<sub>Motor,req</sub> (no SF) = 2.44 · 0.0203 = 0.0495 N·m = 4.95 N·cm</code></p>
+            <p><code>τ<sub>design</sub> = 2 · 4.95 = 9.9 N·cm</code></p>
+
+            <h3>Torque-Speed Diagram</h3>
+            <p>&lt;img&gt;</p>
+
+            <h3>Motor Specifications</h3>
+            <p>Motor: Pololu #1200 (SOYO SY42STH47-1206A)</p>
+            <ul>
+                <li>Rated voltage: 4 V/phase</li>
+                <li>Rated current: 1.2 A/phase</li>
+                <li>Coil resistance: 3.3 Ω/phase</li>
+                <li>Holding torque: 3.2 kg·cm (31.4 N·cm)</li>
+            </ul>
+            <p><code>V<sub>rated</sub> = I<sub>rated</sub> · R<sub>coil</sub> = 1.2 × 3.3 = 3.96 V ≈ 4 V</code></p>
+
+            <h3>Power Electronics Selection</h3>
+            <p>Selected driver: <strong>Pololu A4988 Stepper Motor Driver Carrier</strong></p>
+            <ul>
+                <li>Supported VMOT range: 8 V to 35 V</li>
+                <li>Project supply: 12 V wall adapter (within range)</li>
+            </ul>
+
+            <h3>Circuit Design</h3>
+            <p>&lt;img&gt;</p>
 
             <div style="margin-top: 30px;">
                 <a href="/portfolio" class="project-link">← Back to Portfolio</a>
