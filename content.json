@@ -152,6 +152,18 @@
             "link": "portfolio/multi-robot-delivery-system"
          },
          {
+            "title": "Automatic Cat Feeder",
+            "description": "Built an automatic cat feeder with timed dispensing and hardware/software integration for reliable feeding automation.",
+            "details": [
+               "Embedded Systems",
+               "Mechanical Design",
+               "Automation",
+               "Prototyping",
+               "System Integration"
+            ],
+            "link": "portfolio/automatic-cat-feeder"
+         },
+         {
             "title": "Lego Brick Sorter",
             "description": "Fall 2025. Developed a system to identify and sort LEGO bricks by geometry and color using ultrasonic sensors, an Arduino Uno, and a Python/OpenCV color detection script.",
             "details": [
