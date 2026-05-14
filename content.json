@@ -161,7 +161,8 @@
                "Prototyping",
                "System Integration"
             ],
-            "link": "portfolio/CatFeederImage"
+            "image": "images/CatFeederImage"
+            "link": "portfolio/automatic-cat-feeder"
          },
          {
             "title": "Lego Brick Sorter",
