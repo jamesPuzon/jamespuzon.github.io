@@ -146,7 +146,7 @@
             ],
             "items": [
                {
-                  "image": "images/portfolio/turtlebot.jpg"
+                  "image": "images/portfolio/robot-handoff.jpg"
                }
             ],
             "link": "portfolio/multi-robot-delivery-system"
@@ -200,7 +200,7 @@
                "System Optimization",
                "Thermal Management"
             ],
-            "image": "images/portfolio/pc-build-final.jpg",
+            "image": "images/portfolio/pc-build-final.png",
             "link": "portfolio/pc-build"
          }
       ]
