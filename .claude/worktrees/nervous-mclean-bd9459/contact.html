@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <meta name="description" content="Get in touch with James Puzon. Connect via email or LinkedIn to discuss engineering projects, collaboration opportunities, or career inquiries.">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ED4EXMV1JF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-ED4EXMV1JF');
+    </script>
+    
+    <title id="page-title">Contact - James Puzon</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-banner">
+        <div class="banner-left">
+            <a href="/" class="banner-profile-link">
+                <img src="images/profile-formal.jpg" alt="James Puzon" class="banner-profile-img">
+            </a>
+            <h1 id="header-name">Contact</h1>
+        </div>
+        <div class="menu-icon" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <header>
+        <h1 id="header-name-fallback">Contact</h1>
+    </header>
+
+    <nav id="main-nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About James</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="content-section">
+            <h2 id="contact-title">Get in Touch</h2>
+            <p id="contact-description">
+                I'd love to hear from you! Whether you have a question, want to collaborate on a project, 
+                or just want to say hello, feel free to reach out.
+            </p>
+
+            <h3>Contact Information</h3>
+            <ul id="contact-info">
+                <!-- Contact information will be dynamically loaded from content.json -->
+                <li><strong>Email:</strong> <a href="mailto:james@example.com">james@example.com</a></li>
+                <li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/jamespuzon" target="_blank">linkedin.com/in/jamespuzon</a></li>
+                <li><strong>GitHub:</strong> <a href="https://github.com/jamesPuzon" target="_blank">github.com/jamesPuzon</a></li>
+            </ul>
+
+            <h3>Send a Message</h3>
+            <p id="additional-info">
+                Feel free to connect with me through any of the platforms above. I typically respond within 24-48 hours.
+            </p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; <span id="copyright-year">2025</span> James Puzon. All rights reserved.</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script src="content.js"></script>
+    <script src="contact.js"></script>
+</body>
+</html>

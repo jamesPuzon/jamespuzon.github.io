@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <meta name="description" content="View James Puzon's engineering portfolio featuring robotics projects, senior capstone work, and mechanical design projects from the University of Pittsburgh...">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ED4EXMV1JF"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-ED4EXMV1JF');
+    </script>
+    
+    <title id="page-title">Portfolio - James Puzon</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-banner">
+        <div class="banner-left">
+            <a href="/" class="banner-profile-link">
+                <img src="images/profile-formal.jpg" alt="James Puzon" class="banner-profile-img">
+            </a>
+            <h1 id="header-name">Portfolio</h1>
+        </div>
+        <div class="menu-icon" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+
+    <header>
+        <h1 id="header-name-fallback">Portfolio</h1>
+    </header>
+
+    <nav id="main-nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About James</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="content-section">
+            <h2 id="portfolio-title">My Work</h2>
+            <p id="portfolio-description">
+                Welcome to my portfolio! Here you'll find a collection of my projects, accomplishments, and creative work. 
+                Each project represents a unique challenge and learning experience that has contributed to my professional growth.
+            </p>
+
+            <div id="projects-container">
+                <!-- Projects will be dynamically loaded from content.json -->
+                <h3>Project 1</h3>
+                <p>
+                    Description of a notable project, including the technologies used, challenges faced, and outcomes achieved.
+                </p>
+
+                <h3>Project 2</h3>
+                <p>
+                    Description of another significant project, highlighting key features and your role in its development.
+                </p>
+
+                <h3>Project 3</h3>
+                <p>
+                    Description of an additional project that showcases your skills and expertise.
+                </p>
+
+                <p>
+                    <em>More projects and detailed case studies coming soon!</em>
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; <span id="copyright-year">2025</span> James Puzon. All rights reserved.</p>
+    </footer>
+
+    <script src="navigation.js"></script>
+    <script src="content.js"></script>
+    <script src="portfolio.js"></script>
+</body>
+</html>
