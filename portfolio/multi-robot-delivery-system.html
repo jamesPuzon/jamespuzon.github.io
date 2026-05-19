@@ -82,7 +82,14 @@
             </div>
             
             <h3>PincherX-100 Pick-and-Place System</h3>
-            
+            <div style="text-align: center; margin: 30px 0;">
+                <video width="100%" style="max-width: 800px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);" controls aria-label="PincherX-100 picking up highlighter and handing it off to Turtlebot3">
+                    <source src="../videos/robot-handoff.mp4" type="video/mp4">
+                    <source src="../videos/robot-handoff.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                <p style="font-style: italic; color: #666; margin-top: 10px;">Video showing the end effector wrapping yarn around nails</p>
+            </div>
             <h4>Inverse Kinematics</h4>
             <p>
                 The system leverages the Interbotix API and its built-in inverse kinematics (IK) solver rather than implementing a custom solution. 
@@ -133,7 +140,14 @@
             </ol>
             
             <h3>TurtleBot3 Maze Navigation and ArUco Parking</h3>
-            
+            <div style="text-align: center; margin: 30px 0;">
+                <video width="100%" style="max-width: 800px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);" controls aria-label="Turtlebot3 pathfinding through maze then parking">
+                    <source src="../videos/robot-maze.mp4" type="video/mp4">
+                    <source src="../videos/robot-maze.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                <p style="font-style: italic; color: #666; margin-top: 10px;">Video showing the end effector wrapping yarn around nails</p>
+            </div>
             <h4>System Setup</h4>
             <p>
                 After the PX-100 releases the highlighter, the TurtleBot3 Burger transports it through a maze and delivers it to the final depot. 
@@ -179,7 +193,14 @@
                 Raspberry Pi using the RPi.GPIO library to generate a 50 Hz PWM signal. When triggered, the servo rotates from approximately 0° to 180°, 
                 opening the trap door and allowing the highlighter to fall out. After the motion is complete, the PWM signal is stopped to prevent jitter.
             </p>
-            
+            <div style="text-align: center; margin: 30px 0;">
+                <video width="100%" style="max-width: 800px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);" controls aria-label="Turtlebot3 parking and releasing the highlighter">
+                    <source src="../videos/robot-park.mp4" type="video/mp4">
+                    <source src="../videos/robot-park.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                <p style="font-style: italic; color: #666; margin-top: 10px;">Video showing the end effector wrapping yarn around nails</p>
+            </div>
             <h3>Technologies Used</h3>
             <ul>
                 <li><strong>ROS2</strong> (Robot Operating System 2) for inter-robot communication</li>
